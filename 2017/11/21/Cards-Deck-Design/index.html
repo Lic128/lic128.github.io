@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="本博客由Hexo驱动， 采用Next为主题。 配置过程： Hexo 搭建博客教程 Next Theme配置教程">
+<meta name="description" content="Design a deck of cardsConstraints and assumptions Is this a generic deck of cards for games like poker and black jack? Yes, design a generic deck then extend it">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog config">
-<meta property="og:url" content="http://yoursite.com/2017/11/17/Blog-config/index.html">
+<meta property="og:title" content="Cards Deck Design">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/Cards-Deck-Design/index.html">
 <meta property="og:site_name" content="Rock of SisyPhus">
-<meta property="og:description" content="本博客由Hexo驱动， 采用Next为主题。 配置过程： Hexo 搭建博客教程 Next Theme配置教程">
+<meta property="og:description" content="Design a deck of cardsConstraints and assumptions Is this a generic deck of cards for games like poker and black jack? Yes, design a generic deck then extend it to black jack   Can we assume the deck">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-17T19:44:35.430Z">
+<meta property="og:updated_time" content="2017-11-21T23:02:39.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog config">
-<meta name="twitter:description" content="本博客由Hexo驱动， 采用Next为主题。 配置过程： Hexo 搭建博客教程 Next Theme配置教程">
+<meta name="twitter:title" content="Cards Deck Design">
+<meta name="twitter:description" content="Design a deck of cardsConstraints and assumptions Is this a generic deck of cards for games like poker and black jack? Yes, design a generic deck then extend it to black jack   Can we assume the deck">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/17/Blog-config/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/Cards-Deck-Design/"/>
 
 
 
 
 
-  <title>Blog config | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Cards Deck Design | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/17/Blog-config/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/Cards-Deck-Design/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liyan Chen">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blog config</h1>
+          <h1 class="post-title" itemprop="name headline">Cards Deck Design</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T11:39:22-08:00">
-                2017-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T14:52:48-08:00">
+                2017-11-21
               </time>
             
 
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Others/" itemprop="url" rel="index">
-                    <span itemprop="name">Others</span>
+                  <a href="/categories/OOD/" itemprop="url" rel="index">
+                    <span itemprop="name">OOD</span>
                   </a>
                 </span>
 
@@ -341,10 +341,22 @@
       
 
       
-        <p>本博客由Hexo驱动， 采用Next为主题。</p>
-<p>配置过程：</p>
-<p><a href="https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">Hexo 搭建博客教程</a></p>
-<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next Theme配置教程</a></p>
+        <h1 id="Design-a-deck-of-cards"><a href="#Design-a-deck-of-cards" class="headerlink" title="Design a deck of cards"></a>Design a deck of cards</h1><h2 id="Constraints-and-assumptions"><a href="#Constraints-and-assumptions" class="headerlink" title="Constraints and assumptions"></a>Constraints and assumptions</h2><ul>
+<li>Is this a generic deck of cards for games like poker and black jack?<ul>
+<li>Yes, design a generic deck then extend it to black jack</li>
+</ul>
+</li>
+<li>Can we assume the deck has 52 cards (2-10, Jack, Queen, King, Ace) and 4 suits?<ul>
+<li>Yes</li>
+</ul>
+</li>
+<li>Can we assume inputs are valid or do we have to validate them?<ul>
+<li>Assume they’re valid</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">from abc import ABCMeta, abstractmethod</span><br><span class="line">from enum import Enum</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">class Suit(Enum):</span><br><span class="line">	HEART =0</span><br><span class="line">	DIAMOND =1</span><br><span class="line">	CLUBS= 2</span><br><span class="line">	SPADE= 3</span><br><span class="line"></span><br><span class="line">class Card(metaclass= ABCMeta):</span><br><span class="line">	def __init__(self, value, suit):</span><br><span class="line">		self.value= value</span><br><span class="line">		self.suit= suit</span><br><span class="line">		self.is_available= True</span><br><span class="line"></span><br><span class="line">	@property</span><br><span class="line">	@abstractmethod</span><br><span class="line">	def value(self):</span><br><span class="line">		pass</span><br><span class="line"></span><br><span class="line">	@value.setter</span><br><span class="line">	@abstractmethod</span><br><span class="line">	def value(self, other):</span><br><span class="line">		pass</span><br><span class="line"></span><br><span class="line">class BlackJackCard(Card):</span><br><span class="line">	def __init__(self, value, suit):</span><br><span class="line">		super(BlackJackCard, self).__init__(value, suit)</span><br><span class="line">	def is_ace(self):</span><br><span class="line">		return self._value==1</span><br><span class="line"></span><br><span class="line">	def is_face_card(self):</span><br><span class="line">		return 10&lt;self._value&lt;=13</span><br><span class="line"></span><br><span class="line">	@property</span><br><span class="line">    def value(self):</span><br><span class="line">        if self.is_ace() == 1:</span><br><span class="line">            return 1</span><br><span class="line">        elif self.is_face_card():</span><br><span class="line">            return 10</span><br><span class="line">        else:</span><br><span class="line">            return self._value</span><br><span class="line"></span><br><span class="line">    @value.setter</span><br><span class="line">    def value(self, new_value):</span><br><span class="line">        if 1 &lt;= new_value &lt;= 13:</span><br><span class="line">            self._value = new_value</span><br><span class="line">        else:</span><br><span class="line">            raise ValueError(&apos;Invalid card value: &#123;&#125;&apos;.format(new_value))</span><br><span class="line"></span><br><span class="line">class Hand(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, cards):</span><br><span class="line">        self.cards = cards</span><br><span class="line"></span><br><span class="line">    def add_card(self, card):</span><br><span class="line">        self.cards.append(card)</span><br><span class="line"></span><br><span class="line">    def score(self):</span><br><span class="line">        total_value = 0</span><br><span class="line">        for card in card:</span><br><span class="line">            total_value += card.value</span><br><span class="line">        return total_value</span><br><span class="line">class BlackJackHand(Hand):</span><br><span class="line"></span><br><span class="line">    BLACKJACK = 21</span><br><span class="line"></span><br><span class="line">    def __init__(self, cards):</span><br><span class="line">        super(BlackJackHand, self).__init__(cards)</span><br><span class="line"></span><br><span class="line">    def score(self):</span><br><span class="line">        min_over = sys.MAXSIZE</span><br><span class="line">        max_under = -sys.MAXSIZE</span><br><span class="line">        for score in self.possible_scores():</span><br><span class="line">            if self.BLACKJACK &lt; score &lt; min_over:</span><br><span class="line">                min_over = score</span><br><span class="line">            elif max_under &lt; score &lt;= self.BLACKJACK:</span><br><span class="line">                max_under = score</span><br><span class="line">        return max_under if max_under != -sys.MAXSIZE else min_over</span><br><span class="line"></span><br><span class="line">    def possible_scores(self):</span><br><span class="line">        &quot;&quot;&quot;Return a list of possible scores, taking Aces into account.&quot;&quot;&quot;</span><br><span class="line">        # ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Deck(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self, cards):</span><br><span class="line">        self.cards = cards</span><br><span class="line">        self.deal_index = 0</span><br><span class="line"></span><br><span class="line">    def remaining_cards(self):</span><br><span class="line">        return len(self.cards) - deal_index</span><br><span class="line"></span><br><span class="line">    def deal_card():</span><br><span class="line">        try:</span><br><span class="line">            card = self.cards[self.deal_index]</span><br><span class="line">            card.is_available = False</span><br><span class="line">            self.deal_index += 1</span><br><span class="line">        except IndexError:</span><br><span class="line">            return None</span><br><span class="line">        return card</span><br><span class="line"></span><br><span class="line">    def shuffle(self):  # ...</span><br></pre></td></tr></table></figure>
+<p>这里有点不太懂- -， 这个design的用途到底是什么…</p>
 
       
     </div>
@@ -369,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/17/Hello-World-0/" rel="next" title="My First Post">
-                <i class="fa fa-chevron-left"></i> My First Post
+              <a href="/2017/11/21/Call-Center-Design/" rel="next" title="Call Center Design">
+                <i class="fa fa-chevron-left"></i> Call Center Design
               </a>
             
           </div>
@@ -379,8 +391,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/17/Intro-to-Markdown/" rel="prev" title="Intro to Markdown">
-                Intro to Markdown <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/21/Parking-Lot-Design/" rel="prev" title="Parking Lot Design">
+                Parking Lot Design <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -433,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,6 +535,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Design-a-deck-of-cards"><span class="nav-number">1.</span> <span class="nav-text">Design a deck of cards</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Constraints-and-assumptions"><span class="nav-number">1.1.</span> <span class="nav-text">Constraints and assumptions</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
