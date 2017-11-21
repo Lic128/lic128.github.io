@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Failure ClassificationTransaction failure: Logical errors: transaction cannot complete due to some internal error condition System errors: the database system m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Failure recovery in database">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/Failure-recovery-in-database/index.html">
+<meta property="og:site_name" content="Rock of SisyPhus">
+<meta property="og:description" content="Failure ClassificationTransaction failure: Logical errors: transaction cannot complete due to some internal error condition System errors: the database system must terminate an active transaction due">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/Failure-recovery-in-database/Example.JPG">
+<meta property="og:updated_time" content="2017-11-20T23:50:16.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Failure recovery in database">
+<meta name="twitter:description" content="Failure ClassificationTransaction failure: Logical errors: transaction cannot complete due to some internal error condition System errors: the database system must terminate an active transaction due">
+<meta name="twitter:image" content="http://yoursite.com/Failure-recovery-in-database/Example.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/20/Failure-recovery-in-database/"/>
+
+
+
+
+
+  <title>Failure recovery in database | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rock of SisyPhus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/20/Failure-recovery-in-database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liyan Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock of SisyPhus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Failure recovery in database</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T14:00:01-08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/database/" itemprop="url" rel="index">
+                    <span itemprop="name">database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Failure-Classification"><a href="#Failure-Classification" class="headerlink" title="Failure Classification"></a>Failure Classification</h2><h3 id="Transaction-failure"><a href="#Transaction-failure" class="headerlink" title="Transaction failure:"></a>Transaction failure:</h3><ul>
+<li>Logical errors: transaction cannot complete due to some internal error condition</li>
+<li>System errors: the database system must terminate an active transaction due to an error condition(e.g. deadlock)</li>
+</ul>
+<h3 id="System-crash"><a href="#System-crash" class="headerlink" title="System crash:"></a>System crash:</h3><p>A power failure or other hardware of software failure causes the system to crash.</p>
+<p>Note: non-volatile storage contents are assumed to not be corrupted by system crash</p>
+<p>Database systems have numerous integrity checks to prevent corruption of disk data</p>
+<h3 id="Disk-failure"><a href="#Disk-failure" class="headerlink" title="Disk failure:"></a>Disk failure:</h3><p>A head crash or similar disk failure destroys all or part of disk storage.</p>
+<h2 id="Recovery-Algorithms"><a href="#Recovery-Algorithms" class="headerlink" title="Recovery Algorithms"></a>Recovery Algorithms</h2><p>Recovery algorithms are techniques to ensure database consistency and transaction atomicity and durability despite failures</p>
+<p>Recovery algorithms have two parts:</p>
+<ul>
+<li>Actions taken during normal transaction processing to ensure enough information exists to recover from failures</li>
+<li>Actions taken after a failure to recover the database contents to a a state that ensures atomicity, consistency and durability.</li>
+</ul>
+<h2 id="Storage-Structure"><a href="#Storage-Structure" class="headerlink" title="Storage Structure"></a>Storage Structure</h2><h3 id="Volatile-storage"><a href="#Volatile-storage" class="headerlink" title="Volatile storage"></a>Volatile storage</h3><ul>
+<li>does not survive systems crashes</li>
+<li>examples: main memory, cache memory</li>
+</ul>
+<h3 id="Nonvolatile-storage"><a href="#Nonvolatile-storage" class="headerlink" title="Nonvolatile storage"></a>Nonvolatile storage</h3><ul>
+<li>survives system crashed</li>
+<li>examples: disk, tape, flash memory, non-volatile(battery backed up) RAM</li>
+</ul>
+<h3 id="Stable-storage"><a href="#Stable-storage" class="headerlink" title="Stable storage"></a>Stable storage</h3><ul>
+<li>a mythical form of storage that survives all failures</li>
+<li>approximated by maintaining multiple copies on distinct nonvolatile media</li>
+</ul>
+<h2 id="Data-Access"><a href="#Data-Access" class="headerlink" title="Data Access"></a>Data Access</h2><p>Physical blocks residing on the disk.</p>
+<p>Buffer blocks are the blocks residing temporarily in main memory.</p>
+<p>Block movements between disk and main memory are initiated through the following two operations:</p>
+<ul>
+<li>Input(B) transfers the physical block B to main memory.</li>
+<li>output(B) transfers the buffer block B to the disk, and replaces the appropriate physical block there.</li>
+</ul>
+<p>Each transaction T<sub> i </sub> has its private work-are in which local copies of all data items accessed and updated by it are kept.</p>
+<p>Transaction transfers data items between system buffer blocks and its private work-area using the following operations:</p>
+<ul>
+<li>read(X) assigns the value of data item X to the local variable x<sub>i</sub></li>
+<li>write(X) assigns the value of local variable X<sub>i</sub> to data item{X} in the buffer block.</li>
+</ul>
+<p><img src="/Failure-recovery-in-database/Example.JPG" alt="&quot;Example of Data Access&quot;"></p>
+<h2 id="Recovery-and-Atomicity"><a href="#Recovery-and-Atomicity" class="headerlink" title="Recovery and Atomicity"></a>Recovery and Atomicity</h2><p>To ensure atomicity despite failures, we first output information describing the modifications to stable storage without modifying the database itself.</p>
+<p>We study two approaches:</p>
+<ul>
+<li>log-based recovery</li>
+<li>shadow-paging</li>
+</ul>
+<h2 id="Log-Based-Recovery"><a href="#Log-Based-Recovery" class="headerlink" title="Log-Based Recovery"></a>Log-Based Recovery</h2><p>A log is kept on stable storage. The log is a sequence of log records, and maintains a record of update activities on the database.</p>
+<p>When transaction T<sub>i</sub> starts, it registers itself by writing a <code>&lt;Ti, start&gt;</code></p>
+<p>Before T<sub>i</sub>  executes write(X), a log record <code>&lt;T, X, V1, V2&gt;</code>is written , where V1 is the value of X before the write, and V2 is the value to be written to X.</p>
+<p>When T finishes its last statement, the log record<code>&lt;T commit&gt; 0</code>  is written.</p>
+<p>We assume for now that log records are written directly to stable storage(that is, they are not buffered).</p>
+<p>Two approaches using logs:</p>
+<ul>
+<li>Deferred database modification</li>
+<li>Immediate database modification</li>
+</ul>
+<h3 id="Deferred-Database-Modification"><a href="#Deferred-Database-Modification" class="headerlink" title="Deferred Database Modification"></a>Deferred Database Modification</h3><p>The deferred database modification scheme records all modification to the log, but defers all the writes to after partial commit</p>
+<p>Assume that transactions execute serially</p>
+<p>Transaction starts by writing <code>&lt;T, start&gt;</code> record to log.</p>
+<p>A write(X) operation results in a log record <code>&lt;T, X, V&gt;</code> being written, where V is the new Value for X</p>
+<p>Note: old value is not needed for this scheme.</p>
+<p>The write is not performed on X at this time, but is deferred.</p>
+<p>When T partially commits, <code>&lt;T, commit&gt;</code> is written to the log</p>
+<p>Finally, the log records are read and used to actually execute the previous deferred writes.</p>
+<p>During recovery after a crash, a transaction needs to be redone if and only if both <code>&lt;T, start&gt;</code> and <code>&lt;T commit&gt;</code> are there in the log.</p>
+<p>Redoing a transaction T(redo T) sets the value of all data items updated by the transaction to the new values.</p>
+<p>Crashed can occur while:</p>
+<ul>
+<li>the transaction is executing the original updates</li>
+<li>while recovery action is  being taken</li>
+</ul>
+<p>Redo logging rules:</p>
+<ul>
+<li>For every action, generate redo log record(containing new value)</li>
+<li>Before X is modified on disk, all log records for transaction that modified X(including commit) must be on disk</li>
+<li>Flush log at commit</li>
+</ul>
+<p>Recovery rules:</p>
+<ul>
+<li><p>Let S= set of transactions with <code>&lt;T, commit&gt;</code> in log</p>
+</li>
+<li><p>For each  <code>&lt;T, X, V&gt;</code> in log, in forward order(earliest-&gt; latest) do:</p>
+<p>if T in S then Write(X, V) and output(X)</p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="Immediate-Database-Modification"><a href="#Immediate-Database-Modification" class="headerlink" title="Immediate Database Modification"></a>Immediate Database Modification</h3><p>The immediate database modification scheme allows database updates of an uncommitted transaction to be made as the writes are issued.</p>
+<p>Update log record must be written before database item is written</p>
+<ul>
+<li>we assume that the log record is output directly to stable storage</li>
+<li>can be extended to postpone log record output, so long as prior to execution of an output(B) operation for a data block B, all log records corresponding to items B must be flushed to stable storage.</li>
+<li>Output of updated blocks can take place at any time before or after transaction commit.</li>
+</ul>
+<p>Recovery procedure has two operations instead of one:</p>
+<ul>
+<li>Undo(T) restores the value of all data items updated by T to their old values, going backwards from the last log record for T.<ol>
+<li>Let S= set of transactions with <code>&lt;T, start&gt;</code> in log, but no <code>&lt;T, commit&gt;</code> record in log</li>
+<li>For each <code>&lt;T, X, v&gt;</code> in log, in reverse order(latest to earliest) do: if T in S, then write (X, V) and output X</li>
+</ol>
+</li>
+<li>redo(T) sets the value of all data items updated by T to the new values, going forward from the first log record for T.</li>
+</ul>
+<h2 id="Shadow-Paging"><a href="#Shadow-Paging" class="headerlink" title="Shadow Paging"></a>Shadow Paging</h2><h2 id="Recovery-with-Concurrent-Transactions"><a href="#Recovery-with-Concurrent-Transactions" class="headerlink" title="Recovery with Concurrent Transactions"></a>Recovery with Concurrent Transactions</h2><h2 id="Buffer-Management"><a href="#Buffer-Management" class="headerlink" title="Buffer Management"></a>Buffer Management</h2><h2 id="Failure-with-Loss-of-Nonvolatile-Storage"><a href="#Failure-with-Loss-of-Nonvolatile-Storage" class="headerlink" title="Failure with Loss of Nonvolatile Storage"></a>Failure with Loss of Nonvolatile Storage</h2><h2 id="Advanced-Recovery-Algorithm"><a href="#Advanced-Recovery-Algorithm" class="headerlink" title="Advanced Recovery Algorithm"></a>Advanced Recovery Algorithm</h2><p>##Remote Backup Systems</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/17/DataBase-System/" rel="next" title="DataBase System">
+                <i class="fa fa-chevron-left"></i> DataBase System
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/20/The-implementation-of-HashMap-in-Java/" rel="prev" title="The implementation of HashMap in Java">
+                The implementation of HashMap in Java <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Liyan Chen" />
+            
+              <p class="site-author-name" itemprop="name">Liyan Chen</p>
+              <p class="site-description motion-element" itemprop="description">千江有水千江月， 万里无云万里天</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lic128" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:lic128@eng.ucsd.edu" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Failure-Classification"><span class="nav-number">1.</span> <span class="nav-text">Failure Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-failure"><span class="nav-number">1.1.</span> <span class="nav-text">Transaction failure:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-crash"><span class="nav-number">1.2.</span> <span class="nav-text">System crash:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Disk-failure"><span class="nav-number">1.3.</span> <span class="nav-text">Disk failure:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recovery-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Recovery Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage-Structure"><span class="nav-number">3.</span> <span class="nav-text">Storage Structure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile-storage"><span class="nav-number">3.1.</span> <span class="nav-text">Volatile storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nonvolatile-storage"><span class="nav-number">3.2.</span> <span class="nav-text">Nonvolatile storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stable-storage"><span class="nav-number">3.3.</span> <span class="nav-text">Stable storage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Access"><span class="nav-number">4.</span> <span class="nav-text">Data Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recovery-and-Atomicity"><span class="nav-number">5.</span> <span class="nav-text">Recovery and Atomicity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log-Based-Recovery"><span class="nav-number">6.</span> <span class="nav-text">Log-Based Recovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deferred-Database-Modification"><span class="nav-number">6.1.</span> <span class="nav-text">Deferred Database Modification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Immediate-Database-Modification"><span class="nav-number">6.2.</span> <span class="nav-text">Immediate Database Modification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadow-Paging"><span class="nav-number">7.</span> <span class="nav-text">Shadow Paging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recovery-with-Concurrent-Transactions"><span class="nav-number">8.</span> <span class="nav-text">Recovery with Concurrent Transactions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer-Management"><span class="nav-number">9.</span> <span class="nav-text">Buffer Management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Failure-with-Loss-of-Nonvolatile-Storage"><span class="nav-number">10.</span> <span class="nav-text">Failure with Loss of Nonvolatile Storage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Recovery-Algorithm"><span class="nav-number">11.</span> <span class="nav-text">Advanced Recovery Algorithm</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liyan Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
