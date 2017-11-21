@@ -345,17 +345,110 @@
       
         
           
-          Failure ClassificationTransaction failure:
-Logical errors: transaction cannot complete due to some internal error condition
-System errors: the databas
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/20/Failure-recovery-in-database/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Failure-Classification"><a href="#Failure-Classification" class="headerlink" title="Failure Classification"></a>Failure Classification</h2><h3 id="Transaction-failure"><a href="#Transaction-failure" class="headerlink" title="Transaction failure:"></a>Transaction failure:</h3><ul>
+<li>Logical errors: transaction cannot complete due to some internal error condition</li>
+<li>System errors: the database system must terminate an active transaction due to an error condition(e.g. deadlock)</li>
+</ul>
+<h3 id="System-crash"><a href="#System-crash" class="headerlink" title="System crash:"></a>System crash:</h3><p>A power failure or other hardware of software failure causes the system to crash.</p>
+<p>Note: non-volatile storage contents are assumed to not be corrupted by system crash</p>
+<p>Database systems have numerous integrity checks to prevent corruption of disk data</p>
+<h3 id="Disk-failure"><a href="#Disk-failure" class="headerlink" title="Disk failure:"></a>Disk failure:</h3><p>A head crash or similar disk failure destroys all or part of disk storage.</p>
+<h2 id="Recovery-Algorithms"><a href="#Recovery-Algorithms" class="headerlink" title="Recovery Algorithms"></a>Recovery Algorithms</h2><p>Recovery algorithms are techniques to ensure database consistency and transaction atomicity and durability despite failures</p>
+<p>Recovery algorithms have two parts:</p>
+<ul>
+<li>Actions taken during normal transaction processing to ensure enough information exists to recover from failures</li>
+<li>Actions taken after a failure to recover the database contents to a a state that ensures atomicity, consistency and durability.</li>
+</ul>
+<h2 id="Storage-Structure"><a href="#Storage-Structure" class="headerlink" title="Storage Structure"></a>Storage Structure</h2><h3 id="Volatile-storage"><a href="#Volatile-storage" class="headerlink" title="Volatile storage"></a>Volatile storage</h3><ul>
+<li>does not survive systems crashes</li>
+<li>examples: main memory, cache memory</li>
+</ul>
+<h3 id="Nonvolatile-storage"><a href="#Nonvolatile-storage" class="headerlink" title="Nonvolatile storage"></a>Nonvolatile storage</h3><ul>
+<li>survives system crashed</li>
+<li>examples: disk, tape, flash memory, non-volatile(battery backed up) RAM</li>
+</ul>
+<h3 id="Stable-storage"><a href="#Stable-storage" class="headerlink" title="Stable storage"></a>Stable storage</h3><ul>
+<li>a mythical form of storage that survives all failures</li>
+<li>approximated by maintaining multiple copies on distinct nonvolatile media</li>
+</ul>
+<h2 id="Data-Access"><a href="#Data-Access" class="headerlink" title="Data Access"></a>Data Access</h2><p>Physical blocks residing on the disk.</p>
+<p>Buffer blocks are the blocks residing temporarily in main memory.</p>
+<p>Block movements between disk and main memory are initiated through the following two operations:</p>
+<ul>
+<li>Input(B) transfers the physical block B to main memory.</li>
+<li>output(B) transfers the buffer block B to the disk, and replaces the appropriate physical block there.</li>
+</ul>
+<p>Each transaction T<sub> i </sub> has its private work-are in which local copies of all data items accessed and updated by it are kept.</p>
+<p>Transaction transfers data items between system buffer blocks and its private work-area using the following operations:</p>
+<ul>
+<li>read(X) assigns the value of data item X to the local variable x<sub>i</sub></li>
+<li>write(X) assigns the value of local variable X<sub>i</sub> to data item{X} in the buffer block.</li>
+</ul>
+<p><img src="/2017/11/20/Failure-recovery-in-database/Example.JPG" alt="&quot;Example of Data Access&quot;"></p>
+<h2 id="Recovery-and-Atomicity"><a href="#Recovery-and-Atomicity" class="headerlink" title="Recovery and Atomicity"></a>Recovery and Atomicity</h2><p>To ensure atomicity despite failures, we first output information describing the modifications to stable storage without modifying the database itself.</p>
+<p>We study two approaches:</p>
+<ul>
+<li>log-based recovery</li>
+<li>shadow-paging</li>
+</ul>
+<h2 id="Log-Based-Recovery"><a href="#Log-Based-Recovery" class="headerlink" title="Log-Based Recovery"></a>Log-Based Recovery</h2><p>A log is kept on stable storage. The log is a sequence of log records, and maintains a record of update activities on the database.</p>
+<p>When transaction T<sub>i</sub> starts, it registers itself by writing a <code>&lt;Ti, start&gt;</code></p>
+<p>Before T<sub>i</sub>  executes write(X), a log record <code>&lt;T, X, V1, V2&gt;</code>is written , where V1 is the value of X before the write, and V2 is the value to be written to X.</p>
+<p>When T finishes its last statement, the log record<code>&lt;T commit&gt; 0</code>  is written.</p>
+<p>We assume for now that log records are written directly to stable storage(that is, they are not buffered).</p>
+<p>Two approaches using logs:</p>
+<ul>
+<li>Deferred database modification</li>
+<li>Immediate database modification</li>
+</ul>
+<h3 id="Deferred-Database-Modification"><a href="#Deferred-Database-Modification" class="headerlink" title="Deferred Database Modification"></a>Deferred Database Modification</h3><p>The deferred database modification scheme records all modification to the log, but defers all the writes to after partial commit</p>
+<p>Assume that transactions execute serially</p>
+<p>Transaction starts by writing <code>&lt;T, start&gt;</code> record to log.</p>
+<p>A write(X) operation results in a log record <code>&lt;T, X, V&gt;</code> being written, where V is the new Value for X</p>
+<p>Note: old value is not needed for this scheme.</p>
+<p>The write is not performed on X at this time, but is deferred.</p>
+<p>When T partially commits, <code>&lt;T, commit&gt;</code> is written to the log</p>
+<p>Finally, the log records are read and used to actually execute the previous deferred writes.</p>
+<p>During recovery after a crash, a transaction needs to be redone if and only if both <code>&lt;T, start&gt;</code> and <code>&lt;T commit&gt;</code> are there in the log.</p>
+<p>Redoing a transaction T(redo T) sets the value of all data items updated by the transaction to the new values.</p>
+<p>Crashed can occur while:</p>
+<ul>
+<li>the transaction is executing the original updates</li>
+<li>while recovery action is  being taken</li>
+</ul>
+<p>Redo logging rules:</p>
+<ul>
+<li>For every action, generate redo log record(containing new value)</li>
+<li>Before X is modified on disk, all log records for transaction that modified X(including commit) must be on disk</li>
+<li>Flush log at commit</li>
+</ul>
+<p>Recovery rules:</p>
+<ul>
+<li><p>Let S= set of transactions with <code>&lt;T, commit&gt;</code> in log</p>
+</li>
+<li><p>For each  <code>&lt;T, X, V&gt;</code> in log, in forward order(earliest-&gt; latest) do:</p>
+<p>if T in S then Write(X, V) and output(X)</p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="Immediate-Database-Modification"><a href="#Immediate-Database-Modification" class="headerlink" title="Immediate Database Modification"></a>Immediate Database Modification</h3><p>The immediate database modification scheme allows database updates of an uncommitted transaction to be made as the writes are issued.</p>
+<p>Update log record must be written before database item is written</p>
+<ul>
+<li>we assume that the log record is output directly to stable storage</li>
+<li>can be extended to postpone log record output, so long as prior to execution of an output(B) operation for a data block B, all log records corresponding to items B must be flushed to stable storage.</li>
+<li>Output of updated blocks can take place at any time before or after transaction commit.</li>
+</ul>
+<p>Recovery procedure has two operations instead of one:</p>
+<ul>
+<li>Undo(T) restores the value of all data items updated by T to their old values, going backwards from the last log record for T.<ol>
+<li>Let S= set of transactions with <code>&lt;T, start&gt;</code> in log, but no <code>&lt;T, commit&gt;</code> record in log</li>
+<li>For each <code>&lt;T, X, v&gt;</code> in log, in reverse order(latest to earliest) do: if T in S, then write (X, V) and output X</li>
+</ol>
+</li>
+<li>redo(T) sets the value of all data items updated by T to the new values, going forward from the first log record for T.</li>
+</ul>
+<h2 id="Shadow-Paging"><a href="#Shadow-Paging" class="headerlink" title="Shadow Paging"></a>Shadow Paging</h2><h2 id="Recovery-with-Concurrent-Transactions"><a href="#Recovery-with-Concurrent-Transactions" class="headerlink" title="Recovery with Concurrent Transactions"></a>Recovery with Concurrent Transactions</h2><h2 id="Buffer-Management"><a href="#Buffer-Management" class="headerlink" title="Buffer Management"></a>Buffer Management</h2><h2 id="Failure-with-Loss-of-Nonvolatile-Storage"><a href="#Failure-with-Loss-of-Nonvolatile-Storage" class="headerlink" title="Failure with Loss of Nonvolatile Storage"></a>Failure with Loss of Nonvolatile Storage</h2><h2 id="Advanced-Recovery-Algorithm"><a href="#Advanced-Recovery-Algorithm" class="headerlink" title="Advanced Recovery Algorithm"></a>Advanced Recovery Algorithm</h2><h2 id="Remote-Backup-Systems"><a href="#Remote-Backup-Systems" class="headerlink" title="Remote Backup Systems"></a>Remote Backup Systems</h2>
+          
         
       
     </div>
@@ -473,17 +566,10 @@ System errors: the databas
       
         
           
-          Database note:
-(1) Failure-recovery-in-database
+            <p>Database note:</p>
+<p>(1) <a href="http://lic128.me/2017/11/20/Failure-recovery-in-database/" target="_blank" rel="noopener">Failure-recovery-in-database</a></p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/DataBase-System/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -601,15 +687,8 @@ System errors: the databas
       
         
           
+            
           
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/Intro-to-Karman-Filter/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -749,16 +828,99 @@ System errors: the databas
       
         
           
-          Markdown 语法简介（配合Typora食用）Markdown是什么？Markdown是一种轻量级标记语言， 它以纯文本形式编写文档， 并最终以HTML格式发布。Markdown也可以理解为将以MARKDOWN语法编写的语言转换成HTML内容的工具。
-怎么使用？Markdown语法主要分为 Sp
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/Intro-to-Markdown/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Markdown-语法简介（配合Typora食用）"><a href="#Markdown-语法简介（配合Typora食用）" class="headerlink" title="Markdown 语法简介（配合Typora食用）"></a>Markdown 语法简介（配合Typora食用）</h2><h3 id="Markdown是什么？"><a href="#Markdown是什么？" class="headerlink" title="Markdown是什么？"></a>Markdown是什么？</h3><p>Markdown是一种轻量级标记语言， 它以纯文本形式编写文档， 并最终以HTML格式发布。Markdown也可以理解为将以MARKDOWN语法编写的语言转换成HTML内容的工具。</p>
+<h3 id="怎么使用？"><a href="#怎么使用？" class="headerlink" title="怎么使用？"></a>怎么使用？</h3><p>Markdown语法主要分为 <em>Span Elements</em> 和 <em>Block Elements</em> .</p>
+<h4 id="斜体和粗体"><a href="#斜体和粗体" class="headerlink" title="斜体和粗体"></a>斜体和粗体</h4><p>使用<em> 和 *</em> 表示斜体和粗体：</p>
+<p>示例：</p>
+<p>这是 <em>斜体</em>， 这是<strong>粗体</strong>。</p>
+<h4 id="分级标题"><a href="#分级标题" class="headerlink" title="分级标题"></a>分级标题</h4><p>使用=== 表示一级标题， 使用— 表示二级标题</p>
+<p>示例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这是一个一级标题</span><br><span class="line">============================</span><br><span class="line"></span><br><span class="line">这是一个二级标题</span><br><span class="line">--------------------------------------------------</span><br><span class="line"></span><br><span class="line">### 这是一个三级标题</span><br></pre></td></tr></table></figure>
+<p>你也可以选择在行首加井号表示不同级别的标题（H1-H6）, 例如： # H1， ## H2, ### H3, …</p>
+<h4 id="外部链接"><a href="#外部链接" class="headerlink" title="外部链接"></a>外部链接</h4><p>使用 [discription](link url) 为文字增加外链接。</p>
+<p>示例：</p>
+<p>This is the link to <a href="lic128.me">myBlog</a>.</p>
+<h4 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h4><p>使用*， +，-，表示无序列表。</p>
+<p>示例：</p>
+<ul>
+<li>无序列表项 一</li>
+<li>无序列表项 二</li>
+<li>无序列表项 三</li>
+</ul>
+<h4 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h4><p>使用数字和点表示有序列表。</p>
+<p>示例：</p>
+<ol>
+<li>有序列表项 一</li>
+<li>有序列表项 二</li>
+<li>有序列表项 三</li>
+</ol>
+<h4 id="文字引用"><a href="#文字引用" class="headerlink" title="文字引用"></a>文字引用</h4><p>使用 &gt; 表示文字引用</p>
+<p>示例：</p>
+<blockquote>
+<p>千江有水千江月， 万里无云万里天</p>
+</blockquote>
+<h4 id="行间代码块"><a href="#行间代码块" class="headerlink" title="行间代码块"></a>行间代码块</h4><p>使用 三个反引号加回车就可以使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="行内代码块"><a href="#行内代码块" class="headerlink" title="行内代码块"></a>行内代码块</h4><p>To indicate a span of code, wrap it with backtick quotes(`). Unlike a pre-formatted code block, a code span indicates code within a normal paragraph. </p>
+<p>For example: <code>html</code> <code>java</code> </p>
+<h4 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h4><p>Task lists are lists with items marked as either [] or [x] (incomplete or complete). </p>
+<p>For  example:</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> a task list item</li>
+<li style="list-style: none"><input type="checkbox"> list syntax required</li>
+<li style="list-style: none"><input type="checkbox"> normal <strong>formatting</strong> ,@mentions, #1234 refs</li>
+<li style="list-style: none"><input type="checkbox"> incomplete</li>
+<li style="list-style: none"><input type="checkbox" checked> completed </li>
+</ul>
+<h4 id="Math-Blocks"><a href="#Math-Blocks" class="headerlink" title="Math Blocks"></a>Math Blocks</h4><p>You can render $LaTex$ mathematical expressions using <strong>MathJax</strong>.</p>
+<p>Input two dollar sign, then press ‘Return’ key will trigger an input field which accept $LaTex$  source. Following is an Example:<br>$$<br>\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}<br>\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \<br>\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0 \<br>\end{vmatrix}<br>$$</p>
+<h4 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h4><p>Input | First Header | Second Header | and press return key will create a table with two column.</p>
+<p>After table is created, focus on that table will pop up a toolbar for table, where you can resize, align, or delete table. You can also use context menu to copy and add/delete column/row.</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+<p> You can also include inline Markdown such as links, bold, italics, or strikethrough.</p>
+<p>Finally, by including colons : within the header row, you can define text to be left-aligned, right-aligned, or center-aligned.</p>
+<h4 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">You can create footnotes like this [^footnote].</span><br><span class="line">[^footnote]: here is the *text* of the **footnote**</span><br></pre></td></tr></table></figure>
+<p>will produce;</p>
+<p>You can create footnotes like this [^1].</p>
+<p>[^1]: here is the <em>text</em> of the <strong>footnote</strong></p>
+<p>Here the blog hexo do not support footnotes.</p>
+<h4 id="Horizontal-Rules"><a href="#Horizontal-Rules" class="headerlink" title="Horizontal Rules"></a>Horizontal Rules</h4><p>Input <em>*</em> or — on a blank line and press return will draw a horizontal line.</p>
+<h4 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h4><p>Typora allows you to insert urls as links, wrapped by <brakets>.</brakets></p>
+<h4 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h4><p>images looks similar with links, but it requires an additional ! char before the start of link. Image syntax looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/path/to/img.jpg)</span><br><span class="line"></span><br><span class="line">![Alt text](/path/to/img.jpg &quot;Optional title&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h4><p>GFM adds syntax to create strikethrough text, which is missing from standard Markdown.</p>
+<p><del>Mistaken text .</del></p>
+<h4 id="Underline"><a href="#Underline" class="headerlink" title="Underline"></a>Underline</h4><p>Underline is powered by raw HTML.(<u> tag u)</u></p>
+<p><u>Underline</u></p>
+<h4 id="Inline-Math"><a href="#Inline-Math" class="headerlink" title="Inline Math"></a>Inline Math</h4><p>To use this feature, first, please enable it in <code>Preference</code> Panel -&gt; <code>Markdown</code> Tab. Then use <code>$</code> to wrap TeX command, for example: <code>$\lim_{x \to \infty} \exp(-x) = 0$</code> will be rendered as LaTeX command.</p>
+<p>To trigger inline preview for inline math: input “$”, then press <code>ESC</code> key, then input TeX command</p>
+<p>\\lim_{x \to \infty} \exp(-x)=0</p>
+<h4 id="Subscript"><a href="#Subscript" class="headerlink" title="Subscript"></a>Subscript</h4><p>To use this feature, first, please enable it. then use ~ to wrap subscript content, for example: H~2~0</p>
+<h4 id="Superscript"><a href="#Superscript" class="headerlink" title="Superscript"></a>Superscript</h4><p>Use ^ to wrap superscript content, for example: X^2^.</p>
+<hr>
+<p>External Links:</p>
+<ul>
+<li><a href="http://support.typora.io/" target="_blank" rel="noopener">Typora</a></li>
+<li><a href="http://xianbai.me/learn-md/article/tools/cmd-markdown.html" target="_blank" rel="noopener">CMD Markdown</a></li>
+<li><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">MathJax</a></li>
+<li><a href="http://daniellaah.github.io/2016/Mathmatical-Formula-within-Markdown.html" target="_blank" rel="noopener">如何在Hexo博客中插入数学公式</a></li>
+<li><a href="https://magicly.me/markdown-math/" target="_blank" rel="noopener">在markdown里如何写数学公式</a></li>
+</ul>
+
+          
         
       
     </div>
@@ -898,19 +1060,12 @@ System errors: the databas
       
         
           
-          本博客由Hexo驱动， 采用Next为主题。
-配置过程：
-Hexo 搭建博客教程
-Next Theme配置教程
+            <p>本博客由Hexo驱动， 采用Next为主题。</p>
+<p>配置过程：</p>
+<p><a href="https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">Hexo 搭建博客教程</a></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next Theme配置教程</a></p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/Blog-config/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1050,15 +1205,11 @@ Next Theme配置教程
       
         
           
-          ​       这是用hexo发的第一封post，之前也曾经在WordPress上写过博客，终觉得wordpress的编辑效果不是很棒，再加上之前几个月一直忙于找工作，之前博客终究荒废。 话说回来， 找工作终究是实力与运气的博弈，一番操作兜兜转转却依旧没能上岸，一方面觉得自己心态焦躁，另一方面依旧觉
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/Hello-World-0/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>​       这是用hexo发的第一封post，之前也曾经在WordPress上写过博客，终觉得wordpress的编辑效果不是很棒，再加上之前几个月一直忙于找工作，之前博客终究荒废。 话说回来， 找工作终究是实力与运气的博弈，一番操作兜兜转转却依旧没能上岸，一方面觉得自己心态焦躁，另一方面依旧觉得自己还是需要继续学习，于是干脆将之前的博客重新迁至Hexo平台上， 希望能够将此作为一个记录自己的地方。</p>
+<p>​    This is the first post of the blog based on Hexo. First let me introduce myself: I am a master student from UCSD ECE major, my concentration is Intelligent Systems and Robotics, and my interests focus on web application. I am also good at java and python. As a student who has change one’s major, to better improve my skills, I have learned algorithm, databases and machine learning etc online courses. I am currently working on a project which is based on mean stack. This blog was build based on Hexo and GitHub page to record my experience in software engineering.</p>
+<p>​    <img src="/2017/11/17/Hello-World-0/dream.jpg" alt="NARUTO"></p>
+
+          
         
       
     </div>
