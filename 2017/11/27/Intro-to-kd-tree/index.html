@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="加权随机算法加权随机算法一般应用在一下场景： 有一个集合S, 里面比如有A，B， C， D这四项。 这时我们想随机从中抽取一项， 但是抽取的概率不同， 比如我们希望抽到A的概率是50%， 抽到B和C的概率是20%， D的概率是10%。 一般来说， 我们可以给各项附一个权重， 抽取的概率正比于这个权重。 那么上述集合就成">
-<meta name="keywords" content="Algorithm">
+<meta name="description" content="K-D tree 算法k-dimensional 树， 是一种分割k维数据空间的数据结构。 主要应用于多维空间关键数据的搜索， 如范围搜索和最近邻搜索。 应用背景索引结构中相似查询有两种基本的方式： 一种是范围查询， 另一种是K近邻查询。 范围查询就是给定查询点和查询距离的阈值， 从数据集中找出与查询点距离小于阈值的数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Weighted Random Algorithm">
-<meta property="og:url" content="http://yoursite.com/2017/11/23/Weighted-Random-Algorithm/index.html">
+<meta property="og:title" content="Intro to kd-tree">
+<meta property="og:url" content="http://yoursite.com/2017/11/27/Intro-to-kd-tree/index.html">
 <meta property="og:site_name" content="Rock of SisyPhus">
-<meta property="og:description" content="加权随机算法加权随机算法一般应用在一下场景： 有一个集合S, 里面比如有A，B， C， D这四项。 这时我们想随机从中抽取一项， 但是抽取的概率不同， 比如我们希望抽到A的概率是50%， 抽到B和C的概率是20%， D的概率是10%。 一般来说， 我们可以给各项附一个权重， 抽取的概率正比于这个权重。 那么上述集合就成了：{A:5, B:2, C:2, D:1} Solution 1：扩展这个集合">
+<meta property="og:description" content="K-D tree 算法k-dimensional 树， 是一种分割k维数据空间的数据结构。 主要应用于多维空间关键数据的搜索， 如范围搜索和最近邻搜索。 应用背景索引结构中相似查询有两种基本的方式： 一种是范围查询， 另一种是K近邻查询。 范围查询就是给定查询点和查询距离的阈值， 从数据集中找出与查询点距离小于阈值的数据； k近邻查询是给定查询点及正整数K， 从数据集中找到距离查询点最近的K个数据">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-24T00:27:22.017Z">
+<meta property="og:image" content="http://yoursite.com/2017/11/27/Intro-to-kd-tree/KDtree_1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/27/Intro-to-kd-tree/KDtree_2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/27/Intro-to-kd-tree/KDtree_3.png">
+<meta property="og:updated_time" content="2017-11-28T03:07:48.383Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Weighted Random Algorithm">
-<meta name="twitter:description" content="加权随机算法加权随机算法一般应用在一下场景： 有一个集合S, 里面比如有A，B， C， D这四项。 这时我们想随机从中抽取一项， 但是抽取的概率不同， 比如我们希望抽到A的概率是50%， 抽到B和C的概率是20%， D的概率是10%。 一般来说， 我们可以给各项附一个权重， 抽取的概率正比于这个权重。 那么上述集合就成了：{A:5, B:2, C:2, D:1} Solution 1：扩展这个集合">
+<meta name="twitter:title" content="Intro to kd-tree">
+<meta name="twitter:description" content="K-D tree 算法k-dimensional 树， 是一种分割k维数据空间的数据结构。 主要应用于多维空间关键数据的搜索， 如范围搜索和最近邻搜索。 应用背景索引结构中相似查询有两种基本的方式： 一种是范围查询， 另一种是K近邻查询。 范围查询就是给定查询点和查询距离的阈值， 从数据集中找出与查询点距离小于阈值的数据； k近邻查询是给定查询点及正整数K， 从数据集中找到距离查询点最近的K个数据">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/27/Intro-to-kd-tree/KDtree_1.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/23/Weighted-Random-Algorithm/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/27/Intro-to-kd-tree/"/>
 
 
 
 
 
-  <title>Weighted Random Algorithm | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Intro to kd-tree | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -253,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/Weighted-Random-Algorithm/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/27/Intro-to-kd-tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liyan Chen">
@@ -270,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Weighted Random Algorithm</h1>
+          <h1 class="post-title" itemprop="name headline">Intro to kd-tree</h1>
         
 
         <div class="post-meta">
@@ -282,8 +285,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-23T15:46:28-08:00">
-                2017-11-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-27T18:16:00-08:00">
+                2017-11-27
               </time>
             
 
@@ -292,28 +295,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -342,26 +323,34 @@
       
 
       
-        <h2 id="加权随机算法"><a href="#加权随机算法" class="headerlink" title="加权随机算法"></a>加权随机算法</h2><p>加权随机算法一般应用在一下场景： 有一个集合S, 里面比如有A，B， C， D这四项。 这时我们想随机从中抽取一项， 但是抽取的概率不同， 比如我们希望抽到A的概率是50%， 抽到B和C的概率是20%， D的概率是10%。 一般来说， 我们可以给各项附一个权重， 抽取的概率正比于这个权重。 那么上述集合就成了：<code>{A:5, B:2, C:2, D:1}</code></p>
-<h3 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a>Solution 1：</h3><p>扩展这个集合， 使每一项出现的次数与其权重正相关。 在上述例子这个集合扩展成：</p>
-<p><code>{A, A, A, A, A, B, B, C, C, D}</code></p>
-<p>然后就可以用均匀随机算法来从中选取。</p>
-<ul>
-<li>pros: 选取的时间复杂度为O(1)， 算法简单。</li>
-<li>cons： 空间占用极大。 另外如果权重数字位数较大， 例如<code>{A: 49.1，B: 50.9}</code>的时候， 就会产生巨大的空间浪费。</li>
-</ul>
-<h3 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a>Solution 2：</h3><p>计算权重总和sum， 然后在1到sum之间随机选择一个数R， 之后遍历整个集合， 统计遍历的项的权重之和， 如果大于等于R， 就停止遍历， 选择遇到的项。</p>
-<p>还是以上面的集合为例， sum等于10， 如果随机到1-5，则会在遍历第一个数字的时候就退出遍历。 符合所选取的概率。</p>
-<ul>
-<li>Pros： 没有额外的空间占用， 算法也比较简单。</li>
-<li>cons： 选取的时候要遍历集合， 时间复杂度是O(n)。</li>
-</ul>
-<h3 id="Solution-3："><a href="#Solution-3：" class="headerlink" title="Solution 3："></a>Solution 3：</h3><p>可以对方法二进行优化， 对项目集按照权重排序， 这样遍历的时候， 概率高的项可以很快遇到， 减少遍历的项。</p>
-<p>进一步优化， 可以使用数组+ 二分查找来实现。</p>
-<ul>
-<li>Pros: 提高了平均选取速度。</li>
-<li>cons：需要进行排序， 并且不易添加删除修改项。</li>
-</ul>
+        <h1 id="K-D-tree-算法"><a href="#K-D-tree-算法" class="headerlink" title="K-D tree 算法"></a>K-D tree 算法</h1><p>k-dimensional 树， 是一种分割k维数据空间的数据结构。 主要应用于多维空间关键数据的搜索， 如范围搜索和最近邻搜索。</p>
+<h3 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h3><p>索引结构中相似查询有两种基本的方式： 一种是范围查询， 另一种是K近邻查询。 范围查询就是给定查询点和查询距离的阈值， 从数据集中找出与查询点距离小于阈值的数据； k近邻查询是给定查询点及正整数K， 从数据集中找到距离查询点最近的K个数据， 当K=1时， 就是最近邻查询。</p>
+<p>特征匹配算子大致可以分为两类。一类是线性扫描法，即将数据集中的点与查询点逐一进行距离比较，也就是穷举，缺点很明显，就是没有利用数据集本身蕴含的任何结构信息，搜索效率较低，第二类是建立数据索引，然后再进行快速匹配。因为实际数据一般都会呈现出簇状的聚类形态，通过设计有效的索引结构可以大大加快检索的速度。索引树属于第二类，其基本思想就是对搜索空间进行层次划分。根据划分的空间是否有混叠可以分为Clipping和Overlapping两种。前者划分空间没有重叠，其代表就是k-d树；后者划分空间相互有交叠，其代表为R树。（这里只介绍k-d树）。</p>
+<h3 id="K-D-Tree算法介绍"><a href="#K-D-Tree算法介绍" class="headerlink" title="K-D Tree算法介绍"></a>K-D Tree算法介绍</h3><p>Kd树： 是对数据点在k维空间中划分的一种数据结构， 主要应用于多维空间关键数据的搜索。本质上说， Kd-树就是一种平衡二叉树。</p>
+<p>先以一个简单直观的实例来介绍k-d树算法。假设有6个二二位数据点{（2,3）,(5,4), (9,6), (4,7),(8,1), (7,2)}, 数据点位于二维空间内， 根据这些数据点构造一个kd树。 如下图：</p>
+<p><img src="/2017/11/27/Intro-to-kd-tree/KDtree_1.png" alt=""></p>
+<h4 id="构建步骤"><a href="#构建步骤" class="headerlink" title="构建步骤"></a>构建步骤</h4><ol>
+<li>6个数据点在x, y维度上的数据方差分别为39， 28.63， 所以在x轴上方差更大， 故先选x轴为坐标轴来切分矩形；</li>
+<li>根据x维上的值将数据排序：<code>{(2,3), (4,7), (5,4), (7,2), (8,1), (9,6)}</code> 6个数据的中值为7， 所以以数据点<code>（7,2)</code>为节点， 通该店并垂直于x轴的直线来把平面切分成两个矩形。</li>
+<li>确定左子空间和右子空间。 x=7将整个空间分为两部分： x&lt;=7的部分为左子空间， 包含三个节点 <code>{(2,3), (5,4),(4,7)}</code>； 另一部分为右子空间， 包含两个节点<code>{(8,1),(9,6)}</code>； </li>
+</ol>
+<p>kd树的构建是一个递归过程， 我们对左子空间和右子空间内的数据重复上述过程将空间和数据集进一步细分， 如此往复直到空间中任意两个子区域没有实例存在时， 停止划分。</p>
+<p>最后可以得到二叉树， 如下图：</p>
+<p><img src="/2017/11/27/Intro-to-kd-tree/KDtree_2.png" alt=""></p>
+<h4 id="查询步骤"><a href="#查询步骤" class="headerlink" title="查询步骤"></a>查询步骤</h4><p>假设查询点A， 通过二叉搜索， 顺着搜索路径很快就能够找到最邻近的近似点， 也就是叶子节点B。 而找到的叶子节点B并不一定就是最邻近的， 最邻近肯定距离查询点更近， 应该位于以查询点为圆心且通过叶子节点的圆域内。</p>
+<p>为了找到真正的最近邻， 还需要进行相关的回溯操作。 也就是说， 算法沿搜索路径反向查找是否有距离查询点最近的数据点。</p>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><img src="/2017/11/27/Intro-to-kd-tree/KDtree_3.png" alt=""></p>
+<p>以查询<code>(2.1,3.1)</code>为例:</p>
+<ol>
+<li><p>二叉树搜索：此时搜索路径中的节点为<code>{(7,2)，(5,4)，(2,3)}</code>，以<code>(2,3)</code>作为当前最近邻点，计算其到查询点<code>(2.1,3.1)</code>的距离为<code>0.1414</code></p>
+</li>
+<li><p>回溯查找： 在得到<code>(2,3)</code>为查询点的最近点之后， 回溯到其父节点<code>(5,4)</code>， 并判断在该父节点的其他子节点空间中是否有距离查询点更近的数据点。</p>
+<p>以<code>(2.1,3.1)</code>为圆心，以0.1414为半径画圆，如下图所示。发现该圆并不和超平面<code>y = 4</code>交割，因此不用进入<code>(5,4)</code>节点右子空间中去搜索；</p>
+<p>最后，再回溯到<code>(7,2)</code>，以<code>(2.1,3.1)</code>为圆心，以0.1414为半径的圆更不会与<code>x = 7</code>超平面交割，因此不用进入<code>(7,2)</code>右子空间进行查找。至此，搜索路径中的节点已经全部回溯完，结束整个搜索，返回最近邻点<code>(2,3)</code>，最近距离为0.1414。</p>
+</li>
+</ol>
+<h3 id="算法Java实现"><a href="#算法Java实现" class="headerlink" title="算法Java实现"></a>算法Java实现</h3><p>之后再进行阅读：</p>
+<p><a href="http://grunt1223.iteye.com/blog/921371" target="_blank" rel="noopener">K Nearest Neighbor 问题的解决——KD-TREE Implementation</a></p>
 
       
     </div>
@@ -377,12 +366,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
-          
-        </div>
-      
 
       
       
@@ -392,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/21/Online-Chat-Design/" rel="next" title="Online Chat Design">
-                <i class="fa fa-chevron-left"></i> Online Chat Design
+              <a href="/2017/11/26/Intro-to-yargs/" rel="next" title="Intro to yargs">
+                <i class="fa fa-chevron-left"></i> Intro to yargs
               </a>
             
           </div>
@@ -402,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/23/Common-Random-Algorithm/" rel="prev" title="Common Random Algorithm">
-                Common Random Algorithm <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/27/Generics-in-Java/" rel="prev" title="Generics in Java">
+                Generics in Java <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -556,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#加权随机算法"><span class="nav-number">1.</span> <span class="nav-text">加权随机算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1："><span class="nav-number">1.1.</span> <span class="nav-text">Solution 1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2："><span class="nav-number">1.2.</span> <span class="nav-text">Solution 2：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3："><span class="nav-number">1.3.</span> <span class="nav-text">Solution 3：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#K-D-tree-算法"><span class="nav-number">1.</span> <span class="nav-text">K-D tree 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用背景"><span class="nav-number">1.0.1.</span> <span class="nav-text">应用背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K-D-Tree算法介绍"><span class="nav-number">1.0.2.</span> <span class="nav-text">K-D Tree算法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建步骤"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">构建步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询步骤"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">查询步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法Java实现"><span class="nav-number">1.0.3.</span> <span class="nav-text">算法Java实现</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
