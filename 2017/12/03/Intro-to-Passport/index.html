@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文链接：戳这里 简介passport.js 是Nodejs中的一个做登陆验证的中间件， 极其灵活和模块化， 并且可与Express， Sails等Web框架无缝集成。 Passport功能单一， 即只能做登陆验证， 但非常强大， 支持本地账号验证和第三方账号登陆验证（OAuth和OpenID等），支持大多数Web网站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro-to-Passport">
+<meta property="og:url" content="http://yoursite.com/2017/12/03/Intro-to-Passport/index.html">
+<meta property="og:site_name" content="Rock of SisyPhus">
+<meta property="og:description" content="原文链接：戳这里 简介passport.js 是Nodejs中的一个做登陆验证的中间件， 极其灵活和模块化， 并且可与Express， Sails等Web框架无缝集成。 Passport功能单一， 即只能做登陆验证， 但非常强大， 支持本地账号验证和第三方账号登陆验证（OAuth和OpenID等），支持大多数Web网站和服务。 策略（Strategy）策略是passport中最重要的概念。 pas">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-04T05:32:33.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro-to-Passport">
+<meta name="twitter:description" content="原文链接：戳这里 简介passport.js 是Nodejs中的一个做登陆验证的中间件， 极其灵活和模块化， 并且可与Express， Sails等Web框架无缝集成。 Passport功能单一， 即只能做登陆验证， 但非常强大， 支持本地账号验证和第三方账号登陆验证（OAuth和OpenID等），支持大多数Web网站和服务。 策略（Strategy）策略是passport中最重要的概念。 pas">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/03/Intro-to-Passport/"/>
+
+
+
+
+
+  <title>Intro-to-Passport | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rock of SisyPhus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/03/Intro-to-Passport/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liyan Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock of SisyPhus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Intro-to-Passport</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-03T19:15:48-08:00">
+                2017-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文链接：<a href="https://www.kancloud.cn/digest/passport-js-note/64048" target="_blank" rel="noopener">戳这里</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>passport.js 是Nodejs中的一个做登陆验证的中间件， 极其灵活和模块化， 并且可与Express， Sails等Web框架无缝集成。 Passport功能单一， 即只能做登陆验证， 但非常强大， 支持本地账号验证和第三方账号登陆验证（OAuth和OpenID等），支持大多数Web网站和服务。</p>
+<h2 id="策略（Strategy）"><a href="#策略（Strategy）" class="headerlink" title="策略（Strategy）"></a>策略（Strategy）</h2><p>策略是passport中最重要的概念。 passport模块本身不能做认证，所有的认证方法都以策略模式封装为插件， 需要某种认证时将其添加到package.json即可。</p>
+<p>策略模式是一种设计模式， 它将算法和对象分离开来， 通过加载不同的算法来实现不同的行为， 适用于相关类的成员相同但是行为不同的场景， 比如在passport中， 认证所需的字段都是用户名， 邮箱， 密码等， 但是认证的方式是不同的。</p>
+<p>依据策略模式， passport支持了众多的验证方案， 包括basic， digest， OAuth， Bearer等。</p>
+<h2 id="环境依赖"><a href="#环境依赖" class="headerlink" title="环境依赖"></a>环境依赖</h2><p>首先你需要Nodejs， 然后数据库用来存储用户数据； 另外passport作为中间件， 需要依赖Express和Connect， 还有由于Express 3.x 将一些中间件分离出去， 因此你还需要先安装他们。 其中express-flash是用于显示提示信息的中间件， 是可选的， 如果需要用到passport中的提示， 则需要安装。</p>
+<p>具体的依赖有：</p>
+<ul>
+<li>Express：web框架。或其他支持的框架。</li>
+<li>Connect：中间件框架。</li>
+<li>cookie-parser：Connect的cookie解析中间件。</li>
+<li>express-session：Connect的session解析中间件，依赖于cookie-parser。</li>
+<li>express-flash：express的消息提示中间件，可选，但一般情况下都需要装。</li>
+</ul>
+<h2 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h2><p>你最少需要安装一个passport策略来使用它，一般而言本地验证策略passport-local是必装的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install passport</span><br><span class="line">npm install passport-local</span><br></pre></td></tr></table></figure>
+<p>安装完成后需要配置中间件，一般的顺序如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> flash = <span class="built_in">require</span>(<span class="string">'express-flash'</span>);</span><br><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">app.use(cookieParser());</span><br><span class="line">app.use(session(&#123;...&#125;));</span><br><span class="line">app.use(passport.initialize());</span><br><span class="line">app.use(passport.session());</span><br><span class="line">app.use(flash())</span><br></pre></td></tr></table></figure>
+<p>其中重要的是app.use()部分，express中的中间件顺序很重要，注意不要弄错，除非你知道不同中间件间的准确依赖关系。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>passport用的比较多的有local本地验证和OAuth验证，这里讲一下两者的使用。</p>
+<p>你也可以看看张丹写的这两篇，<a href="http://blog.fens.me/nodejs-express-passport/" target="_blank" rel="noopener">Express结合Passport实现登陆认证</a>和<a href="http://blog.fens.me/nodejs-oauth-passport/" target="_blank" rel="noopener">Passport实现社交网络OAuth登陆</a>，里面的示例覆盖了基本的用法，本文也参考了其中的一些例子。</p>
+<h3 id="local-本地验证"><a href="#local-本地验证" class="headerlink" title="local 本地验证"></a>local 本地验证</h3><p>本地验证默认使用用户名和密码来进行验证。</p>
+<h4 id="配置策略"><a href="#配置策略" class="headerlink" title="配置策略"></a>配置策略</h4><p>在做验证之前， 首先需要对策略进行配置， 官方的示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>)</span><br><span class="line">  , </span><br><span class="line">    LocalStrategy = <span class="built_in">require</span>(<span class="string">'passport-local'</span>).Strategy;</span><br><span class="line"></span><br><span class="line">passport.use(<span class="keyword">new</span> LocalStrategy(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">username, password, done</span>) </span>&#123;</span><br><span class="line">    User.findOne(&#123; <span class="attr">username</span>: username &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> done(err); &#125;</span><br><span class="line">      <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'用户名不存在.'</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!user.validPassword(password)) &#123;</span><br><span class="line">        <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>, &#123; <span class="attr">message</span>: <span class="string">'密码不匹配.'</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+<h4 id="usernameField"><a href="#usernameField" class="headerlink" title="usernameField"></a>usernameField</h4><p>前面说过password默认使用用户名和密码来验证， 但实际上也有很多需要用邮箱来验证的， 那么如何实现呢？</p>
+<p>passport在策略配置里提供了options参数， 用来设置你想要验证的字段名称， 即usernameField， 使用方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">passport.use(<span class="keyword">new</span> LocalStrategy(&#123;</span><br><span class="line">    usernameField: <span class="string">'email'</span>,</span><br><span class="line">    passwordField: <span class="string">'passwd'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">username, password, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
+<p>注意， 这里的字段名称应该是页面表单提交的名称， 即req.body.xxx， 而不是user数据库的字段名称。</p>
+<p>将options作为LocalStrategy第一个参数传入即可。</p>
+<h4 id="验证回调"><a href="#验证回调" class="headerlink" title="验证回调"></a>验证回调</h4><p>passport本身不处理验证， 验证方法在策略配置的回调函数里由用户自行设置，它又称为验证回调。 验证回调需要返回验证结果， 这里是由done（）来完成的。</p>
+<p>在passport.use()里面， done()由三种用法：</p>
+<ul>
+<li>当发生系统级异常时，返回done(err)，这里是数据库查询出错，一般用next(err)，但这里用done(err)，两者的效果相同，都是返回error信息；</li>
+<li>当验证不通过时，返回done(null, false, message)，这里的message是可选的，可通过express-flash调用；</li>
+<li>当验证通过时，返回done(null, user)。</li>
+</ul>
+<h4 id="密码验证"><a href="#密码验证" class="headerlink" title="密码验证"></a>密码验证</h4><p>在张丹的教程里密码是明文存储的，在实际中这当然不行，上面的代码里是user.validPassword(password)方法，这并不是passport添加的，而是需要用户自定义。</p>
+<p>一般对密码进行哈希和盐化的Nodejs模块是bcrypt，它提供一个compare方法来验证密码，如何使用它则超出本文的范围，这里就不讲了。</p>
+<h4 id="session序列化与反序列化"><a href="#session序列化与反序列化" class="headerlink" title="session序列化与反序列化"></a>session序列化与反序列化</h4><p>session 中的数据存放在服务器端， 浏览器端的cookie会以某种形势存放session的ID， 服务器端获取到这个id索引到session dta。</p>
+<p>验证用户提交的凭证是否正确，是与session中储存的对象进行对比，所以涉及到从session中存取数据，需要做session对象序列化与反序列化。调用代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">passport.serializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">user, done</span>) </span>&#123;</span><br><span class="line">  done(<span class="literal">null</span>, user.id);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">passport.deserializeUser(<span class="function"><span class="keyword">function</span>(<span class="params">id, done</span>) </span>&#123;</span><br><span class="line">  User.findById(id, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</span><br><span class="line">    done(err, user);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里第一段代码是将环境中的user.id序列化到session中， 即sessionID， 同时它将作为凭证存储在用户cookie中。</p>
+<p>第二段代码是从session反序列化， 参数为用户提交的sessionID， 若存在则从数据库中查询user并存储于req.user中。</p>
+<p>这段代码的顺序可以放在passport.use)()的前面或后面， 但是需要在app.configure()之前。</p>
+<h4 id="Authenticate验证"><a href="#Authenticate验证" class="headerlink" title="Authenticate验证"></a>Authenticate验证</h4><p>做完了上面这些设置，我们终于可以开始做验证了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/login'</span>,</span><br><span class="line">  passport.authenticate(<span class="string">'local'</span>,</span><br><span class="line">    &#123; <span class="attr">successRedirect</span>: <span class="string">'/'</span>,</span><br><span class="line">     failureRedirect: <span class="string">'/login'</span>,</span><br><span class="line">     failureFlash: <span class="literal">true</span> &#125;),</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 验证成功则调用此回调函数</span></span><br><span class="line">    res.redirect(<span class="string">'/users/'</span> + req.user.username);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>这里的passport.authenticate(“local”)就是中间件， 若通过就进入后面的回调函数， 并且给res加上res.user， 若不通过则默认返回401错误。</p>
+<p>authenticate()方法有三个参数， 第一是name， 即验证策略的名称， 第二个是options， 包括下面属性：</p>
+<ul>
+<li>session：Boolean。设置是否需要session，默认为true</li>
+<li>successRedirect：String。设置当验证成功时的跳转链接</li>
+<li>failureRedirect：String。设置当验证失败时的跳转链接</li>
+<li>failureFlash：Boolean or String。设置为Boolean时，express-flash将调用use()里设置的message。设置为String时将直接调用这里的信息。</li>
+<li>successFlash：Boolean or String。使用方法同上。</li>
+</ul>
+<p>第三个参数是callback。 注意如果使用了callback， 那么验证之后建立session和发出响应都应该由这个callback来做， passport中间件之后不应该再有其他中间件或callback。 以下是代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  passport.authenticate(<span class="string">'local'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, user, info</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> next(err); &#125;</span><br><span class="line">    <span class="keyword">if</span> (!user) &#123; <span class="keyword">return</span> res.redirect(<span class="string">'/login'</span>); &#125;</span><br><span class="line">    req.logIn(user, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123; <span class="keyword">return</span> next(err); &#125;</span><br><span class="line">      <span class="keyword">return</span> res.redirect(<span class="string">'/users/'</span> + user.username);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)(req, res, next);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="HTTP-request操作"><a href="#HTTP-request操作" class="headerlink" title="HTTP request操作"></a>HTTP request操作</h4><p>注意上面的代码里有个req.login(), 它不是http模块原生的方法， 也不是express中的方法， 而是passport加上的， passport扩展了HTTP request， 添加了四种方法。</p>
+<ul>
+<li>logIn(user, options, callback)：用login()也可以。作用是为登录用户初始化session。options可设置session为false，即不初始化session，默认为true。</li>
+<li>logOut()：别名为logout()。作用是登出用户，删除该用户session。不带参数。</li>
+<li>isAuthenticated()：不带参数。作用是测试该用户是否存在于session中（即是否已登录）。若存在返回true。事实上这个比登录验证要用的更多，毕竟session通常会保留一段时间，在此期间判断用户是否已登录用这个方法就行了。</li>
+<li>isUnauthenticated()：不带参数。和上面的作用相反。</li>
+</ul>
+<h2 id="进阶学习"><a href="#进阶学习" class="headerlink" title="进阶学习"></a>进阶学习</h2><p><a href="https://www.kancloud.cn/digest/passport-js-note/64049" target="_blank" rel="noopener">看这里</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://blog.csdn.net/choelea/article/details/75033213" target="_blank" rel="noopener">Node.js 利用passport完成本地认证</a></p>
+<h3 id="Cookie-和-session"><a href="#Cookie-和-session" class="headerlink" title="Cookie 和 session"></a>Cookie 和 session</h3><p>总所周知， HTTP是一个无状态协议， 所以客户端每次发出请求时， 下一次请求无法得知上一次请求所包含的状态数据， 如何能把一个用户的状态数据关联起来呢？</p>
+<p>比如在淘宝的某一个页面中， 你进行了登陆操作。 当你跳转到商品页时， 服务器端如何知道你是已经登陆的状态？</p>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>首先产生了cookie这门技术来解决这个问题， cookie是http协议的一部分， 它的处理分为如下几步：</p>
+<ul>
+<li>服务器向客户端发送cookie。<ul>
+<li>通常使用 HTTP协议规定的set-cookie头操作。</li>
+<li>规范规定cookie的格式为 name=value格式， 且必须包含这部分。</li>
+</ul>
+</li>
+<li>浏览器将cookie保存。</li>
+<li>每次请求浏览器都会将cookie发向服务器。</li>
+</ul>
+<p>其他可选的cookie参数会影响将cookie发送给服务器端的过程， 主要有以下几种：</p>
+<ul>
+<li>path</li>
+<li>expires 和 maxAge</li>
+<li>secure</li>
+<li>httpOnly</li>
+</ul>
+<p>express 在 4.x 版本之后，session管理和cookies等许多模块都不再直接包含在express中，而是需要单独添加相应模块。</p>
+<p>express4 中操作 cookie 使用 <code>cookie-parser</code> 模块(<a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="noopener">https://github.com/expressjs/cookie-parser</a> )。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="comment">// 首先引入 cookie-parser 这个模块</span></span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 cookieParser 中间件，cookieParser(secret, options)</span></span><br><span class="line"><span class="comment">// 其中 secret 用来加密 cookie 字符串（下面会提到 signedCookies）</span></span><br><span class="line"><span class="comment">// options 传入上面介绍的 cookie 可选参数</span></span><br><span class="line">app.use(cookieParser());</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 如果请求中的 cookie 存在 isVisit, 则输出 cookie</span></span><br><span class="line">  <span class="comment">// 否则，设置 cookie 字段 isVisit, 并设置过期时间为1分钟</span></span><br><span class="line">  <span class="keyword">if</span> (req.cookies.isVisit) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(req.cookies);</span><br><span class="line">    res.send(<span class="string">"再次欢迎访问"</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.cookie(<span class="string">'isVisit'</span>, <span class="number">1</span>, &#123;<span class="attr">maxAge</span>: <span class="number">60</span> * <span class="number">1000</span>&#125;);</span><br><span class="line">    res.send(<span class="string">"欢迎第一次访问"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p>cookie虽然很方便， 但是使用cookie有一个很大的弊端， cookie中的所有数据在客户端就可以被修改， 数据非常容易被伪造， 那么一些重要的数据就不能存放在cookie中了， 而且如果cookie中数据字段太多会影响传输效率。 为了解决这些问题， 就产生了session， session中的数据是保留在服务器端的。</p>
+<p>session的运作是通过一个session_id来进行。 session_id通常是存放在客户端的cookie中， 比如在express中， 默认是connect.sid这个字段， 当请求到来时， 服务器检查cookie中保存的session_id并通过这个session_id与服务器端的session data关联起来， 进行数据的保存和修改。</p>
+<p>这意思就是说，当你浏览一个网页时，服务端随机产生一个 1024 比特长的字符串，然后存在你 cookie 中的 <code>connect.sid</code> 字段中。当你下次访问时，cookie 会带有这个字符串，然后浏览器就知道你是上次访问过的某某某，然后从服务器的存储中取出上次记录在你身上的数据。由于字符串是随机产生的，而且位数足够多，所以也不担心有人能够伪造。伪造成功的概率比坐在家里编程时被邻居家的狗突然闯入并咬死的几率还低。</p>
+<p>session 可以存放在 1）内存、2）cookie本身、3）redis 或 memcached 等缓存中，或者4）数据库中。线上来说，缓存的方案比较常见，存数据库的话，查询效率相比前三者都太低，不推荐；cookie session 有安全性问题，下面会提到。</p>
+<p>express 中操作 session 要用到 <code>express-session</code> (<a href="https://github.com/expressjs/session" target="_blank" rel="noopener">https://github.com/expressjs/session</a> ) 这个模块，主要的方法就是 <code>session(options)</code>，其中 options 中包含可选参数，主要有：</p>
+<ul>
+<li>name: 设置 cookie 中，保存 session 的字段名称，默认为 <code>connect.sid</code> 。</li>
+<li>store: session 的存储方式，默认存放在内存中，也可以使用 redis，mongodb 等。express 生态中都有相应模块的支持。</li>
+<li>secret: 通过设置的 secret 字符串，来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改。</li>
+<li>cookie: 设置存放 session id 的 cookie 的相关选项，默认为<ul>
+<li>(default: { path: ‘/‘, httpOnly: true, secure: false, maxAge: null })</li>
+</ul>
+</li>
+<li>genid: 产生一个新的 session_id 时，所使用的函数， 默认使用 <code>uid2</code> 这个 npm 包。</li>
+<li>rolling: 每个请求都重新设置一个 cookie，默认为 false。</li>
+<li>resave: 即使 session 没有被修改，也保存 session 值，默认为 true。</li>
+</ul>
+<p>1） 在内存中存储 session</p>
+<p><code>express-session</code> 默认使用内存来存 session，对于开发调试来说很方便。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="comment">// 首先引入 express-session 这个模块</span></span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.listen(<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按照上面的解释，设置 session 的可选参数</span></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  secret: <span class="string">'recommand 128 bytes random string'</span>, <span class="comment">// 建议使用 128 个字符的随机字符串</span></span><br><span class="line">  cookie: &#123; <span class="attr">maxAge</span>: <span class="number">60</span> * <span class="number">1000</span> &#125;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查 session 中的 isVisit 字段</span></span><br><span class="line">  <span class="comment">// 如果存在则增加一次，否则为 session 设置 isVisit 字段，并初始化为 1。</span></span><br><span class="line">  <span class="keyword">if</span>(req.session.isVisit) &#123;</span><br><span class="line">    req.session.isVisit++;</span><br><span class="line">    res.send(<span class="string">'&lt;p&gt;第 '</span> + req.session.isVisit + <span class="string">'次来此页面&lt;/p&gt;'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    req.session.isVisit = <span class="number">1</span>;</span><br><span class="line">    res.send(<span class="string">"欢迎第一次来这里"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(req.session);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>2） 在 redis 中存储 session</p>
+<p>session 存放在内存中不方便进程间共享，因此可以使用 redis 等缓存来存储 session。</p>
+<p>假设你的机器是 4 核的，你使用了 4 个进程在跑同一个 node web 服务，当用户访问进程1时，他被设置了一些数据当做 session 存在内存中。而下一次访问时，他被负载均衡到了进程2，则此时进程2的内存中没有他的信息，认为他是个新用户。这就会导致用户在我们服务中的状态不一致。</p>
+<p>使用 redis 作为缓存，可以使用 <code>connect-redis</code> 模块(<a href="https://github.com/tj/connect-redis" target="_blank" rel="noopener">https://github.com/tj/connect-redis</a> )来得到 redis 连接实例，然后在 session 中设置存储方式为该实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">'express-session'</span>);</span><br><span class="line"><span class="keyword">var</span> redisStore = <span class="built_in">require</span>(<span class="string">'connect-redis'</span>)(session);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.listen(<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  <span class="comment">// 假如你不想使用 redis 而想要使用 memcached 的话，代码改动也不会超过 5 行。</span></span><br><span class="line">  <span class="comment">// 这些 store 都遵循着统一的接口，凡是实现了那些接口的库，都可以作为 session 的 store 使用，比如都需要实现 .get(keyString) 和 .set(keyString, value) 方法。</span></span><br><span class="line">  <span class="comment">// 编写自己的 store 也很简单</span></span><br><span class="line">  store: <span class="keyword">new</span> redisStore(),</span><br><span class="line">  secret: <span class="string">'somesecrettoken'</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(req.session.isVisit) &#123;</span><br><span class="line">    req.session.isVisit++;</span><br><span class="line">    res.send(<span class="string">'&lt;p&gt;第 '</span> + req.session.isVisit + <span class="string">'次来到此页面&lt;/p&gt;'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    req.session.isVisit = <span class="number">1</span>;</span><br><span class="line">    res.send(<span class="string">'欢迎第一次来这里'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="More-About-Cookie-and-Session"><a href="#More-About-Cookie-and-Session" class="headerlink" title="More About Cookie and Session"></a>More About Cookie and Session</h4><p><a href="http://wiki.jikexueyuan.com/project/node-lessons/cookie-session.html" target="_blank" rel="noopener">戳这里</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/29/E-commerce-Refactoring-Note/" rel="next" title="E-commerce Refactoring Note">
+                <i class="fa fa-chevron-left"></i> E-commerce Refactoring Note
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/04/Query-Processing-in-Database/" rel="prev" title="Query Processing in Database">
+                Query Processing in Database <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Liyan Chen" />
+            
+              <p class="site-author-name" itemprop="name">Liyan Chen</p>
+              <p class="site-description motion-element" itemprop="description">千江有水千江月， 万里无云万里天</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lic128" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:lic128@eng.ucsd.edu" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略（Strategy）"><span class="nav-number">2.</span> <span class="nav-text">策略（Strategy）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境依赖"><span class="nav-number">3.</span> <span class="nav-text">环境依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和配置"><span class="nav-number">4.</span> <span class="nav-text">安装和配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">5.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#local-本地验证"><span class="nav-number">5.1.</span> <span class="nav-text">local 本地验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置策略"><span class="nav-number">5.1.1.</span> <span class="nav-text">配置策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#usernameField"><span class="nav-number">5.1.2.</span> <span class="nav-text">usernameField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证回调"><span class="nav-number">5.1.3.</span> <span class="nav-text">验证回调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#密码验证"><span class="nav-number">5.1.4.</span> <span class="nav-text">密码验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session序列化与反序列化"><span class="nav-number">5.1.5.</span> <span class="nav-text">session序列化与反序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Authenticate验证"><span class="nav-number">5.1.6.</span> <span class="nav-text">Authenticate验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-request操作"><span class="nav-number">5.1.7.</span> <span class="nav-text">HTTP request操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶学习"><span class="nav-number">6.</span> <span class="nav-text">进阶学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie-和-session"><span class="nav-number">7.1.</span> <span class="nav-text">Cookie 和 session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-number">7.1.1.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session"><span class="nav-number">7.1.2.</span> <span class="nav-text">session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#More-About-Cookie-and-Session"><span class="nav-number">7.1.3.</span> <span class="nav-text">More About Cookie and Session</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liyan Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

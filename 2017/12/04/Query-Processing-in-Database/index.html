@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="千江有水千江月， 万里无云万里天">
+<meta name="description" content="Query Processing In DatabaseBasic Steps in Query Processing  Parsing and translation  translate the query to its internal form. This is then translated into rel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Intro to yargs">
-<meta property="og:url" content="http://yoursite.com/2017/11/26/Intro-to-yargs/index.html">
+<meta property="og:title" content="Query Processing in Database">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/Query-Processing-in-Database/index.html">
 <meta property="og:site_name" content="Rock of SisyPhus">
-<meta property="og:description" content="千江有水千江月， 万里无云万里天">
+<meta property="og:description" content="Query Processing In DatabaseBasic Steps in Query Processing  Parsing and translation  translate the query to its internal form. This is then translated into relational algebra. Parse checks syntax, ve">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-26T19:55:49.292Z">
+<meta property="og:updated_time" content="2017-12-04T22:02:27.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Intro to yargs">
-<meta name="twitter:description" content="千江有水千江月， 万里无云万里天">
+<meta name="twitter:title" content="Query Processing in Database">
+<meta name="twitter:description" content="Query Processing In DatabaseBasic Steps in Query Processing  Parsing and translation  translate the query to its internal form. This is then translated into relational algebra. Parse checks syntax, ve">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/26/Intro-to-yargs/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/04/Query-Processing-in-Database/"/>
 
 
 
 
 
-  <title>Intro to yargs | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Query Processing in Database | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/26/Intro-to-yargs/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/Query-Processing-in-Database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liyan Chen">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Intro to yargs</h1>
+          <h1 class="post-title" itemprop="name headline">Query Processing in Database</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-26T11:55:49-08:00">
-                2017-11-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T13:25:15-08:00">
+                2017-12-04
               </time>
             
 
@@ -319,7 +319,67 @@
       
 
       
-        
+        <h1 id="Query-Processing-In-Database"><a href="#Query-Processing-In-Database" class="headerlink" title="Query Processing In Database"></a>Query Processing In Database</h1><p>Basic Steps in Query Processing</p>
+<ol>
+<li><p>Parsing and translation</p>
+<ul>
+<li>translate the query to its internal form. This is then translated into relational algebra.</li>
+<li>Parse checks syntax, verifies relations</li>
+</ul>
+</li>
+<li><p>Optimization </p>
+</li>
+<li><p>Evaluation</p>
+<ul>
+<li>The query-execution engine takes a query evaluation plan, executes that plan, and returns the answers to the query</li>
+</ul>
+<p>​</p>
+</li>
+</ol>
+<h2 id="Basic-Steps-in-Query-Processing-Optimization"><a href="#Basic-Steps-in-Query-Processing-Optimization" class="headerlink" title="Basic Steps in Query Processing: Optimization"></a>Basic Steps in Query Processing: Optimization</h2><ul>
+<li>A relationship algebra expression may have many equivalent expressions</li>
+<li>Each relational algebra operation can be evaluated using one of several different algorithms.<ul>
+<li>Correspondingly, a relational-algebra expression can be evaluated in many ways.</li>
+</ul>
+</li>
+<li>Annotated expression specifying detailed evaluation strategy is called an evaluation-plan.<ul>
+<li>E.g can use an index on salary to find instructors with salary&lt;75000.</li>
+<li>or can perform complete relation scan and discard instructors with salary&gt;=75000</li>
+</ul>
+</li>
+<li>Query Optimization: Amongst all equivalent evaluation plans choose the one with lowest cost.<ul>
+<li>Cost is estimated using statistical information from the database catalog</li>
+</ul>
+</li>
+</ul>
+<h2 id="Measures-of-Query-Cost"><a href="#Measures-of-Query-Cost" class="headerlink" title="Measures of Query Cost"></a>Measures of Query Cost</h2><p>Cost is generally measured as total elapsed time for answering query.</p>
+<p>Typically disk access is the predominant cost, and is also relatively easy to estimate.  Measured by taking into account</p>
+<ul>
+<li>Number of seeks </li>
+<li>Number of blocks read</li>
+<li>Number of blocks written.</li>
+</ul>
+<p>For simplicity we just use the number of blocks transfers from disk and the number of seeks as the cost measures.</p>
+<p>We ignore CPU costs for simplicity, real systems do take CPU cost into account.</p>
+<p>We do not include cost to writing output to disk in our cost formulae.</p>
+<h3 id="Selection-Operation"><a href="#Selection-Operation" class="headerlink" title="Selection Operation"></a>Selection Operation</h3><h4 id="Linear-search"><a href="#Linear-search" class="headerlink" title="Linear search"></a>Linear search</h4><p> Scan each file block and test all records to see whether they satisfy the selection condition.</p>
+<p>Note: binary search generally does not make sense since data is not stored consecutively.</p>
+<ul>
+<li>except when there is an index available.</li>
+<li>and binary search requires more seeks than index search</li>
+</ul>
+<h4 id="Index-Scan"><a href="#Index-Scan" class="headerlink" title="Index- Scan"></a>Index- Scan</h4><p>seach algorithms that use an index.</p>
+<ul>
+<li>selection condition must be on search-key of index</li>
+</ul>
+<ol>
+<li><p>primary index, equality on key. Retrieve a single record that satisfies the corresponding equality condition</p>
+<p>Cost=(hi+1)*(tt+ts);</p>
+</li>
+<li><p>primary index, equality on nonkey. Retrieve multiple records</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -343,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/25/Node-js-Note/" rel="next" title="Node.js Note">
-                <i class="fa fa-chevron-left"></i> Node.js Note
+              <a href="/2017/12/03/Intro-to-Passport/" rel="next" title="Intro-to-Passport">
+                <i class="fa fa-chevron-left"></i> Intro-to-Passport
               </a>
             
           </div>
@@ -353,8 +413,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/27/Intro-to-kd-tree/" rel="prev" title="Intro to kd-tree">
-                Intro to kd-tree <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/04/Indexing-and-Hashing-in-Database/" rel="prev" title="Indexing and Hashing in Database">
+                Indexing and Hashing in Database <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -407,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,6 +557,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Query-Processing-In-Database"><span class="nav-number">1.</span> <span class="nav-text">Query Processing In Database</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Steps-in-Query-Processing-Optimization"><span class="nav-number">1.1.</span> <span class="nav-text">Basic Steps in Query Processing: Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Measures-of-Query-Cost"><span class="nav-number">1.2.</span> <span class="nav-text">Measures of Query Cost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Selection-Operation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Selection Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-search"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Linear search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Index-Scan"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Index- Scan</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
