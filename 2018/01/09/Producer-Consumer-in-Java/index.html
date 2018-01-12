@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Producer-Consumer in Java">
+<meta property="og:url" content="http://yoursite.com/2018/01/09/Producer-Consumer-in-Java/index.html">
+<meta property="og:site_name" content="Rock of SisyPhus">
+<meta property="og:description" content="Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait()/notify() 第一种实现， 利用根类Object的两个方法wait()/not">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-10T23:09:50.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Producer-Consumer in Java">
+<meta name="twitter:description" content="Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait()/notify() 第一种实现， 利用根类Object的两个方法wait()/not">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/09/Producer-Consumer-in-Java/"/>
+
+
+
+
+
+  <title>Producer-Consumer in Java | Rock of SisyPhus</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Rock of SisyPhus</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/Producer-Consumer-in-Java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liyan Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rock of SisyPhus">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Producer-Consumer in Java</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T21:45:41-08:00">
+                2018-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java-里的生产者-消费者模型-Producer-and-Consumer"><a href="#Java-里的生产者-消费者模型-Producer-and-Consumer" class="headerlink" title="Java 里的生产者-消费者模型(Producer and Consumer)"></a>Java 里的生产者-消费者模型(Producer and Consumer)</h1><p>生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：</p>
+<ol>
+<li>wait()/notify()</li>
+<li>lock &amp; condition</li>
+<li>Blocking Queue</li>
+</ol>
+<p>下面来逐一分析：</p>
+<ol>
+<li><p>wait()/notify()</p>
+<p>第一种实现， 利用根类Object的两个方法wait()/notify(), 来停止或者唤醒线程的执行； 这也是最原始的实现方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitNotifyBroker</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Brocker</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object[] items;</span><br><span class="line">  	<span class="keyword">private</span> <span class="keyword">int</span> takeIndex;</span><br><span class="line">  	<span class="keyword">private</span> <span class="keyword">int</span> putIndex;</span><br><span class="line">  	<span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> <span class="title">WaitNotifyBroker</span><span class="params">(<span class="keyword">int</span> capacity)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.items= <span class="keyword">new</span> Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line">  	<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">  	<span class="meta">@Override</span> </span><br><span class="line">  	<span class="function"><span class="keyword">public</span> T <span class="title">take</span><span class="params">()</span></span>&#123;</span><br><span class="line">        T tmpObj= <span class="keyword">null</span>;</span><br><span class="line">      	<span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(items)&#123;</span><br><span class="line">                <span class="keyword">while</span>(<span class="number">0</span>==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	tmpObj= (T) items[takeIndex];</span><br><span class="line">              <span class="keyword">if</span>(++Index==items.length)&#123;</span><br><span class="line">                  takeIndex=<span class="number">0</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              count--;</span><br><span class="line">              items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">      	<span class="keyword">return</span> tmpObj&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(T obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(items)&#123;</span><br><span class="line">                <span class="keyword">while</span>(items.length==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	items[putIndex]= obj;</span><br><span class="line">              	<span class="keyword">if</span>(++putIndex==items.length)&#123;</span><br><span class="line">                    putIndex=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">              	count++;</span><br><span class="line">              	items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里利用Array构造一个Buffer去存取数据， 并利用count， putIndex和 takeIndex来保证FIrst-In-First-Out。</p>
+<p>如果利用LinkedList 来代替Array， 相对来说会稍微简单些。</p>
+<p>LinkedList的实现， 可以参考《Java 7 Concurrency Cookbook》第二章 wait/notify;</p>
+</li>
+<li><p>lock &amp; condition</p>
+<p>lock &amp; condition， 实际上也实现了类似synchronized和wait()/notify()的功能， 但是在加锁和解锁， 暂停和唤醒方面， 更加细腻和可控。</p>
+<p>在JDK的BlockingQueue的默认实现里， 也是利用了lock &amp; condition。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LockConditionBroker</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Broker</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ReentrantLock lock;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Condition notFull;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Condition notEmpty;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">private</span> LinkedList&lt;T&gt; items;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LockConditionBroker</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">        <span class="keyword">this</span>.notFull = lock.newCondition();</span><br><span class="line">        <span class="keyword">this</span>.notEmpty = lock.newCondition();</span><br><span class="line">        <span class="keyword">this</span>.capacity = capacity;</span><br><span class="line"></span><br><span class="line">        items = <span class="keyword">new</span> LinkedList&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">take</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        T tmpObj = <span class="keyword">null</span>;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (items.size() == <span class="number">0</span>) &#123;</span><br><span class="line">                notEmpty.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            tmpObj = items.poll();</span><br><span class="line">            notFull.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmpObj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (items.size() == capacity) &#123;</span><br><span class="line">                notFull.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            items.offer(obj);</span><br><span class="line">            notEmpty.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BlockingQueue </p>
+<p>最后这种方法， 也是最简单最值得推荐的， 利用冰法并发包提供的工具： 阻塞队列， 将阻塞的逻辑交给BlockingQueue， 实际上， 上述1 和2 的方法实现的Broker类， 也可以视为一种简单的阻塞队列， 不过没有标准包那么完善。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockingQueueBroker</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Broker</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;T&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BlockingQueueBroker</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = <span class="keyword">new</span> LinkedBlockingQueue&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">take</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> queue.take();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            queue.put(obj);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来， 就是一个1P2C的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Broker</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">T <span class="title">take</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(T obj)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>public class Producer implements Runnable {</p>
+<pre><code>private final Broker&lt;Integer&gt; broker;
+private final String name;
+
+public Producer(Broker&lt;Integer&gt; broker, String name) {
+    this.broker = broker;
+    this.name = name;
+}
+
+@Override
+public void run() {
+    try {
+        for (int i = 0; i &lt; 5; i++) {
+            broker.put(i);
+            System.out.format(&quot;%s produced: %s%n&quot;, name, i);
+            Thread.sleep(1000);
+        }
+        broker.put(-1);
+        System.out.println(&quot;produced termination signal&quot;);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+        return;
+    }
+
+}
+</code></pre><p>}</p>
+</li>
+</ol>
+<p>   public class Consumer implements Runnable {</p>
+<pre><code>private final Broker&lt;Integer&gt; broker;
+private final String name;
+
+public Consumer(Broker&lt;Integer&gt; broker, String name) {
+    this.broker = broker;
+    this.name = name;
+}
+
+@Override
+public void run() {
+    try {
+        for (Integer message = broker.take(); message != -1; message = broker.take()) {
+            System.out.format(&quot;%s consumed: %s%n&quot;, name, message);
+            Thread.sleep(1000);
+        }
+        System.out.println(&quot;received termination signal&quot;);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+        return;
+    }
+
+}
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">       public static void main(String[] args) &#123;</span><br><span class="line">           Broker&lt;Integer&gt; broker = new WaitNotifyBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new LockConditionBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new BlockingQueueBroker&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">           new Thread(new Producer(broker, &quot;prod 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 2&quot;)).start();</span><br><span class="line">    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>Consider the standard producer-consumer problem. Assume, we have a buffer of 4096 byte length. A producer thread collects the data and writes it tp the buffer. A consumer thread processes the collected data from the buffer. Objective is, both the threads should not run at the same time.</p>
+<ul>
+<li><p>Using   Mutex:</p>
+<p>A mutex provides mutual exclusion, either producer or consumer can have the key(mutex) and proceed with their work. As long as the buffer is filled by producer, the consumer needs to wait, and vice versa.</p>
+<p>At any point of time, only one thread can work with with the entire buffer. The concept can be generalized using semaphore.</p>
+</li>
+<li><p>Using Semaphore:</p>
+<p>A semaphore is a generalized mutex. In lieu of single buffer, we can split the 4 KB buffer into four 1 KB buffers(identical resources). A semaphore can be associated with these four buffers. The consumer and producer can work on different buffers at the same time.</p>
+</li>
+<li><p>Misconception:</p>
+<p>There is an ambiguity between binary semaphore and mutex.  we might have come across that a mutex is binary semaphore. But they are not! The purpose of mutex and semaphore are different . May be, due to similarity in their  </p>
+<p>implementation a mutex would be referred as binary semaphore.</p>
+<p>Strictly speaking, a  mutex is locking mechanism used to  synchronize access to resource. Only one task(can be a thread or process based on OS abstraction) can acquire the mutex. It means there is ownership associated with  mutex, and only the owner can release the lock(mutex).</p>
+<p>Semaphore is signaling mechanism(“I am done, you can carry on “ kind of signal). For example, if you are listening songs(assume it as one task) on your mobile and at the same time your friend calls you, an interrupt is triggered upon which an interrupt service routine signals the call processing task to wake up.</p>
+</li>
+</ul>
+<h3 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General  Questions:"></a>General  Questions:</h3><ol>
+<li><p>Can a thread acquire more than one lock(Mutex)?</p>
+<p>Yes, it is possible that a thread  is in need of more than one resource, hence the locks. If any lock is not available the thread will wait(block) on the lock.</p>
+</li>
+<li><p>Can a mutex be locked more than once?</p>
+<p>A mutex is a lock. Only one state(locked/unlocked) is associated with it. However, a recursive mutex can be locked more than once(POSIX complaint systems), in which a count is associated with it, yet retains only one state(locked/unlocked). The programmer must unlock the mutex as many number times as it was locked.</p>
+</li>
+<li><p>What happens if a non-recursive mutex is locked more than once.</p>
+<p>Deadlock. If a thread which had already locked a mutex, tries  to lock the mutex again, it will enter into the waiting list of that mutex, which results in deadlock. It is because no other thread can unlock the mutex. An operating system implementer can exercise care in identifying the owner of mutex and return if it is already locked by same thread to prevent deadlocks.</p>
+</li>
+<li><p>Are binary semaphore and mutex same?</p>
+<p>No, we suggest to treat them separately, as it is explained signaling vs locking mechanisms. But a binary semaphore may experience the same critical issues associated with mutex.</p>
+</li>
+<li><p>What is mutex and critical section?</p>
+<p>Some operating systems use the same word critical section in the API. Usually a mutex is costly operation due to protection protocols associated with it. At last, the objective of mutex is atomic access. There are other ways to achieve atomic access like disabling interrupts which can be much faster but ruins responsiveness. The alternate API makes use of disabling interrupts. </p>
+</li>
+</ol>
+<h2 id="StackOverflow-click-here"><a href="#StackOverflow-click-here" class="headerlink" title="StackOverflow: click here"></a>StackOverflow: <a href="https://stackoverflow.com/questions/62814/difference-between-binary-semaphore-and-mutex" target="_blank" rel="noopener">click here</a></h2><p>Mutex can be released only by thread that had acquired it, while you can signal semaphore from any other thread(or process), so semaphores are more suitable for some synchronization problems like producer-consumer.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/08/To-Be-Read/" rel="next" title="To Be Read">
+                <i class="fa fa-chevron-left"></i> To Be Read
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="Liyan Chen" />
+            
+              <p class="site-author-name" itemprop="name">Liyan Chen</p>
+              <p class="site-description motion-element" itemprop="description">千江有水千江月， 万里无云万里天</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Lic128" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:lic128@eng.ucsd.edu" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-里的生产者-消费者模型-Producer-and-Consumer"><span class="nav-number">1.</span> <span class="nav-text">Java 里的生产者-消费者模型(Producer and Consumer)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#General-Questions"><span class="nav-number">1.0.1.</span> <span class="nav-text">General  Questions:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StackOverflow-click-here"><span class="nav-number">1.1.</span> <span class="nav-text">StackOverflow: click here</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liyan Chen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
