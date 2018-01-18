@@ -88,7 +88,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2017/11/20/Algorithm-Part1/Java-Heap-Stack-Memory.png">
 <meta property="og:image" content="https://i.stack.imgur.com/l6UyF.png">
-<meta property="og:updated_time" content="2018-01-11T23:08:10.594Z">
+<meta property="og:updated_time" content="2018-01-14T09:26:07.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Part1">
 <meta name="twitter:description" content="LeetCode 146. LRU CacheDesign and implement a data structure for Lease Recently Used cache. It should support the following operations:  get and put. get(key) - Get the value (will always be positive)">
@@ -981,6 +981,11 @@
 <li>在完成第一步之后， 我们得到若干份有序的文件堆。在每个堆之中取第一个文件， 进行merge。 </li>
 </ol>
 <p>剩下的就很好理解了。</p>
+<p>有两种方式， 第一种就是上面说的：</p>
+<ol>
+<li>split and sort, then merge;</li>
+<li>如果只需要去重， 不需要排序， 还有另外一种思路，对文件的每一行计算hash值， 按照hash值把该行内容放在某个小文件中， 假设需要分词100个文件， 则可以按照(hash%100)来分发文件内容， 然后再小文件中进行去重就可以了。</li>
+</ol>
 <h3 id="Find-K-th-Smallest-Pair-Distance"><a href="#Find-K-th-Smallest-Pair-Distance" class="headerlink" title="Find K-th Smallest Pair Distance"></a>Find K-th Smallest Pair Distance</h3><p>Given an integer array, return the k-th smallest distance among all the pairs. The distance of a pair (A, B) is defined as the absolute difference between A and B.</p>
 <p>Naive Method is to find all the n*(n-1)/2 possible absolute differences in O(n^2) and store them in an array. Then sort this array and print the kth minimum value from this array. </p>
 <p>An Efficient Solution is based on Binary Search.</p>
@@ -1109,7 +1114,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
