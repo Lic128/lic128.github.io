@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Intro to Python | 
+        
+        Sisyphus
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
+    <meta name="keywords" content=",Python">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Sisyphus">
+    <meta name="msapplication-starturl" content="http://lic128.me/2018/02/03/Intro-to-Python/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Sisyphus">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://lic128.me/2018/02/03/Intro-to-Python/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Intro to Python | Sisyphus">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="这是一个找不到工作/妹子的老实人">
+    <meta property="og:article:tag" content="Python"> 
+
+    
+        <meta property="article:published_time" content="Sat Feb 03 2018 21:50:31 GMT-0800">
+        <meta property="article:modified_time" content="Sat Feb 03 2018 21:51:27 GMT-0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://lic128.me/2018/02/03/Intro-to-Python/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://lic128.me/2018/02/03/Intro-to-Python/index.html",
+    "headline": "Intro to Python",
+    "datePublished": "Sat Feb 03 2018 21:50:31 GMT-0800",
+    "dateModified": "Sat Feb 03 2018 21:51:27 GMT-0800",
+    "author": {
+        "@type": "Person",
+        "name": "Liyan Chen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Sisyphus",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Python",
+    "description": "这是一个找不到工作/妹子的老实人",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Python"><span class="post-toc-number">1.</span> <span class="post-toc-text">Python</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Basic-Language"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Basic Language</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Reserved-Keywords"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Reserved Keywords</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Numbers"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Numbers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Complex-numbers"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Complex numbers</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Strings"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">Strings</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Basic-Data-Structures"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">Basic Data Structures</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列表"><span class="post-toc-number">1.1.5.1.</span> <span class="post-toc-text">列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#集合"><span class="post-toc-number">1.1.5.2.</span> <span class="post-toc-text">集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字典"><span class="post-toc-number">1.1.5.3.</span> <span class="post-toc-text">字典</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Tuples"><span class="post-toc-number">1.1.5.4.</span> <span class="post-toc-text">Tuples</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#遍历技巧"><span class="post-toc-number">1.1.5.5.</span> <span class="post-toc-text">遍历技巧</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#iterator"><span class="post-toc-number">1.1.5.6.</span> <span class="post-toc-text">iterator</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Condition"><span class="post-toc-number">1.1.5.7.</span> <span class="post-toc-text">Condition</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Difference-between-is-and-“-”"><span class="post-toc-number">1.1.5.8.</span> <span class="post-toc-text">Difference between is and “==”</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Conditionals"><span class="post-toc-number">1.1.5.9.</span> <span class="post-toc-text">Conditionals</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Functions"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">Functions</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Function-Variable-Scoping"><span class="post-toc-number">1.1.6.1.</span> <span class="post-toc-text">Function Variable Scoping</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Function-keyword-filtering"><span class="post-toc-number">1.1.6.2.</span> <span class="post-toc-text">Function keyword filtering</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Functional-Programming-Idioms"><span class="post-toc-number">1.1.6.3.</span> <span class="post-toc-text">Functional Programming Idioms</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IO"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">IO</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Basic-file-usage"><span class="post-toc-number">1.1.7.1.</span> <span class="post-toc-text">Basic file usage</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Serialization-Saving-Complex-objects"><span class="post-toc-number">1.1.7.2.</span> <span class="post-toc-text">Serialization: Saving Complex objects</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dealing-with-Errors"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">Dealing with Errors</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Some-Other-features"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Some Other features</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-max-function"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">The max function</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-sorted-function"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">The sorted function</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#The-with-statement"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">The with statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generators"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">Generators</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Decorators"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">Decorators</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#use-of-in-keyword"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">use of in keyword</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import-amp-amp-modules"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">import &amp;&amp; modules</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Object-oriented-programming"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Object oriented programming</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Reference"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">Reference</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Basic-Concepts"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">Basic Concepts</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inheritance"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">Inheritance</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#class-variables"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">class variables</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hashing-hides-parent-variables-from-children"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">Hashing hides parent variables from children</span></a></li></ol></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Intro to Python
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Liyan Chen</strong>
+        <span>Feb 03, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Python/">Python</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Intro to Python&url=http://lic128.me/2018/02/03/Intro-to-Python/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Intro to Python&url=http://lic128.me/2018/02/03/Intro-to-Python/index.html&via=Liyan Chen" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Intro-to-Python/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Intro-to-Python/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="Basic-Language"><a href="#Basic-Language" class="headerlink" title="Basic Language"></a>Basic Language</h2><h3 id="Reserved-Keywords"><a href="#Reserved-Keywords" class="headerlink" title="Reserved Keywords"></a>Reserved Keywords</h3><h3 id="Numbers"><a href="#Numbers" class="headerlink" title="Numbers"></a>Numbers</h3><h3 id="Complex-numbers"><a href="#Complex-numbers" class="headerlink" title="Complex numbers"></a>Complex numbers</h3><h3 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h3><h3 id="Basic-Data-Structures"><a href="#Basic-Data-Structures" class="headerlink" title="Basic Data Structures"></a>Basic Data Structures</h3><p>Python provides many powerful data structures. The two most powerful and fundamental are the list and dictionary. We have already seen that strings are immutable. Python also provides immutable data structures.</p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>Python中列表是可变的， 这是它区别于字符串和元祖的最重要的特点， 一句话概括即： 列表可以修改， 而字符串和远组不能。</p>
+<h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><p>集合是一个无序不重复元素的集。 基本功能包括关系测试和消除重复元素。</p>
+<p>可以用大括号（{}）来创建集合。 注意： 如果要创建一个空集合， 你必须用set()而不是{}； 后者创建一个空的字典。</p>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>序列是以连续的整数作为索引， 与此不同的是， 字典以关键字为索引， 关键字可以是任意不可变类型， 通常用字符串或数值。在同一个字典之内， 关键字必须是互不相同。</p>
+<p>一对大括号创建一个空的字典：{}</p>
+<p>构造函数dict()直接从键值对元祖列表中构建字典。 如果有固定的模式， 列表推导式指定特定的键值对：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dict([(&apos;sape&apos;, 4139), (&apos;guido&apos;, 4127), (&apos;jack&apos;, 4098)])</span><br><span class="line">&#123;&apos;sape&apos;: 4139, &apos;jack&apos;: 4098, &apos;guido&apos;: 4127&#125;</span><br></pre></td></tr></table></figure>
+<p>此外， 字典推导可以用来创建任意键和值的表达式词典：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#123;x: x**2 for x in (2, 4, 6)&#125;</span><br><span class="line">&#123;2: 4, 4: 16, 6: 36&#125;</span><br></pre></td></tr></table></figure>
+<p>or：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; dict(sape=4139, guido=4127, jack=4098)</span><br><span class="line">&#123;&apos;sape&apos;: 4139, &apos;jack&apos;: 4098, &apos;guido&apos;: 4127&#125;</span><br></pre></td></tr></table></figure>
+<p>如何创建字典：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; top=&#123;&apos;math&apos;:&apos;Gauss&apos;,&apos;phys&apos;:&apos;Newton&apos;,&apos;art&apos;:&apos;Vemeer&apos;,&apos;phil&apos;:&apos;Emerson&apos;,</span><br><span class="line">... &apos;play&apos;:&apos;Shakespeare&apos;,&apos;actor&apos;:&apos;Kidman&apos;,&apos;direct&apos;:&apos;Kubrick&apos;,</span><br><span class="line">... &apos;author&apos;:&apos;Hemmingway&apos;,&apos;bio&apos;:&apos;Watson&apos;,&apos;group&apos;:&apos;R.E.M&apos;&#125;</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; len(top) #&#123; &#125; are dictionary creation operators</span><br><span class="line">10</span><br><span class="line">&gt;&gt;&gt; top[&apos;pres&apos;]=&apos;F.D.R.&apos;</span><br><span class="line">&gt;&gt;&gt; top[&apos;bio&apos;]=&apos;Darwin&apos;</span><br><span class="line">&gt;&gt;&gt; #can delete a key,value pair</span><br><span class="line">&gt;&gt;&gt; del top[&apos;actor&apos;]</span><br><span class="line">&gt;&gt;&gt; # another way of creating a dict</span><br><span class="line">&gt;&gt;&gt; x=dict(key=&apos;value&apos;,another_key=1.333,more_keys=[1,3,4,&apos;one&apos;])</span><br><span class="line">&gt;&gt;&gt; print x </span><br><span class="line">&#123;&apos;another_key&apos;: 1.333, &apos;more_keys&apos;: [1, 3, 4, &apos;one&apos;], &apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; x=&#123;(1,3):&apos;value&apos;&#125;     # any immutable type can be a valid key</span><br><span class="line">&gt;&gt;&gt; print x</span><br><span class="line">&#123;(1, 3): &apos;value&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; x[(1,3)]=&apos;immutables can be keys&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="Tuples"><a href="#Tuples" class="headerlink" title="Tuples"></a>Tuples</h4><p>Tuples are another general purpose sequential container in Python, very similar to lists, but these are immutable.Tuples are delimited by commas.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; tuple([1,3,4])</span><br><span class="line">(1, 3, 4)</span><br><span class="line">&gt;&gt;&gt; 1,3,4</span><br><span class="line">(1, 3, 4)</span><br><span class="line">&gt;&gt;&gt; pets=(&apos;dog&apos;,&apos;cat&apos;,&apos;bird&apos;)  #Parentheses () create tuples</span><br><span class="line">&gt;&gt;&gt; pets[0]</span><br><span class="line">&apos;dog&apos;</span><br><span class="line">&gt;&gt;&gt; pets + pets # addition</span><br><span class="line">(&apos;dog&apos;, &apos;cat&apos;, &apos;bird&apos;, &apos;dog&apos;, &apos;cat&apos;, &apos;bird&apos;)</span><br><span class="line">&gt;&gt;&gt; pets*3</span><br><span class="line">(&apos;dog&apos;, &apos;cat&apos;, &apos;bird&apos;, &apos;dog&apos;, &apos;cat&apos;, &apos;bird&apos;, &apos;dog&apos;, &apos;cat&apos;, &apos;bird&apos;)</span><br><span class="line">&gt;&gt;&gt; pets[0]=&apos;rat&apos; # assignment not work!</span><br><span class="line">TypeError: &apos;tuple&apos; object does not support item assignment</span><br></pre></td></tr></table></figure>
+<h4 id="遍历技巧"><a href="#遍历技巧" class="headerlink" title="遍历技巧"></a>遍历技巧</h4><p>在字典中遍历时， 关键字和对应的值可以使用items()方法同时解读出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; knights = &#123;&apos;gallahad&apos;: &apos;the pure&apos;, &apos;robin&apos;: &apos;the brave&apos;&#125;</span><br><span class="line">&gt;&gt;&gt; for k, v in knights.items():</span><br><span class="line">...     print(k, v)</span><br><span class="line">...</span><br><span class="line">gallahad the pure</span><br><span class="line">robin the brave</span><br></pre></td></tr></table></figure>
+<p>在列表中遍历时， 索引位置和对应值可以使用enumerate()函数同时得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for i, v in enumerate([&apos;tic&apos;, &apos;tac&apos;, &apos;toe&apos;]):</span><br><span class="line">...     print(i, v)</span><br><span class="line">...</span><br><span class="line">0 tic</span><br><span class="line">1 tac</span><br><span class="line">2 toe</span><br></pre></td></tr></table></figure>
+<p>同时遍历两个或更多的序列， 可以使用zip()组合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; questions = [&apos;name&apos;, &apos;quest&apos;, &apos;favorite color&apos;]</span><br><span class="line">&gt;&gt;&gt; answers = [&apos;lancelot&apos;, &apos;the holy grail&apos;, &apos;blue&apos;]</span><br><span class="line">&gt;&gt;&gt; for q, a in zip(questions, answers):</span><br><span class="line">...     print(&apos;What is your &#123;0&#125;?  It is &#123;1&#125;.&apos;.format(q, a))</span><br><span class="line">...</span><br><span class="line">What is your name?  It is lancelot.</span><br><span class="line">What is your quest?  It is the holy grail.</span><br><span class="line">What is your favorite color?  It is blue.</span><br></pre></td></tr></table></figure>
+<h4 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h4><p>The for loop iterates items that provided by the iterator, which is the range(3) list in the above example. Python abstracts the idea of <code>iterable</code> out of the looping construction so that some Python objects are iterable all by themselves and are just are waiting for an iteration provider like a for a while loop to get them going.</p>
+<h4 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h4><p>Python is a <em>truthy</em> language:</p>
+<p>Only these are false:</p>
+<ul>
+<li><code>None</code></li>
+<li><code>False</code></li>
+<li>zero of any numeric type, for example, <code>0, 0L, 0.0, 0j</code>.</li>
+<li>any empty sequence, for example, <code>&#39;&#39;, (), []</code>.</li>
+<li>any empty mapping, for example, <code>{}</code>.</li>
+<li>instances of user-defined classes, if the class defines a <code>__nonzero__()</code> or <code>__len__()</code> method, when that method returns the integer zero or bool value False.</li>
+</ul>
+<h4 id="Difference-between-is-and-“-”"><a href="#Difference-between-is-and-“-”" class="headerlink" title="Difference between is and “==”"></a>Difference between is and “==”</h4><p>The keyword is is stronger than equality, because it checks if two objects are the same.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x= &apos;this string&apos;</span><br><span class="line">y= &apos;this string&apos;</span><br><span class="line">print x is y</span><br><span class="line"></span><br><span class="line">print x==y</span><br></pre></td></tr></table></figure>
+<p><code>is</code> is really checking the id of each of the items.</p>
+<h4 id="Conditionals"><a href="#Conditionals" class="headerlink" title="Conditionals"></a>Conditionals</h4><p>The for loop can have an else clause as in the following</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; rangelist = range(10)</span><br><span class="line">&gt;&gt;&gt; print rangelist</span><br><span class="line">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">&gt;&gt;&gt; for number in rangelist:</span><br><span class="line">...       # Check if number is one of</span><br><span class="line">...       # the numbers in the tuple.</span><br><span class="line">...       if number in (3, 4, 7, 9):</span><br><span class="line">...           # &quot;Break&quot; terminates a for without</span><br><span class="line">...           # executing the &quot;else&quot; clause.</span><br><span class="line">...           break</span><br><span class="line">...       else:</span><br><span class="line">...           # &quot;Continue&quot; starts the next iteration</span><br><span class="line">...           # of the loop. It&apos;s rather useless here,</span><br><span class="line">...           # as it&apos;s the last statement of the loop.</span><br><span class="line">...           continue</span><br><span class="line">... else:</span><br><span class="line">...       # The &quot;else&quot; clause is optional and is</span><br><span class="line">...       # executed only if the loop didn&apos;t &quot;break&quot;.</span><br><span class="line">...       pass # Do nothing</span><br></pre></td></tr></table></figure>
+<p>the else clause is to detect the “break” in the previous for clause.</p>
+<p>This is good for recognizing when a loop exists normally or via break.</p>
+<h3 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h3><p>Note that you need a return statement and that you need the parenthesis to actually invoke the function. Without the return statement, the functions returns the None singleton.</p>
+<p>Functions are first-class objects.</p>
+<p>Practically speaking, this means they can be manipulated like any other Python object— they can be put in containers and passed around without any special handling. Naturally, we want to supply arguments to our functions . There are two kinds of function arguments positional and keyword.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def foo(x=20): # keyword named argument</span><br><span class="line">...     return 2*x</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; foo(1)</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; foo()</span><br><span class="line">40</span><br><span class="line">&gt;&gt;&gt; foo(x=30)</span><br><span class="line">60</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; def foo(x=20,y=30):</span><br><span class="line">...     return x+y</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; foo(20,)</span><br><span class="line">50</span><br><span class="line">&gt;&gt;&gt; foo(1,1)</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; foo(y=12)</span><br><span class="line">32</span><br><span class="line">&gt;&gt;&gt; help(foo) </span><br><span class="line">Help on function foo in module __main__:</span><br><span class="line">...</span><br><span class="line">foo(x=20, y=30) # provides automatic documentation</span><br></pre></td></tr></table></figure>
+<p>Python makes it easy to include document for your functions using <code>docstrings</code>. That makes the help function more useful for functions.</p>
+<p>In addition to using the <code>def</code> statement, you can also create functions using <code>lambda</code>. These are sometimes called <code>anonymous</code> functions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = lambda x:  x**2 # anonymous functions</span><br><span class="line">&gt;&gt;&gt; f(10)</span><br><span class="line">100</span><br><span class="line">&gt;&gt;&gt; [lambda x: x, lambda x:x**2] # list of functions</span><br><span class="line">[&lt;function &lt;lambda&gt; at ...&gt;, &lt;function &lt;lambda&gt; at ...&gt;]</span><br><span class="line">&gt;&gt;&gt; for i in  _:</span><br><span class="line">...   print i(10)</span><br><span class="line">10</span><br><span class="line">100</span><br></pre></td></tr></table></figure>
+<p>So far, we have not made good use of tuple, but these data structures become very powerful when used with functions. This is because they allow you to separate the function arguments from the function itself. This means you can pass them around and build function arguments and then later execute them with one or more functions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">The usefulness of tuples derives from using them with functions</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; args = (1,3,4)</span><br><span class="line">&gt;&gt;&gt; def foo(x,y,z): #defining</span><br><span class="line">...   return x+y+z</span><br><span class="line">&gt;&gt;&gt; print foo(*args) # note the asterisk notation</span><br><span class="line">8</span><br><span class="line"></span><br><span class="line">This also works with keyword arguments</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; def foo(x=1,y=2,z=3):</span><br><span class="line">...   return x+y+z</span><br><span class="line">&gt;&gt;&gt; kwargs = &#123;&apos;x&apos;:10,&apos;y&apos;:20,&apos;z&apos;:30&#125;</span><br><span class="line">&gt;&gt;&gt; print foo(**kwargs) # note the double asterisks</span><br><span class="line">60</span><br><span class="line">&gt;&gt;&gt; kwargs = &#123;&apos;x&apos;:10,&apos;y&apos;:20,&apos;z&apos;:30,&apos;h&apos;:100&#125; # extra argument</span><br><span class="line">&gt;&gt;&gt; print foo(**kwargs) # note the double asterisks</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">...</span><br><span class="line">TypeError: foo() got an unexpected keyword argument &apos;h&apos;</span><br><span class="line"></span><br><span class="line">This also works in combination</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; def foo(x,y=2,z=3): # note the the first argument is positional</span><br><span class="line">...    return x+y+z</span><br><span class="line">&gt;&gt;&gt; kwargs = &#123;&apos;y&apos;:20,&apos;z&apos;:30&#125;</span><br><span class="line">&gt;&gt;&gt; args = (1,)</span><br><span class="line">&gt;&gt;&gt; foo(*args,**kwargs)</span><br><span class="line">51</span><br></pre></td></tr></table></figure>
+<p>对于map， reduce以及filter的介绍：</p>
+<ol>
+<li><p>map:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">map(function_to_apply, list_of_inputs)</span><br><span class="line">items=[1,2,3,4,5]</span><br><span class="line">squared=list(map(lambda x: x**2, items))</span><br></pre></td></tr></table></figure>
+<p>Instead of a list of inputs, we can even have a list of functions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def multiply(x):</span><br><span class="line">    return (x*x)</span><br><span class="line">def add(x):</span><br><span class="line">    return (x+x)</span><br><span class="line"></span><br><span class="line">funcs = [multiply, add]</span><br><span class="line">for i in range(5):</span><br><span class="line">    value = list(map(lambda x: x(i), funcs))</span><br><span class="line">    print(value)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Filter</p>
+<p>As the name suggests, filter creates a list of elements for which a function returns true. Here is a short and concise example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">number_list = range(-5, 5)</span><br><span class="line">less_than_zero = list(filter(lambda x: x &lt; 0, number_list))</span><br><span class="line">print(less_than_zero)</span><br><span class="line"></span><br><span class="line"># Output: [-5, -4, -3, -2, -1]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Reduce:</p>
+<p><code>Reduce</code> is a really useful function for performing some computation on a list and returning the result. It applies a rolling computation to sequential pairs of values in a list. For example, if you wanted to compute the product of a list of integers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from functools import reduce</span><br><span class="line">product = reduce((lambda x, y: x * y), [1, 2, 3, 4])</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Function-Variable-Scoping"><a href="#Function-Variable-Scoping" class="headerlink" title="Function Variable Scoping"></a>Function Variable Scoping</h4><p>Variables within functions or subfunctions are local to that respective scope. Global variables require special handling if they are going to be changed inside the function body.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x=10 # outside function</span><br><span class="line">&gt;&gt;&gt; def foo():</span><br><span class="line">...    return x</span><br><span class="line">&gt;&gt;&gt; def foo():</span><br><span class="line">...    x=1 # defined inside function</span><br><span class="line">...    return x</span><br><span class="line">&gt;&gt;&gt; def foo():</span><br><span class="line">...   global x # define as global</span><br><span class="line">...   x=20     # assign inside function scope</span><br><span class="line">...   return x</span><br><span class="line">&gt;&gt;&gt; print x</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+<h4 id="Function-keyword-filtering"><a href="#Function-keyword-filtering" class="headerlink" title="Function keyword filtering"></a>Function keyword filtering</h4><p>Using <code>**kwds</code> at the end allows functions to disregard keywords they don’t use while filtering out(using the function signature) the keyword puts that it doer use.</p>
+<p><a href="http://lazybios.com/2013/04/four-kinds-of-function-argment-pass-in-python/" target="_blank" rel="noopener">参考资料</a></p>
+<p>python 中参数的传递是通过赋值来传递的， 函数参数的使用又有两个方面值得注意：</p>
+<ul>
+<li>函数参数是如何定义的</li>
+<li>在调用函数的过程中参数是如何被解析的。</li>
+</ul>
+<ol>
+<li><p>F(arg1, arg2)</p>
+<p>这 是最常见的定义方式，一个函数可以定义任意个参数，每个参数间用逗号分割，用这种方式定义的函数在调用的的时候也必须在函数名后的小括号里提供个数相等的 值（实际参数），而且顺序必须相同，也就是说在这种调用方式中，形参和实参的个数必须一致，而且必须一一对应，也就是说第一个形参对应这第一个实参。</p>
+</li>
+<li><p>F(arg1, arg2=value2, …)</p>
+<p>这种方式就是第一种的改进版， 提供了默认值</p>
+</li>
+<li><p>F(*arg1)</p>
+<p>上面两个方式是有多少个形参， 就传进去多少个实参， 但有时候会不确定有多少个参数， 则此时第三种方式就比较有用， 它以一个*加上形参名的方式来表示这个函数的实参个数不定， 可能为0个也可能为n个。 注意一点是， 不管有多少个， 在函数内部都被存放在以形参名为标识符的tuple中。</p>
+</li>
+<li><p>F(**arg1)</p>
+<p>形参名前加两个**表示， 参数在函数内部将被存放在以形式名为标识符的dictionary中， 此时调用函数的方法则需要采用arg1= value1, arg2= value2 这样的形式。</p>
+</li>
+</ol>
+<p>上面介绍了四种定义方式， 接下来看函数参数在调用过程中是怎样被解析的， 其实只要记住上面这四种方法优先级依次降低， 先1， 后2， 再3， 最后4， 也就是先把方式1 中的arg解析， 最后解析方式2 中的arg= value， 再解析方式3， 即是把多出来的arg这种形式的实参组成个tuple传进去， 最后把剩下的key=value这种形式的实参组成一个dictionary传给带两个型号的形参， 也就是方式4。</p>
+<p>首先说说Python中参数传递的问题， Python中有可变对象和不可变对象， 在参数传递时分为两种情况：</p>
+<ul>
+<li>对于不可变对象作为函数参数， 相当于C系语言的值传递；</li>
+<li>对于可变对象作为函数参数， 相当于C系语言的引用传递。</li>
+</ul>
+<p>Python传参数可以理解成C的const指针， 它所指向的对象可以被修改产生副作用， 但变量本身不能修改指向其他对象。</p>
+<h4 id="Functional-Programming-Idioms"><a href="#Functional-Programming-Idioms" class="headerlink" title="Functional Programming Idioms"></a>Functional Programming Idioms</h4><p>Although not a real functional programming language(i.e., Haskell), Python has useful functional idioms. These become important in parallel computing frameworks like pySpark, but have become deprecated in Python 3.x.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print map( lambda x:  x**2 , range(10))</span><br><span class="line">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br><span class="line">&gt;&gt;&gt; [i**2 for i in range(10)]</span><br><span class="line">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span><br><span class="line">&gt;&gt;&gt; reduce(lambda x,y:x+2*y,[0,1,2,3],0)</span><br><span class="line">12</span><br><span class="line">&gt;&gt;&gt; filter(lambda x: x%2, range(10) )</span><br><span class="line">[1, 3, 5, 7, 9]</span><br><span class="line">&gt;&gt;&gt; [i for i in range(10) if i %2 ]</span><br><span class="line">[1, 3, 5, 7, 9]</span><br></pre></td></tr></table></figure>
+<p>Pay attention to the recursive problem that reduce solves because reduce is super-fast in Python. the least common multiple algorithm can be effectively implemented using reduce, as shown:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">    &quot;&quot;&quot;Return greatest common divisor using Euclid&apos;s Algorithm.&quot;&quot;&quot;</span><br><span class="line">    while b:</span><br><span class="line">        a, b = b, a % b</span><br><span class="line">    return a</span><br><span class="line"></span><br><span class="line">def lcm(a, b):</span><br><span class="line">    &quot;&quot;&quot;Return lowest common multiple.&quot;&quot;&quot;</span><br><span class="line">    return a * b // gcd(a, b)</span><br><span class="line"></span><br><span class="line">def lcmm(*args):</span><br><span class="line">    &quot;&quot;&quot;Return lcm of args.&quot;&quot;&quot;</span><br><span class="line">    return reduce(lcm, args)</span><br></pre></td></tr></table></figure>
+<p>reduce() in Python:</p>
+<p>The reduce(fun, seq) function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along. This function is defined in “functools” module.</p>
+<p><strong>Working :</strong></p>
+<ul>
+<li>At first step, first two elements of sequence are picked and the result is obtained.</li>
+<li>Next step is to apply the same function to the previously attained result and the number just succeeding the second element and the result is again stored.</li>
+<li>This process continues till no more elements are left in the container.</li>
+<li>The final returned result is returned and printed on console.</li>
+</ul>
+<p>Also beware to the default containers in functions:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def foo(x=[]): # using empty list as default</span><br><span class="line">...     x.append(10)</span><br><span class="line">...     return x</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; foo() # maybe you expected this...</span><br><span class="line">[10]</span><br><span class="line">&gt;&gt;&gt; foo() # ... but did you expect this...</span><br><span class="line">[10, 10]</span><br><span class="line">&gt;&gt;&gt; foo() # ... or this? What&apos;s going on here?</span><br><span class="line">[10, 10, 10]</span><br></pre></td></tr></table></figure>
+<h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><h4 id="Basic-file-usage"><a href="#Basic-file-usage" class="headerlink" title="Basic file usage"></a>Basic file usage</h4><h4 id="Serialization-Saving-Complex-objects"><a href="#Serialization-Saving-Complex-objects" class="headerlink" title="Serialization: Saving Complex objects"></a>Serialization: Saving Complex objects</h4><p>Serialization means packing Python objects to be shipped between separate Python processes or separate computers.</p>
+<p>The multiplatform nature of Python means that one cannot be assured that the low-level attributes of Python objects (say, between platform types or Python versions) will remain consistent. This <a href="https://pyvideo.org/video/384/pycon-2011--everything-you-wanted-to-know-about-p" target="_blank" rel="noopener">video</a> provides an in-depth discussion of each step of the Python serialization process.</p>
+<p>For the vast majority of situations, the following will work.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import cPickle</span><br><span class="line">&gt;&gt;&gt; mylist = [&quot;This&quot;, &quot;is&quot;, 4, 13327]</span><br><span class="line">&gt;&gt;&gt; f=open (&apos;myfile.dat&apos;,&apos;wb&apos;) # write-binary mode</span><br><span class="line">&gt;&gt;&gt; cPickle.dump(mylist, f)</span><br><span class="line">&gt;&gt;&gt; f.close()</span><br><span class="line">&gt;&gt;&gt; f=open (&apos;myfile.dat&apos;,&apos;rb&apos;) # write-binary mode</span><br><span class="line">&gt;&gt;&gt; print cPickle.load(f)</span><br><span class="line">[&apos;This&apos;, &apos;is&apos;, 4, 13327]</span><br></pre></td></tr></table></figure>
+<h3 id="Dealing-with-Errors"><a href="#Dealing-with-Errors" class="headerlink" title="Dealing with Errors"></a>Dealing with Errors</h3><p>try except block</p>
+<h2 id="Some-Other-features"><a href="#Some-Other-features" class="headerlink" title="Some Other features"></a>Some Other features</h2><h3 id="The-max-function"><a href="#The-max-function" class="headerlink" title="The max function"></a>The max function</h3><p>the max function takes the maximum of a sequence.</p>
+<p>If the items in the sequence are tuples, then the first item in the tuple is used for the ranking.</p>
+<p>This function takes a key argument that controls how the items in the sequence are evaluated. For example, we can rank based on the second element in the tuple.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">max([1,4],[3,2]), key= lambda i: i[1]</span><br><span class="line">(1, 4)</span><br></pre></td></tr></table></figure>
+<h3 id="The-sorted-function"><a href="#The-sorted-function" class="headerlink" title="The sorted function"></a>The sorted function</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">student_tuples=[</span><br><span class="line">  (&apos;john&apos;,&apos;A&apos;, 15),</span><br><span class="line">  (&apos;jane&apos;, &apos;B&apos;, 12),</span><br><span class="line">  (&apos;dave&apos;, &apos;B&apos;, 10),</span><br><span class="line">]</span><br><span class="line">sorted(student_tuples, key=lambda students: student[2])</span><br></pre></td></tr></table></figure>
+<p>or we can use the old way using the cmp parameter:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def numeric_compare(x, y):</span><br><span class="line">	return x-y</span><br><span class="line">sorted([5,2,4,1,3], cmp=numeric_compare)</span><br></pre></td></tr></table></figure>
+<h3 id="The-with-statement"><a href="#The-with-statement" class="headerlink" title="The with statement"></a>The with statement</h3><p>Set up a context for subsequent code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class ControlledExecution:</span><br><span class="line">	def __enter__(self):</span><br><span class="line">		# set things up</span><br><span class="line">		return thing</span><br><span class="line">    def __exit__(self, type, value, traceback):</span><br><span class="line">      	#tear things down</span><br><span class="line"> with ControlledExecution() as thing:</span><br><span class="line">  	some code</span><br></pre></td></tr></table></figure>
+<p>Using with files:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = open(&quot;sample1.txt&quot;)</span><br><span class="line">&gt;&gt;&gt; f</span><br><span class="line">&lt;open file &apos;sample1.txt&apos;, mode &apos;r&apos; at 0x00AE82F0&gt;</span><br><span class="line">&gt;&gt;&gt; f.__enter__()</span><br><span class="line">&lt;open file &apos;sample1.txt&apos;, mode &apos;r&apos; at 0x00AE82F0&gt;</span><br><span class="line">&gt;&gt;&gt; f.read(1)</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; f.__exit__(None, None, None)</span><br><span class="line">&gt;&gt;&gt; f.read(1)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">ValueError: I/O operation on closed file</span><br></pre></td></tr></table></figure>
+<p>This is the new way to open close files that makes it harder to forget to close the files when you’re done.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&quot;x.txt&quot;) as f:</span><br><span class="line">    data = f.read()</span><br><span class="line">    #do something with data</span><br></pre></td></tr></table></figure>
+<h3 id="Generators"><a href="#Generators" class="headerlink" title="Generators"></a>Generators</h3><p><a href="http://kissg.me/2016/04/09/python-generator-yield/" target="_blank" rel="noopener">reference</a></p>
+<p>Just-in-time memory efficient containers</p>
+<ul>
+<li>produces a stream of on-demand values</li>
+<li>only executes on next()</li>
+<li>yield() produces a value, but saves the function’s state for later</li>
+<li>Consumable(use once-only)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def generate_ints(N):</span><br><span class="line">  for i in range(N):</span><br><span class="line">    yield i #the yield makes the function a generator</span><br><span class="line">x= generate_ints(3)</span><br><span class="line">x.next()</span><br><span class="line">x.next()</span><br><span class="line">x.next()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def pi_series(): # infinite series converges to pi</span><br><span class="line">...    sm = 0</span><br><span class="line">...    i = 1.0; j = 1</span><br><span class="line">...    while True: # loops forever!</span><br><span class="line">...       sm = sm + j/i</span><br><span class="line">...       yield 4*sm</span><br><span class="line">...       i = i + 2; j = j * -1</span><br><span class="line">&gt;&gt;&gt; x = pi_series()</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">4.0</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">2.666666666666667</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">3.4666666666666668</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">2.8952380952380956</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">3.3396825396825403</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">2.9760461760461765</span><br><span class="line">&gt;&gt;&gt; x.next()</span><br><span class="line">3.2837384837384844</span><br></pre></td></tr></table></figure>
+<p>Generators can also be created as list comprehensions by changing the bracket notation to parentheses.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x= (i for i in range(10))</span><br><span class="line">&gt;&gt;&gt; print type(x)</span><br><span class="line">&lt;type &apos;generator&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-python-yield/" target="_blank" rel="noopener">More about generators</a></p>
+<p>我们以如何生成斐波那契数列为例：</p>
+<ul>
+<li><p>code 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def fab(max): </span><br><span class="line">   n, a, b = 0, 0, 1 </span><br><span class="line">   while n &lt; max: </span><br><span class="line">       print b </span><br><span class="line">       a, b = b, a + b </span><br><span class="line">       n = n + 1</span><br></pre></td></tr></table></figure>
+<p>直接在fab函数中用print打印数字可能会导致该函数可复用性比较差， 因为fab函数返回None， 其他函数无法获取该函数生成的数列。</p>
+</li>
+<li><p>code 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def fab(max): </span><br><span class="line">   n, a, b = 0, 0, 1 </span><br><span class="line">   L = [] </span><br><span class="line">   while n &lt; max: </span><br><span class="line">       L.append(b) </span><br><span class="line">       a, b = b, a + b </span><br><span class="line">       n = n + 1 </span><br><span class="line">   return L</span><br></pre></td></tr></table></figure>
+<p>改写后的fab函数通过返回List能满足复用性的要求， 但是该函数在运行中占用的内存会随着参数max的增大而增大， 如果要控制内存占用， 最好不用List来保存中间结果， 而是通过iterable来迭代， 例如在python2中， 代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for in in range(1000): pass</span><br></pre></td></tr></table></figure>
+<p>会生成一个1000个元素的List， 而代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in xrange(1000): pass</span><br></pre></td></tr></table></figure>
+<p>则不会生成一个1000个元素的List， 而是在每次迭代中返回下一个数值， 内存空间占用很小。 因为xrange不返回list， 而是返回一个iterable对象。</p>
+</li>
+<li><p>利用iterable我们可以把fab函数改写为一个支持iterable的class， 以下时第三个版本的Fab：</p>
+<p>code 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Fab(object): </span><br><span class="line"> </span><br><span class="line">   def __init__(self, max): </span><br><span class="line">       self.max = max </span><br><span class="line">       self.n, self.a, self.b = 0, 0, 1 </span><br><span class="line"> </span><br><span class="line">   def __iter__(self): </span><br><span class="line">       return self </span><br><span class="line"> </span><br><span class="line">   def __next__(self): </span><br><span class="line">       if self.n &lt; self.max: </span><br><span class="line">           r = self.b </span><br><span class="line">           self.a, self.b = self.b, self.a + self.b </span><br><span class="line">           self.n = self.n + 1 </span><br><span class="line">           return n</span><br><span class="line">       raise StopIteration()</span><br></pre></td></tr></table></figure>
+<p>Fab类通过next()不断返回数列的下一个数， 内存占用始终为常数。</p>
+<p>然而使用class改写的这个版本， 代码远远没有第一版的fab函数来得简洁。 如果我们想要保持第一版fab函数的简洁性， 同时又要获得iterable的对象， yield就派上用场了。</p>
+</li>
+<li><p>code 4:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def fab(max): </span><br><span class="line">    n, a, b = 0, 0, 1 </span><br><span class="line">    while n &lt; max: </span><br><span class="line">        yield b </span><br><span class="line">        # print b </span><br><span class="line">        a, b = b, a + b </span><br><span class="line">        n = n + 1 </span><br><span class="line"> </span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>简单地讲， yield的作用就是把一个函数变成了一个generator，带有yield的函数不再是一个普通函数， Python解释器会将其视为一个generator， 调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。</p>
+<p>也可以手动调用 fab(5) 的 next() 方法（因为 fab(5) 是一个 generator 对象，该对象具有 next() 方法），这样我们就可以更清楚地看到 fab 的执行流程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = fab(5) </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">1 </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">1 </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">2 </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">3 </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">5 </span><br><span class="line">&gt;&gt;&gt; f.next() </span><br><span class="line">Traceback (most recent call last): </span><br><span class="line"> File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt; </span><br><span class="line">StopIteration</span><br></pre></td></tr></table></figure>
+<p>我们可以得出以下结论：</p>
+<p>一个带有 yield 的函数就是一个 generator，它和普通函数不同，生成一个 generator 看起来像函数调用，但不会执行任何函数代码，直到对其调用 next()（在 for 循环中会自动调用 next()）才开始执行。虽然执行流程仍按函数的流程执行，但每执行到一个 yield 语句就会中断，并返回一个迭代值，下次执行时从 yield 的下一个语句继续执行。看起来就好像一个函数在正常执行的过程中被 yield 中断了数次，每次中断都会通过 yield 返回当前的迭代值。</p>
+<p>yield 的好处是显而易见的，把一个函数改写为一个 generator 就获得了迭代能力，比起用类的实例保存状态来计算下一个 next() 的值，不仅代码简洁，而且执行流程异常清晰。</p>
+<p>如何判断一个函数是否是一个特殊的 generator 函数？可以利用 isgeneratorfunction 判断：</p>
+<p>使用 isgeneratorfunction 判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from inspect import isgeneratorfunction</span><br><span class="line">&gt;&gt;&gt; isgeneratorfunction(fab) </span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>要注意区分 fab 和 fab(5)，fab 是一个 generator function，而 fab(5) 是调用 fab 返回的一个 generator，好比类的定义和类的实例的区别：</p>
+<p>类的定义和类的实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import types </span><br><span class="line">&gt;&gt;&gt; isinstance(fab, types.GeneratorType)</span><br><span class="line">False </span><br><span class="line">&gt;&gt;&gt; isinstance(fab(5), types.GeneratorType) </span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>``</p>
+<p>fab 是无法迭代的，而 fab(5) 是可迭代的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from collections import Iterable </span><br><span class="line">&gt;&gt;&gt; isinstance(fab, Iterable) </span><br><span class="line">False </span><br><span class="line">&gt;&gt;&gt; isinstance(fab(5), Iterable) </span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>每次调用 fab 函数都会生成一个新的 generator 实例，各实例互不影响：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f1 = fab(3)</span><br><span class="line">&gt;&gt;&gt; f2 = fab(5) </span><br><span class="line">&gt;&gt;&gt; print &apos;f1:&apos;, f1.next() </span><br><span class="line">f1: 1 </span><br><span class="line">&gt;&gt;&gt; print &apos;f2:&apos;, f2.next() </span><br><span class="line">f2: 1 </span><br><span class="line">&gt;&gt;&gt; print &apos;f1:&apos;, f1.next() </span><br><span class="line">f1: 1 </span><br><span class="line">&gt;&gt;&gt; print &apos;f2:&apos;, f2.next() </span><br><span class="line">f2: 1 </span><br><span class="line">&gt;&gt;&gt; print &apos;f1:&apos;, f1.next() </span><br><span class="line">f1: 2 </span><br><span class="line">&gt;&gt;&gt; print &apos;f2:&apos;, f2.next() </span><br><span class="line">f2: 2 </span><br><span class="line">&gt;&gt;&gt; print &apos;f2:&apos;, f2.next() </span><br><span class="line">f2: 3 </span><br><span class="line">&gt;&gt;&gt; print &apos;f2:&apos;, f2.next() </span><br><span class="line">f2: 5</span><br></pre></td></tr></table></figure>
+<h3 id="Decorators"><a href="#Decorators" class="headerlink" title="Decorators"></a>Decorators</h3><p>Decorators are functions that make functions out of functions. It sounds redundant, but turns out to be very useful for uniting disparate concepts.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def my_decorator(fn): # note that function as input</span><br><span class="line">...   def new_function(*args,**kwargs): # we&apos;ve seen these arguments before</span><br><span class="line">...       print &apos;this runs before function&apos;</span><br><span class="line">...       return fn(*args,**kwargs) # return a function</span><br><span class="line">...   return new_function</span><br><span class="line">&gt;&gt;&gt; def foo(x):</span><br><span class="line">...   return 2*x</span><br><span class="line">&gt;&gt;&gt; goo = my_decorator(foo)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; foo (3)</span><br><span class="line">6</span><br><span class="line">&gt;&gt;&gt; goo (3)</span><br><span class="line">this runs before function</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>Decorators are useful for debugging:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def log_arguments(fn): # note that function as input</span><br><span class="line">...   def new_function(*args,**kwargs): # we&apos;ve seen these arguments before</span><br><span class="line">...       print &apos;positional arguments:&apos;</span><br><span class="line">...       print args</span><br><span class="line">...       print &apos;keyword arguments:&apos;</span><br><span class="line">...       print kwargs</span><br><span class="line">...       return fn(*args,**kwargs) # return a function</span><br><span class="line">...   return new_function</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; @log_arguments # these are stackable also</span><br><span class="line">... def foo(x,y=20):</span><br><span class="line">...   return x*y</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; foo (1,y=3)</span><br><span class="line">positional arguments:</span><br><span class="line">(1,)</span><br><span class="line">keyword arguments:</span><br><span class="line">&#123;&apos;y&apos;: 3&#125;</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="use-of-in-keyword"><a href="#use-of-in-keyword" class="headerlink" title="use of in keyword"></a>use of <code>in</code> keyword</h3><p><a href="https://stackoverflow.com/questions/19775692/use-and-meaning-of-in-in-an-if-statement" target="_blank" rel="noopener">reference</a></p>
+<p>It depends on what <code>next</code> is.</p>
+<p>If it’s a string (as in your example), then <code>in</code> checks for substrings.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;in&quot; in &quot;indigo&quot;</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;in&quot; in &quot;violet&quot;</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; &quot;0&quot; in &quot;10&quot;</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;1&quot; in &quot;10&quot;</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<p>If it’s a different kind of iterable (list, tuple, dictionary…), then <code>in</code> checks for membership.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;in&quot; in [&quot;in&quot;, &quot;out&quot;]</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;in&quot; in [&quot;indigo&quot;, &quot;violet&quot;]</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<p>In a dictionary, membership is seen as “being one of the keys”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;in&quot; in &#123;&quot;in&quot;: &quot;out&quot;&#125;</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;in&quot; in &#123;&quot;out&quot;: &quot;in&quot;&#125;</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+<h3 id="import-amp-amp-modules"><a href="#import-amp-amp-modules" class="headerlink" title="import &amp;&amp; modules"></a>import &amp;&amp; modules</h3><p>这里需要遇到问题的时候再看一下。</p>
+<h2 id="Object-oriented-programming"><a href="#Object-oriented-programming" class="headerlink" title="Object oriented programming"></a>Object oriented programming</h2><p>The purpose of object-oriented programming is to facilitate encapsulation of variables and functions and to facilitate fine-grained code re-use.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://yangcongchufang.com/%E9%AB%98%E7%BA%A7python%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/python-object-class.html" target="_blank" rel="noopener">link_1</a></p>
+<p><a href="http://python.jobbole.com/82023/" target="_blank" rel="noopener">link_2</a></p>
+<p><a href="http://python.jobbole.com/83747/" target="_blank" rel="noopener">link_3</a></p>
+<h3 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h3><ul>
+<li>Properties/Attribute—embedded data</li>
+<li>Methods/Behaviors—function on data</li>
+<li>Interfaces—communicating with the outside world</li>
+<li>inheritance– re-using code</li>
+</ul>
+<p>For safety reasons this arbitrary attaching of attributes to objects is blocked for certain built-in objects (c.f., <code>__slots__</code>), but you get the idea. You can create your own objects with the <code>class</code> keyword. The following is the simplest possible custom object,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Foo(object):</span><br><span class="line">...     pass</span><br></pre></td></tr></table></figure>
+<p>We’ll talk about the <code>object</code> part later. We can instantiate our <code>Foo</code>object in the following,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = Foo() # need parenthesis</span><br><span class="line">&gt;&gt;&gt; f.x = 30  # tack on attribute</span><br><span class="line">&gt;&gt;&gt; f.x</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+<p>The <code>__init__</code> method is the constructor for objects/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">	def __init__(self):</span><br><span class="line">		self.x=30</span><br></pre></td></tr></table></figure>
+<p>Remember that the <code>__init__</code> functions is just another Python function and follows the same syntax. The surrounding double underscores indicate that the function has a special low-level status.</p>
+<p>Unlike many object-oriented languages, Python does not have implement private versus public attributes as part of the language. Rather, these are managed by convention. For example, attributes that start with a single underscore character are(only by convention) considered private, although nothing in the language provides them special status.</p>
+<p>Access to the attributes of the object is the distinction between methods and functions. For example, I can create a function and tack it onto an existing objects as in the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f= Foo()  #create an object</span><br><span class="line">f.func= lambda i: i**2</span><br></pre></td></tr></table></figure>
+<p>Everything in python is an object, which means operations like the plus can be specified as methods.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">	def __init__(self, x=10):</span><br><span class="line">		self.x= x</span><br><span class="line">	def __add__(self, y):  #overloading &apos;addition&apos; opertion</span><br><span class="line">		return self.x+y.x</span><br><span class="line">		</span><br><span class="line">a= Foo(x=20)</span><br><span class="line">b=Foo()</span><br><span class="line">a+b</span><br><span class="line">30</span><br></pre></td></tr></table></figure>
+<h3 id="Inheritance"><a href="#Inheritance" class="headerlink" title="Inheritance"></a>Inheritance</h3><p>The idea is to re-use your own codes with inheritance. Python also supports multiple inheritance and delegation(via keyword);</p>
+<p>for example, here we overwrite the <code>__repr__</code> function in the list:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class MyList(list): # inherit from built-in list object</span><br><span class="line">...   def __repr__(self):</span><br><span class="line">...       list_string = list.__repr__(self)</span><br><span class="line">...       return list_string.replace(&apos; &apos;,&apos;&apos;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; MyList([1,3]) # no spaces in output</span><br><span class="line">[1,3]</span><br><span class="line">&gt;&gt;&gt; list([1,3])</span><br><span class="line">[1, 3]</span><br></pre></td></tr></table></figure>
+<p>Once you can roll your own objects, you can reproduce the behavior of other Python objects, like iterables, for instance:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Foo(object):</span><br><span class="line">...     def __init__(self,size=10):</span><br><span class="line">...         self.size = size</span><br><span class="line">...     def __iter__(self): # produces iterable</span><br><span class="line">...         self.counter = range(self.size)</span><br><span class="line">...         return self # return object that has next() method</span><br><span class="line">...     def next(self): # does iteration</span><br><span class="line">...        if self.counter:</span><br><span class="line">...           return self.counter.pop()</span><br><span class="line">...        else:</span><br><span class="line">...           raise StopIteration</span><br><span class="line">&gt;&gt;&gt; f = Foo()</span><br><span class="line">&gt;&gt;&gt; list(f)</span><br><span class="line">[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span><br><span class="line">&gt;&gt;&gt; for i in Foo(3): # iterate over</span><br><span class="line">...   print i</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h3 id="class-variables"><a href="#class-variables" class="headerlink" title="class variables"></a>class variables</h3><ol>
+<li><p>在变量前面加上<code>__</code>双下划线来区分private变量， 但Python的访问限制其实并不严格， 主要靠自觉。</p>
+</li>
+<li><p>多态的好处就是，当我们需要传入Dog、Cat、Tortoise……时，我们只需要接收Animal类型就可以了，因为Dog、Cat、Tortoise……都是Animal类型，然后，按照Animal类型进行操作即可。由于Animal类型有run()方法，因此，传入的任意类型，只要是Animal类或者子类，就会自动调用实际类型的run()方法，这就是多态的意思：</p>
+<p>对于一个变量，我们只需要知道它是Animal类型，无需确切地知道它的子类型，就可以放心地调用run()方法，而具体调用的run()方法是作用在Animal、Dog、Cat还是Tortoise对象上，由运行时该对象的确切类型决定，这就是多态真正的威力：调用方只管调用，不管细节，而当我们新增一种Animal的子类时，只要确保run()方法编写正确，不用管原来的代码是如何调用的。这就是著名的“开闭”原则：</p>
+<ul>
+<li>对扩展开放：允许新增Animal子类；</li>
+<li>对修改封闭：不需要修改依赖Animal类型的run_twice()等函数。</li>
+</ul>
+<p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Timer(object):</span><br><span class="line">    def run(self):</span><br><span class="line">        print(&apos;Start...&apos;)</span><br></pre></td></tr></table></figure>
+<p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<p>Python的“file-like object“就是一种鸭子类型。对真正的文件对象，它有一个read()方法，返回其内容。但是，许多对象，只要有read()方法，都被视为“file-like object“。许多函数接收的参数就是“file-like object“，你不一定要传入真正的文件对象，完全可以传入任何实现了read()方法的对象。</p>
+<p>总结一下：</p>
+<p>继承可以把父类的所有功能都直接拿过来，这样就不必重零做起，子类只需要新增自己特有的方法，也可以把父类不适合的方法覆盖重写。</p>
+<p>动态语言的鸭子类型特点决定了继承不像静态语言那样是必须的。</p>
+</li>
+</ol>
+<p>This also works with functions, not just variables. You have to use the <code>@classmethod</code> decorator for this. Note that the existence of class variables does not make them known to the rest of the class definition automatically. For example,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">   x = 10</span><br><span class="line">   def __init__(self):</span><br><span class="line">      self.fx = x**2 # x variable is not known</span><br></pre></td></tr></table></figure>
+<p>will result in the following error: <code>NameError: global name &#39;x&#39; isnot defined</code>. This can be fixed by providing the full class reference to <code>x</code> as in the following,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">   x = 10</span><br><span class="line">   def __init__(self):</span><br><span class="line">      self.fx = Foo.x**2 # full reference to x</span><br></pre></td></tr></table></figure>
+<p>Although, it’s probably best to avoid doing this.</p>
+<p>从上面的例子可以看出， 在编写程序的时候， 千万不要把实例属性和类属性使用相同的名字， 因为相同名称的实例属性将屏蔽掉类属性， 但是当你删除实例属性后， 再使用相同的名称， 访问到的将是类属性。</p>
+<h3 id="Hashing-hides-parent-variables-from-children"><a href="#Hashing-hides-parent-variables-from-children" class="headerlink" title="Hashing hides parent variables from children"></a>Hashing hides parent variables from children</h3><p>Using double underscores in methods internally hashes the function names.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Foo(object):</span><br><span class="line">...    def __init__(self):</span><br><span class="line">...        self.__x=10</span><br><span class="line">...    def count(self):</span><br><span class="line">...        return self.__x*30</span><br></pre></td></tr></table></figure>
+<p>Note that the <code>count</code> function utilizes the double underscored variable <code>self.__x</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Goo(Foo): # child with own .__x attribute</span><br><span class="line">...    def __init__(self,x):</span><br><span class="line">...        self.__x=x</span><br><span class="line">&gt;&gt;&gt; g=Goo(11)</span><br><span class="line">&gt;&gt;&gt; print g.count() # won&apos;t work</span><br><span class="line">AttributeError: &apos;Goo&apos; object has no attribute &apos;_Foo__x&apos;</span><br></pre></td></tr></table></figure>
+<p>This means that the <code>__x</code> variable in the <code>Foo</code> declaration is attached to the <code>Foo</code> class.</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/02/03/Java-Generics-简介/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/02/03/Detect-Cycle-in-Graph/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Liyan Chen's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/02/">February 2018<span class="sidebar_archives-count">13</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Sisyphus
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

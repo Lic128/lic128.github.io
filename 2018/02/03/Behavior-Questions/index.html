@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="en">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Behavior Questions | 
+        
+        Sisyphus
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
+    <meta name="keywords" content=",Interview">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Sisyphus">
+    <meta name="msapplication-starturl" content="http://lic128.me/2018/02/03/Behavior-Questions/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Sisyphus">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://lic128.me/2018/02/03/Behavior-Questions/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Behavior Questions | Sisyphus">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="这是一个找不到工作/妹子的老实人">
+    <meta property="og:article:tag" content="Interview"> 
+
+    
+        <meta property="article:published_time" content="Sat Feb 03 2018 21:46:28 GMT-0800">
+        <meta property="article:modified_time" content="Sat Feb 03 2018 21:47:15 GMT-0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://lic128.me/2018/02/03/Behavior-Questions/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://lic128.me/2018/02/03/Behavior-Questions/index.html",
+    "headline": "Behavior Questions",
+    "datePublished": "Sat Feb 03 2018 21:46:28 GMT-0800",
+    "dateModified": "Sat Feb 03 2018 21:47:15 GMT-0800",
+    "author": {
+        "@type": "Person",
+        "name": "Liyan Chen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Sisyphus",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Interview",
+    "description": "这是一个找不到工作/妹子的老实人",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Behavior-Question"><span class="post-toc-number">1.</span> <span class="post-toc-text">Behavior Question</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Self-Introduce"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Q: Self-Introduce</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Project-Introduce"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Q: Project Introduce</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Technique"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">Technique</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#what-have-I-learned-from-the-process"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">what have I learned from the process.</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Still-need-to-do"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Still need to do</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Teamwork"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Q: Teamwork</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Why-Intuit"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Q: Why Intuit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Why-drawbridge"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Q: Why drawbridge</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Conflict"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Q: Conflict</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Why-Software-Engineer"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Q: Why Software Engineer?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Problem-solving"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">Q: Problem-solving</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Mistake"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">Q: Mistake</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-Design-a-Venmo-like-App"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">Q: Design a Venmo like App</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-哪些东西-Inspire了你？"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">Q: 哪些东西 Inspire了你？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-遇到困难怎么办？"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">Q:遇到困难怎么办？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-What-the-company-is-working-on-what-I’ll-be-doing-after-joining-the-team"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">Q: What the company is working on, what I’ll be doing after joining the team</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Q-What-brought-you-to-drawbridge"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">Q: What brought you to drawbridge</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Most-proud-Project"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">Most proud Project</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Behavior Questions
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Liyan Chen</strong>
+        <span>Feb 03, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Interview/">Interview</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Behavior Questions&url=http://lic128.me/2018/02/03/Behavior-Questions/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Behavior Questions&url=http://lic128.me/2018/02/03/Behavior-Questions/index.html&via=Liyan Chen" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Behavior-Questions/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Behavior-Questions/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Behavior-Question"><a href="#Behavior-Question" class="headerlink" title="Behavior Question"></a>Behavior Question</h1><h2 id="Q-Self-Introduce"><a href="#Q-Self-Introduce" class="headerlink" title="Q: Self-Introduce"></a>Q: Self-Introduce</h2><p>Ok, my name is Liyan Chen, and I’m a graduate student from UCSD ECE major. And my interest focus on web application and things like machine learning. Also, I’m good at java and python. As a student who has change one’s major, to better improve my skills, I have spent a lot of time on Coursera to learn different courses like data structure,algorithm and machine learning. In my spare time, I like to read and write blog about technology. I think, with my good understanding of algorithm and data structure, I will be a good fit for this position.</p>
+<h2 id="Q-Project-Introduce"><a href="#Q-Project-Introduce" class="headerlink" title="Q: Project Introduce"></a>Q: Project Introduce</h2><p>Ok, I will introduce the project I’m currently working on. It’s a e-commercial website based on mean stack. As you know, as an international student, we move every often, and every time we move, there will be some items we want to sell. And that’s why I want to build such project. The website is used to sell used items. I just deployed on Heroku recently. You can check it <a href="https://mighty-badlands-58522.herokuapp.com/" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Technique"><a href="#Technique" class="headerlink" title="Technique"></a>Technique</h3><p>The backend is based on Node.js and Express. We use mongoose to connect the database. There are three schemas in the application: User, Item and Comment, all the operation on the website is actually operation on the three tables.</p>
+<p>In the mean time, passport was used to perform authentication. A user can sign up, login, and logout. According to the different status user in, he can perform different operations.</p>
+<p>And as you can see here, the front end is based on Bootstrap, and in the next version, I may use vue.js or react to update the frontend.</p>
+<h3 id="what-have-I-learned-from-the-process"><a href="#what-have-I-learned-from-the-process" class="headerlink" title="what have I learned from the process."></a>what have I learned from the process.</h3><p>Through the building process, I have a deeper understanding of how the node.js works, and how it cooperate with the frontend. In the meantime, I’m also more familiar with the frontend. By searching on website, I have solved different problems such as the different strategy the passport should use, and how to design and implement database. In a word, I’m more confident to build a more complicated web application.</p>
+<h3 id="Still-need-to-do"><a href="#Still-need-to-do" class="headerlink" title="Still need to do"></a>Still need to do</h3><ol>
+<li><p>Add Ajax when user interact with the web page, such as login, logout, add comment.</p>
+</li>
+<li><p>Updated the frontend using vue.js/react</p>
+</li>
+<li><p>More function, like sort the item by different categories.</p>
+</li>
+<li><p>User profile and the message system.</p>
+</li>
+<li><p>Favorite list and shopping cart.</p>
+<p>​</p>
+</li>
+</ol>
+<h2 id="Q-Teamwork"><a href="#Q-Teamwork" class="headerlink" title="Q: Teamwork"></a>Q: Teamwork</h2><p>Well, teamwork is important as student, a good teamwork makes the work tend to be more stable. For example, in the project to predict the price of Airbnb listing , I cooperate with a classmate and he was in charge of the visualization of data and I was in charge of the prediction. In the process, I found that the prediction is not good enough, and have no idea what’s going on, and at that time, he has already finished the visualization of the data, and tell me that the data may be contaminated according to the graph he draw. Knowing this, we have a little discussion and figure out how to filter the data we have. And finally, we solve this problem together. Without teamwork, it’s may be hard to solve problems occur in the process. So you can see that I love teamwork, and it’s important for us as a developer or student.</p>
+<h2 id="Q-Why-Intuit"><a href="#Q-Why-Intuit" class="headerlink" title="Q: Why Intuit"></a>Q: Why Intuit</h2><p>Actually I love the product of intuit. Like mint, I used it a lot in daily life. It records everything on my bank account, and shows it in an convenient way. With the help of such software, I can manage my account efficiently. It provides convenience for us. And that’s why I’d like to join you guys and be a developer of such product.</p>
+<h2 id="Q-Why-drawbridge"><a href="#Q-Why-drawbridge" class="headerlink" title="Q: Why drawbridge"></a>Q: Why drawbridge</h2><p>Well, during my study in University of California, San Diego, I found that Machine Learning is really interesting and I’d like find job involving both software engineer and machine learning. And I find that drawbridge provides such position. And after spending some time learning about drawbridge, I think drawbridge will be a great choice since what you guys do is really interesting and challenging, and the cross-device thought is really cool. That’s why I’d like to join drawbridge.</p>
+<h2 id="Q-Conflict"><a href="#Q-Conflict" class="headerlink" title="Q: Conflict"></a>Q: Conflict</h2><p>How would handle a conflict between two team members?</p>
+<p>Ok, I think sometimes conflict happens a lot between team members, especially when working on something difficult. and I think the most important thing to do here is to communicate with your teammates. For example, if I have conflict with my teammate, I will book a private room in the library or somewhere quiet, to have a discussion with him, and figure out where is the disagreement, and listen to his opinion about it, try an reach an agreement with him.</p>
+<h2 id="Q-Why-Software-Engineer"><a href="#Q-Why-Software-Engineer" class="headerlink" title="Q: Why Software Engineer?"></a>Q: Why Software Engineer?</h2><p>Well, the answer is simple: being a software engineer gives me a sense of accomplishment. You know, when you see your code runs and something beautiful happens, it’s quiet amazing. I still remember the time when I first accomplished the first web demo, although it’s just a simple web page, I still got so excited and tell my friend about it. It was at that time I determined to be a software engineer.</p>
+<h2 id="Q-Problem-solving"><a href="#Q-Problem-solving" class="headerlink" title="Q: Problem-solving"></a>Q: Problem-solving</h2><p>Ok, problems occur quite often when I tried to build the project I mentioned earlier. You know, this is the first time I use node.js to build website , and I found it’s quiet difficult to understand some middleware, for example, like passport, there are so many different strategy and sometimes it can be hard to debug. To solve such questions, I use mocha as the debugging tool and ask friends who have previous experience in mean stack for help. Finally, problems get solved and I also learned a lot from the solving process, like how the node.js works and how to design and implement database, and I also have more confident when building web applications.</p>
+<h2 id="Q-Mistake"><a href="#Q-Mistake" class="headerlink" title="Q: Mistake"></a>Q: Mistake</h2><h2 id="Q-Design-a-Venmo-like-App"><a href="#Q-Design-a-Venmo-like-App" class="headerlink" title="Q: Design a Venmo like App"></a>Q: Design a Venmo like App</h2><h2 id="Q-哪些东西-Inspire了你？"><a href="#Q-哪些东西-Inspire了你？" class="headerlink" title="Q: 哪些东西 Inspire了你？"></a>Q: 哪些东西 Inspire了你？</h2><p>The sense of accomplishment, and the pleasure when you see your code runs.</p>
+<h2 id="Q-遇到困难怎么办？"><a href="#Q-遇到困难怎么办？" class="headerlink" title="Q:遇到困难怎么办？"></a>Q:遇到困难怎么办？</h2><h2 id="Q-What-the-company-is-working-on-what-I’ll-be-doing-after-joining-the-team"><a href="#Q-What-the-company-is-working-on-what-I’ll-be-doing-after-joining-the-team" class="headerlink" title="Q: What the company is working on, what I’ll be doing after joining the team"></a>Q: What the company is working on, what I’ll be doing after joining the team</h2><h2 id="Q-What-brought-you-to-drawbridge"><a href="#Q-What-brought-you-to-drawbridge" class="headerlink" title="Q: What brought you to drawbridge"></a>Q: What brought you to drawbridge</h2><h2 id="Most-proud-Project"><a href="#Most-proud-Project" class="headerlink" title="Most proud Project"></a>Most proud Project</h2><p>My favorite project is a web application based on MEAN stack. The application works as a platform for us students to sell used items, and provide the function like register/ login, post,update, delete, comment etc function.<br>As a student who changed one’s major, I spent two month on this project and through the building process, I have a through understanding of how web application works behind the scene, and in the meantime, I also have more knowledge of the node.js. So I’m quiet proud about this project.<br>This application is now deployed on Heroku, and if you are interested, you can check it here.(<a href="https://mighty-badlands-58522.herokuapp.com/" target="_blank" rel="noopener">https://mighty-badlands-58522.herokuapp.com/</a>)</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/02/03/Detect-Cycle-in-Graph/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Liyan Chen's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/02/">February 2018<span class="sidebar_archives-count">13</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Sisyphus
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
