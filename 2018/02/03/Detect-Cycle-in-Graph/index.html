@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
-    <meta name="keywords" content=",Algorithm">
+    <meta name="keywords" content="Programming,Algorithm">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -270,7 +275,7 @@
             "@type": "ImageObject",
             "url": "/img/avatar.png"
         },
-        "description": "Hi, nice to meet you"
+        "description": "醉里不知天在水，满船清梦压星河"
     },
     "publisher": {
         "@type": "Organization",
@@ -280,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Algorithm",
+    "keywords": ",AlgorithmProgramming",
     "description": "这是一个找不到工作/妹子的老实人",
 }
 </script>
@@ -438,41 +443,23 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Detect Cycle in Graph&url=http://lic128.me/2018/02/03/Detect-Cycle-in-Graph/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Weibo
-            </li>
-        </a>
-    
 
     <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Detect Cycle in Graph&url=http://lic128.me/2018/02/03/Detect-Cycle-in-Graph/index.html&via=Liyan Chen" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Twitter
-            </li>
-        </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Detect-Cycle-in-Graph/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Facebook
-            </li>
-        </a>
-    
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Detect-Cycle-in-Graph/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Google+
-            </li>
-        </a>
-    
 
     <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://lic128.me/2018/02/03/Detect-Cycle-in-Graph/index.html&title=Detect Cycle in Graph" target="_blank">
+            <li class="mdl-menu__item">
+                Share to LinkedIn
+            </li>
+        </a>
     
 
     <!-- Share QQ -->
@@ -502,8 +489,103 @@
 <p>For example:</p>
 <p>Given <code>n = 5</code> and <code>edges = [[0, 1], [0, 2], [0, 3], [1, 4]]</code>, return <code>true</code>.</p>
 <p>Given <code>n = 5</code> and <code>edges = [[0, 1], [1, 2], [2, 3], [1, 3], [1, 4]]</code>, return <code>false</code>.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    // Union- Find</span><br><span class="line">    // public boolean validTree(int n, int[][] edges) &#123;</span><br><span class="line">    //     int[] root= new int[n];</span><br><span class="line">    //     int count=n;</span><br><span class="line">    //     for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">    //         root[i]= i;</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     for(int[] edge: edges)&#123;</span><br><span class="line">    //         int root1= find(root, edge[0]);</span><br><span class="line">    //         int root2= find(root, edge[1]);</span><br><span class="line">    //         if(root1==root2) return false;</span><br><span class="line">    //         root[root1]= root2;</span><br><span class="line">    //         count--;</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     return count==1;</span><br><span class="line">    // &#125;</span><br><span class="line">    // private int find(int[] root, int id)&#123;</span><br><span class="line">    //     while(root[id]!= id)&#123;</span><br><span class="line">    //         root[id]= root[root[id]];</span><br><span class="line">    //         id= root[id];</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     return id;</span><br><span class="line">    // &#125;</span><br><span class="line">  </span><br><span class="line">    // bfs</span><br><span class="line">    // public boolean validTree(int n, int[][] edges)&#123;</span><br><span class="line">    //     Map&lt;Integer, Set&lt;Integer&gt;&gt; map= new HashMap&lt;&gt;();</span><br><span class="line">    //     int[] degree= new int[n];</span><br><span class="line">    //     for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">    //         map.put(i, new HashSet&lt;Integer&gt;());</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     for(int[] edge: edges)&#123;</span><br><span class="line">    //         map.get(edge[0]).add(edge[1]);</span><br><span class="line">    //         map.get(edge[1]).add(edge[0]);</span><br><span class="line">    //         degree[edge[0]]++;</span><br><span class="line">    //         degree[edge[1]]++;</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     Queue&lt;Integer&gt; queue= new LinkedList&lt;&gt;();</span><br><span class="line">    //     boolean[] visited= new boolean[n];</span><br><span class="line">    //     int count=0;</span><br><span class="line">    //     for(int i=0; i&lt;degree.length; i++)&#123;</span><br><span class="line">    //         if(degree[i]&lt;=1)&#123;</span><br><span class="line">    //             queue.offer(i);</span><br><span class="line">    //             count++;</span><br><span class="line">    //             visited[i]= true;</span><br><span class="line">    //         &#125;</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     while(!queue.isEmpty())&#123;</span><br><span class="line">    //         int size= queue.size();</span><br><span class="line">    //         for(int i=0; i&lt;size; i++)&#123;</span><br><span class="line">    //             int node= queue.poll();</span><br><span class="line">    //             for(int next: map.get(node))&#123;</span><br><span class="line">    //                 degree[next]--;</span><br><span class="line">    //                 if(degree[next]&lt;=1 &amp;&amp; !visited[next])&#123;</span><br><span class="line">    //                     queue.offer(next);</span><br><span class="line">    //                     visited[next]= true;</span><br><span class="line">    //                     count++;</span><br><span class="line">    //                 &#125;</span><br><span class="line">    //             &#125;</span><br><span class="line">    //         &#125;</span><br><span class="line">    //     &#125;</span><br><span class="line">    //     return count==n &amp;&amp; edges.length==n-1;</span><br><span class="line">    // &#125;</span><br><span class="line">    // dfs</span><br><span class="line">    boolean hasCycle= false;</span><br><span class="line">    public boolean validTree(int n, int[][] edges)&#123;</span><br><span class="line">        </span><br><span class="line">        Map&lt;Integer, Set&lt;Integer&gt;&gt; map= new HashMap&lt;&gt;();</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            map.put(i, new HashSet&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        for(int[] edge: edges)&#123;</span><br><span class="line">            map.get(edge[0]).add(edge[1]);</span><br><span class="line">            map.get(edge[1]).add(edge[0]);</span><br><span class="line">        &#125;</span><br><span class="line">        boolean[] visited= new boolean[n];</span><br><span class="line">        dfs(map, visited, 0, 0);</span><br><span class="line">        if(hasCycle) return false;</span><br><span class="line">        for(int i=0; i&lt;visited.length; i++)&#123;</span><br><span class="line">            if(!visited[i]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(Map&lt;Integer, Set&lt;Integer&gt;&gt; map, boolean[] visited, int curr, int prev)&#123;</span><br><span class="line">        visited[curr]= true;</span><br><span class="line">        for(int next: map.get(curr))&#123;</span><br><span class="line">            if(visited[next] &amp;&amp; next!= prev)&#123;</span><br><span class="line">                hasCycle= true;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if(visited[next]) continue;</span><br><span class="line">            dfs(map, visited, next, curr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>class Solution {
+    // Union- Find
+    // public boolean validTree(int n, int[][] edges) {
+    //     int[] root= new int[n];
+    //     int count=n;
+    //     for(int i=0; i&lt;n; i++){
+    //         root[i]= i;
+    //     }
+    //     for(int[] edge: edges){
+    //         int root1= find(root, edge[0]);
+    //         int root2= find(root, edge[1]);
+    //         if(root1==root2) return false;
+    //         root[root1]= root2;
+    //         count--;
+    //     }
+    //     return count==1;
+    // }
+    // private int find(int[] root, int id){
+    //     while(root[id]!= id){
+    //         root[id]= root[root[id]];
+    //         id= root[id];
+    //     }
+    //     return id;
+    // }
 
+    // bfs
+    // public boolean validTree(int n, int[][] edges){
+    //     Map&lt;Integer, Set&lt;Integer&gt;&gt; map= new HashMap&lt;&gt;();
+    //     int[] degree= new int[n];
+    //     for(int i=0; i&lt;n; i++){
+    //         map.put(i, new HashSet&lt;Integer&gt;());
+    //     }
+    //     for(int[] edge: edges){
+    //         map.get(edge[0]).add(edge[1]);
+    //         map.get(edge[1]).add(edge[0]);
+    //         degree[edge[0]]++;
+    //         degree[edge[1]]++;
+    //     }
+    //     Queue&lt;Integer&gt; queue= new LinkedList&lt;&gt;();
+    //     boolean[] visited= new boolean[n];
+    //     int count=0;
+    //     for(int i=0; i&lt;degree.length; i++){
+    //         if(degree[i]&lt;=1){
+    //             queue.offer(i);
+    //             count++;
+    //             visited[i]= true;
+    //         }
+    //     }
+    //     while(!queue.isEmpty()){
+    //         int size= queue.size();
+    //         for(int i=0; i&lt;size; i++){
+    //             int node= queue.poll();
+    //             for(int next: map.get(node)){
+    //                 degree[next]--;
+    //                 if(degree[next]&lt;=1 &amp;&amp; !visited[next]){
+    //                     queue.offer(next);
+    //                     visited[next]= true;
+    //                     count++;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return count==n &amp;&amp; edges.length==n-1;
+    // }
+    // dfs
+    boolean hasCycle= false;
+    public boolean validTree(int n, int[][] edges){
+
+        Map&lt;Integer, Set&lt;Integer&gt;&gt; map= new HashMap&lt;&gt;();
+        for(int i=0; i&lt;n; i++){
+            map.put(i, new HashSet&lt;Integer&gt;());
+        }
+        for(int[] edge: edges){
+            map.get(edge[0]).add(edge[1]);
+            map.get(edge[1]).add(edge[0]);
+        }
+        boolean[] visited= new boolean[n];
+        dfs(map, visited, 0, 0);
+        if(hasCycle) return false;
+        for(int i=0; i&lt;visited.length; i++){
+            if(!visited[i]) return false;
+        }
+        return true;
+    }
+    private void dfs(Map&lt;Integer, Set&lt;Integer&gt;&gt; map, boolean[] visited, int curr, int prev){
+        visited[curr]= true;
+        for(int next: map.get(curr)){
+            if(visited[next] &amp;&amp; next!= prev){
+                hasCycle= true;
+                return;
+            }
+            if(visited[next]) continue;
+            dfs(map, visited, next, curr);
+        }
+    }
+}
+</code></pre>
         
     
 
@@ -580,7 +662,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        liyanchen128@outlook.com
         <b class="caret"></b>
     </a>
 </div>
@@ -593,7 +675,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="liyanchen128@outlook.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -749,8 +831,20 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Lic128" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/liyan-chen-015063127/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
     
 
     <!-- Zhihu -->
@@ -850,6 +944,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -860,6 +960,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

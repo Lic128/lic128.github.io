@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
-    <meta name="keywords" content=",Java, Data Structure">
+    <meta name="keywords" content="Programming,Java, Data Structure">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -270,7 +275,7 @@
             "@type": "ImageObject",
             "url": "/img/avatar.png"
         },
-        "description": "Hi, nice to meet you"
+        "description": "醉里不知天在水，满船清梦压星河"
     },
     "publisher": {
         "@type": "Organization",
@@ -280,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Java, Data Structure",
+    "keywords": ",Java, Data StructureProgramming",
     "description": "这是一个找不到工作/妹子的老实人",
 }
 </script>
@@ -438,41 +443,23 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java 中HashMap的实现机制&url=http://lic128.me/2018/02/03/Java-中HashMap的实现机制/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Weibo
-            </li>
-        </a>
-    
 
     <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java 中HashMap的实现机制&url=http://lic128.me/2018/02/03/Java-中HashMap的实现机制/index.html&via=Liyan Chen" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Twitter
-            </li>
-        </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Java-中HashMap的实现机制/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Facebook
-            </li>
-        </a>
-    
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Java-中HashMap的实现机制/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Google+
-            </li>
-        </a>
-    
 
     <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://lic128.me/2018/02/03/Java-中HashMap的实现机制/index.html&title=Java 中HashMap的实现机制" target="_blank">
+            <li class="mdl-menu__item">
+                Share to LinkedIn
+            </li>
+        </a>
     
 
     <!-- Share QQ -->
@@ -505,26 +492,92 @@
 <p><a href="http://lic128.me/2017/11/20/The-implementation-of-HashMap-in-Java/Structure.jpg"><img src="http://lic128.me/2017/11/20/The-implementation-of-HashMap-in-Java/Structure.jpg" alt="img"></a></p>
 <p>每个元素存储的是一个链表的头节点。 那么这些元素是按照怎么样的规则存储到数组中呢？ 一般情况是通过hash（key）%len获得， 也就是元素的key的哈希值对数组长度取模得到。</p>
 <p>HashMap里面实现一个静态内部类Entry，其重要的属性有key， value， next。 我们上面说到HashMap的基础就是一个线性数组， 这个数组就是Entry[],， Map里面的内容都保存在Entry[]里面。</p>
-<h2 id="HashMap的初始化过程"><a href="#HashMap的初始化过程" class="headerlink" title="HashMap的初始化过程"></a>HashMap的初始化过程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public HashMap&lt;Map&lt;? extends K, ? extends V&gt; m&gt;&#123;</span><br><span class="line">    this(Math.max((int)(m.size()/DEFAULT_LOAD_FACTOR)+1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR);</span><br><span class="line">  inflateTable(threadshold);</span><br><span class="line">  putAllForCreate(m);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><em>DEFAULT_LOAD_FACTOR</em>: 负载因子的默认值0.75表示数据填充的临界值， 即数据达到总数据的75%时就开始准备扩容了。</p>
+<h2 id="HashMap的初始化过程"><a href="#HashMap的初始化过程" class="headerlink" title="HashMap的初始化过程"></a>HashMap的初始化过程</h2><pre><code>public HashMap&lt;Map&lt;? extends K, ? extends V&gt; m&gt;{
+    this(Math.max((int)(m.size()/DEFAULT_LOAD_FACTOR)+1, DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR);
+  inflateTable(threadshold);
+  putAllForCreate(m);
+}
+</code></pre><p><em>DEFAULT_LOAD_FACTOR</em>: 负载因子的默认值0.75表示数据填充的临界值， 即数据达到总数据的75%时就开始准备扩容了。</p>
 <p><em>DEFAULT_INITIAL_CAPACITY</em>: 默认传入Map中的数据默认值为4， 从上面看出， 显示调用自己的构造方法， 然后创建存储的Table（实际是数组）， 最后把值添加到创建的table中。</p>
-<h3 id="this-var1-var2-实际调用的构造方法"><a href="#this-var1-var2-实际调用的构造方法" class="headerlink" title="this(var1, var2)实际调用的构造方法"></a>this(var1, var2)实际调用的构造方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public HashMap(int initialCapacity, float loadfactor)&#123;</span><br><span class="line">  if(initalCapacity&lt;0) throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot;+ initialCapacity);</span><br><span class="line">  if(initialCapacity&gt;MAXIMUN_CAPACITY)&#123;</span><br><span class="line">    initialCapacity=MAXIMUM_CAPACITY;</span><br><span class="line">  &#125;else if(initialCapacity&lt;DEFAULT_INITILA_CAPACITY)&#123;</span><br><span class="line">    initialCapacity=DEFAULT_INITIAL_CAPACTITY;</span><br><span class="line">  &#125;</span><br><span class="line">  if(loadFactor&lt;=0 || Float.isNAN(loadFactor)) throw new IllegalArgumentException(&quot;Illegal load factor:&quot;+ loadFactor);</span><br><span class="line">  threadshold= initialCapacity;</span><br><span class="line">  init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>initialCapacity</code> : 即初始化申请空间的值,不等于Map实际初始化的内部数组的长度(稍后解释为什么)==,若不填写默认是<code>DEFAULT_INITIAL_CAPACITY</code>也就是4<br><code>initialCapacity</code>的最大值为1 &lt;&lt; 30 也就是2^30次方<br><code>initialCapacity</code>的最小值为DEFAULT_INITIAL_CAPACITY也就是4.</p>
+<h3 id="this-var1-var2-实际调用的构造方法"><a href="#this-var1-var2-实际调用的构造方法" class="headerlink" title="this(var1, var2)实际调用的构造方法"></a>this(var1, var2)实际调用的构造方法</h3><pre><code>public HashMap(int initialCapacity, float loadfactor){
+  if(initalCapacity&lt;0) throw new IllegalArgumentException(&quot;Illegal initial capacity: &quot;+ initialCapacity);
+  if(initialCapacity&gt;MAXIMUN_CAPACITY){
+    initialCapacity=MAXIMUM_CAPACITY;
+  }else if(initialCapacity&lt;DEFAULT_INITILA_CAPACITY){
+    initialCapacity=DEFAULT_INITIAL_CAPACTITY;
+  }
+  if(loadFactor&lt;=0 || Float.isNAN(loadFactor)) throw new IllegalArgumentException(&quot;Illegal load factor:&quot;+ loadFactor);
+  threadshold= initialCapacity;
+  init();
+}
+</code></pre><p><code>initialCapacity</code> : 即初始化申请空间的值,不等于Map实际初始化的内部数组的长度(稍后解释为什么)==,若不填写默认是<code>DEFAULT_INITIAL_CAPACITY</code>也就是4<br><code>initialCapacity</code>的最大值为1 &lt;&lt; 30 也就是2^30次方<br><code>initialCapacity</code>的最小值为DEFAULT_INITIAL_CAPACITY也就是4.</p>
 <p><code>loadFactor</code>: 负载因子的初始化值， 若不填写默认问DEFAULT_LOAD_FACTOR也就是0.75</p>
 <p><code>threadshold</code>： 下次扩容时的申请空间值。</p>
-<h3 id="inflate-Table-方法"><a href="#inflate-Table-方法" class="headerlink" title="inflate Table 方法"></a>inflate Table 方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Inflates the table.</span><br><span class="line"> */</span><br><span class="line">private void inflateTable(int toSize) &#123;</span><br><span class="line">    // Find a power of 2 &gt;= toSize</span><br><span class="line">    int capacity = roundUpToPowerOf2(toSize);</span><br><span class="line"></span><br><span class="line">    // Android-changed: Replace usage of Math.min() here because this method is</span><br><span class="line">    // called from the &lt;clinit&gt; of runtime, at which point the native libraries</span><br><span class="line">    // needed by Float.* might not be loaded.</span><br><span class="line">    float thresholdFloat = capacity * loadFactor;</span><br><span class="line">    if (thresholdFloat &gt; MAXIMUM_CAPACITY + 1) &#123;</span><br><span class="line">        thresholdFloat = MAXIMUM_CAPACITY + 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    threshold = (int) thresholdFloat;</span><br><span class="line">    table = new HashMapEntry[capacity];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里面有个重点， 实际申请的内部数组的大小 <code>int capacity= roundUpToPowerOf2(toSize);</code></p>
+<h3 id="inflate-Table-方法"><a href="#inflate-Table-方法" class="headerlink" title="inflate Table 方法"></a>inflate Table 方法</h3><pre><code>/**
+ * Inflates the table.
+ */
+private void inflateTable(int toSize) {
+    // Find a power of 2 &gt;= toSize
+    int capacity = roundUpToPowerOf2(toSize);
+
+    // Android-changed: Replace usage of Math.min() here because this method is
+    // called from the &lt;clinit&gt; of runtime, at which point the native libraries
+    // needed by Float.* might not be loaded.
+    float thresholdFloat = capacity * loadFactor;
+    if (thresholdFloat &gt; MAXIMUM_CAPACITY + 1) {
+        thresholdFloat = MAXIMUM_CAPACITY + 1;
+    }
+
+    threshold = (int) thresholdFloat;
+    table = new HashMapEntry[capacity];
+}
+</code></pre><p>这里面有个重点， 实际申请的内部数组的大小 <code>int capacity= roundUpToPowerOf2(toSize);</code></p>
 <p>当数组长度为2^n的时候， 不同的key算得得index相同的几率较小， 那么数据在数组上分布就比较均匀， 也就是说碰撞的几率小， 相对的， 查询的时候就不用遍历某个位置上的链表， 这样查询效率也就较高了。</p>
-<h3 id="putAllCreate方法"><a href="#putAllCreate方法" class="headerlink" title="putAllCreate方法"></a>putAllCreate方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void putAllCreate(Map&lt;? extends K, ? extends V&gt; m)&#123;</span><br><span class="line">    for(Map.Entry&lt;? extends K, ? extends V&gt; e: m.entrySet())</span><br><span class="line">      putFOrCreate(e.getKey(), e.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里是一个foreach循环， 将m中的数据拿出来一一添加到map， 下面看具体的putForCreate 方法</p>
-<h3 id="putForCreate-方法"><a href="#putForCreate-方法" class="headerlink" title="putForCreate 方法"></a>putForCreate 方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void putForCreate(K key, V value)&#123;</span><br><span class="line">  int hash= null==key? 0: sum,sun.misc.Hashing.singleWordWangJenkinsHash(key);</span><br><span class="line">  int i= indexFor(hash, table.length);</span><br><span class="line">  for(HashMapEntry&lt;K, V&gt; e= table[i]; e!=null; e=e.next)&#123;</span><br><span class="line">      Object k;</span><br><span class="line">    if(e.hash==hash &amp;&amp; ((k==e.key)==key || (key!=null &amp;&amp; key.equals(k))))&#123;</span><br><span class="line">        e.value= value;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  createEntry(hash, key, value, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
+<h3 id="putAllCreate方法"><a href="#putAllCreate方法" class="headerlink" title="putAllCreate方法"></a>putAllCreate方法</h3><pre><code>private void putAllCreate(Map&lt;? extends K, ? extends V&gt; m){
+    for(Map.Entry&lt;? extends K, ? extends V&gt; e: m.entrySet())
+      putFOrCreate(e.getKey(), e.getValue());
+}
+</code></pre><p>这里是一个foreach循环， 将m中的数据拿出来一一添加到map， 下面看具体的putForCreate 方法</p>
+<h3 id="putForCreate-方法"><a href="#putForCreate-方法" class="headerlink" title="putForCreate 方法"></a>putForCreate 方法</h3><pre><code>private void putForCreate(K key, V value){
+  int hash= null==key? 0: sum,sun.misc.Hashing.singleWordWangJenkinsHash(key);
+  int i= indexFor(hash, table.length);
+  for(HashMapEntry&lt;K, V&gt; e= table[i]; e!=null; e=e.next){
+      Object k;
+    if(e.hash==hash &amp;&amp; ((k==e.key)==key || (key!=null &amp;&amp; key.equals(k)))){
+        e.value= value;
+      return;
+    }
+  }
+  createEntry(hash, key, value, i);
+}
+</code></pre><ol>
 <li>计算key的hash值</li>
 <li>计算数组下标按位取并， 作用上相当于取模mod或者取余%。 这意味着数组下标相同，并不表示hashCode相同。</li>
 <li>在对应的key上赋值或者添加一组map。</li>
 </ol>
-<h3 id="存储数据，-Put方法"><a href="#存储数据，-Put方法" class="headerlink" title="存储数据， Put方法"></a>存储数据， Put方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public V put(K key, V value) &#123;</span><br><span class="line">      if (table == EMPTY_TABLE) &#123;</span><br><span class="line">          inflateTable(threshold);</span><br><span class="line">      &#125;</span><br><span class="line">      if (key == null)</span><br><span class="line">          return putForNullKey(value);</span><br><span class="line">      int hash = sun.misc.Hashing.singleWordWangJenkinsHash(key);</span><br><span class="line">      int i = indexFor(hash, table.length);</span><br><span class="line">      for (HashMapEntry&lt;K,V&gt; e = table[i]; e != null; e = e.next) &#123;</span><br><span class="line">          Object k;</span><br><span class="line">          if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;</span><br><span class="line">              V oldValue = e.value;</span><br><span class="line">              e.value = value;</span><br><span class="line">              e.recordAccess(this);</span><br><span class="line">              return oldValue;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      modCount++;</span><br><span class="line">      addEntry(hash, key, value, i);</span><br><span class="line">      return null;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>从上面的源代码中可以看出</p>
+<h3 id="存储数据，-Put方法"><a href="#存储数据，-Put方法" class="headerlink" title="存储数据， Put方法"></a>存储数据， Put方法</h3><pre><code>public V put(K key, V value) {
+      if (table == EMPTY_TABLE) {
+          inflateTable(threshold);
+      }
+      if (key == null)
+          return putForNullKey(value);
+      int hash = sun.misc.Hashing.singleWordWangJenkinsHash(key);
+      int i = indexFor(hash, table.length);
+      for (HashMapEntry&lt;K,V&gt; e = table[i]; e != null; e = e.next) {
+          Object k;
+          if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {
+              V oldValue = e.value;
+              e.value = value;
+              e.recordAccess(this);
+              return oldValue;
+          }
+      }
+
+      modCount++;
+      addEntry(hash, key, value, i);
+      return null;
+  }
+</code></pre><p>从上面的源代码中可以看出</p>
 <ol>
 <li>Map支持key=null；HashMap会将Key为null组成的Entry<code>&lt;null, value&gt;</code>放置到table[0], 即第一个桶中。在get和put中， 对其进行特殊处理。</li>
 <li>当我们往HashMap中put元素的时候， 先根据key的hashCode重新计算hash值， 根据hash值得到这个元素在数组中的位置， 即下标， 如果该数组上已经存放有其他元素了， 那么在这个位置上的元素将以链表的形式存放， 新加入的放在链头， 最先加入的放在链尾。 如果数组该位置上没有元素， 就直接把该元素放在该数组中的该位置上。</li>
@@ -536,20 +589,73 @@
 <li>hashcode是否相等；</li>
 </ol>
 <p>所以我们在定义类时， 如果重写了equals()方法， 但是hashcode却没有保证相等， 就会导致当使用该类实例作为key值放入HashMap中时， 会出现HashMap“工作异常”的问题， 会出现你不希望的情况。</p>
-<h4 id="addEntry方法"><a href="#addEntry方法" class="headerlink" title="addEntry方法"></a>addEntry方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void addEntry(int hash, K key, V value, int bucketIndex) &#123;</span><br><span class="line">    // 获取指定 bucketIndex 索引处的 Entry </span><br><span class="line">    Entry&lt;K,V&gt; e = table[bucketIndex];</span><br><span class="line">    // 将新创建的 Entry 放入 bucketIndex 索引处，并让新的 Entry 指向原来的 Entry</span><br><span class="line">    table[bucketIndex] = new Entry&lt;K,V&gt;(hash, key, value, e); //参数e, 是Entry.next</span><br><span class="line">    // 如果 Map 中的 key-value 对的数量超过了极限</span><br><span class="line">    if (size++ &gt;= threshold)</span><br><span class="line">    // 把 table 对象的长度扩充到原来的2倍。</span><br><span class="line">            resize(2 * table.length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>存储HashMap中的key-value对时， 完全没有考虑Entry中的value， 仅仅只是根据key来计算并决定每个Entry的存储位置。 我们完全可以把Map集合中的value当成key的附属， 当系统决定key的存储位置之后， value随之保存在那里即可。</p>
+<h4 id="addEntry方法"><a href="#addEntry方法" class="headerlink" title="addEntry方法"></a>addEntry方法</h4><pre><code>void addEntry(int hash, K key, V value, int bucketIndex) {
+    // 获取指定 bucketIndex 索引处的 Entry 
+    Entry&lt;K,V&gt; e = table[bucketIndex];
+    // 将新创建的 Entry 放入 bucketIndex 索引处，并让新的 Entry 指向原来的 Entry
+    table[bucketIndex] = new Entry&lt;K,V&gt;(hash, key, value, e); //参数e, 是Entry.next
+    // 如果 Map 中的 key-value 对的数量超过了极限
+    if (size++ &gt;= threshold)
+    // 把 table 对象的长度扩充到原来的2倍。
+            resize(2 * table.length);
+}
+</code></pre><p>存储HashMap中的key-value对时， 完全没有考虑Entry中的value， 仅仅只是根据key来计算并决定每个Entry的存储位置。 我们完全可以把Map集合中的value当成key的附属， 当系统决定key的存储位置之后， value随之保存在那里即可。</p>
 <p>HashMap的get和put方法实现基本相同， 归纳起来简单地说，HashMap在底层将key-value当成一个整体进行处理， 这个整体就是一个Entry对象。 HashMap底层采用一个Entry[] 数组来保存所有的key-value对， 当需要存储一个Entry对象时， 会根据hash算法来决定其在数组中的存储位置， 再根据equals方法决定其再数组位置上的链表的存储位置； 当需要取出一个Entry时， 也会根据hash算法找到其再数组中的存储位置， 再根据equals方法从该位置上的链表中取出该Entry。</p>
 <h3 id="HashMap的扩容"><a href="#HashMap的扩容" class="headerlink" title="HashMap的扩容"></a>HashMap的扩容</h3><p>当HashMap中的元素越来越多的时候，hash冲突的几率也就越来越高，因为数组的长度是固定的。所以为了提高查询的效率，就要对HashMap的数组进行扩容，数组扩容这个操作也会出现在ArrayList中，这是一个常用的操作，而在HashMap数组扩容之后，最消耗性能的点就出现了：原数组中的数据必须重新计算其在新数组中的位置，并放进去，这就是resize。<br>那么HashMap什么时候进行扩容呢？当HashMap中的元素个数超过数组大小*loadFactor时，就会进行数组扩容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">     void resize(int newCapacity) &#123;</span><br><span class="line">       HashMapEntry[] oldTable = table;</span><br><span class="line">       int oldCapacity = oldTable.length;</span><br><span class="line">        //如果当前的数组长度已经达到最大值，则不在进行调整</span><br><span class="line">       if (oldCapacity == MAXIMUM_CAPACITY) &#123;</span><br><span class="line">           threshold = Integer.MAX_VALUE;</span><br><span class="line">           return;</span><br><span class="line">       &#125;</span><br><span class="line">//根据传入参数的长度定义新的数组</span><br><span class="line">       HashMapEntry[] newTable = new HashMapEntry[newCapacity];</span><br><span class="line">       //按照新的规则，将旧数组中的元素转移到新数组中</span><br><span class="line">       transfer(newTable);</span><br><span class="line">       table = newTable;</span><br><span class="line">         //更新临界值</span><br><span class="line">       threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<p>旧数组的数据转到新数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  void transfer(HashMapEntry[] newTable) &#123;</span><br><span class="line">    int newCapacity = newTable.length;</span><br><span class="line">    for (HashMapEntry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">        while(null != e) &#123;</span><br><span class="line">            HashMapEntry&lt;K,V&gt; next = e.next;</span><br><span class="line">            int i = indexFor(e.hash, newCapacity);</span><br><span class="line">            e.next = newTable[i];</span><br><span class="line">            newTable[i] = e;</span><br><span class="line">            e = next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Fail-Fast机制"><a href="#Fail-Fast机制" class="headerlink" title="Fail-Fast机制"></a>Fail-Fast机制</h3><p>我们知道java.util.HashMap不是线程安全的，因此如果在使用迭代器的过程中有其他线程修改了map，那么将抛出ConcurrentModificationException，这就是所谓fail-fast策略。<br>　　这一策略在源码中的实现是通过modCount域，modCount顾名思义就是修改次数，对HashMap内容的修改都将增加这个值，那么在迭代器初始化过程中会将这个值赋给迭代器的expectedModCount。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashIterator() &#123;</span><br><span class="line">           expectedModCount = modCount;</span><br><span class="line">           if (size &gt; 0) &#123; // advance to first entry</span><br><span class="line">               HashMapEntry[] t = table;</span><br><span class="line">               while (index &lt; t.length &amp;&amp; (next = t[index++]) == null)</span><br><span class="line">                   ;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-<p>在迭代过程中，判断modCount跟expectedModCount是否相等，如果不相等就表示已经有其他线程修改了Map：<br>　　　注意到modCount声明为volatile，保证线程之间修改的可见性。（volatile之所以线程安全是因为被volatile修饰的变量不保存缓存，直接在内存中修改，因此能够保证线程之间修改的可见性）</p>
+<pre><code>     void resize(int newCapacity) {
+       HashMapEntry[] oldTable = table;
+       int oldCapacity = oldTable.length;
+        //如果当前的数组长度已经达到最大值，则不在进行调整
+       if (oldCapacity == MAXIMUM_CAPACITY) {
+           threshold = Integer.MAX_VALUE;
+           return;
+       }
+//根据传入参数的长度定义新的数组
+       HashMapEntry[] newTable = new HashMapEntry[newCapacity];
+       //按照新的规则，将旧数组中的元素转移到新数组中
+       transfer(newTable);
+       table = newTable;
+         //更新临界值
+       threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
+   }
+</code></pre><p>旧数组的数据转到新数组</p>
+<pre><code>  void transfer(HashMapEntry[] newTable) {
+    int newCapacity = newTable.length;
+    for (HashMapEntry&lt;K,V&gt; e : table) {
+        while(null != e) {
+            HashMapEntry&lt;K,V&gt; next = e.next;
+            int i = indexFor(e.hash, newCapacity);
+            e.next = newTable[i];
+            newTable[i] = e;
+            e = next;
+        }
+    }
+}
+</code></pre><h3 id="Fail-Fast机制"><a href="#Fail-Fast机制" class="headerlink" title="Fail-Fast机制"></a>Fail-Fast机制</h3><p>我们知道java.util.HashMap不是线程安全的，因此如果在使用迭代器的过程中有其他线程修改了map，那么将抛出ConcurrentModificationException，这就是所谓fail-fast策略。<br>　　这一策略在源码中的实现是通过modCount域，modCount顾名思义就是修改次数，对HashMap内容的修改都将增加这个值，那么在迭代器初始化过程中会将这个值赋给迭代器的expectedModCount。</p>
+<pre><code>HashIterator() {
+           expectedModCount = modCount;
+           if (size &gt; 0) { // advance to first entry
+               HashMapEntry[] t = table;
+               while (index &lt; t.length &amp;&amp; (next = t[index++]) == null)
+                   ;
+           }
+       }
+</code></pre><p>在迭代过程中，判断modCount跟expectedModCount是否相等，如果不相等就表示已经有其他线程修改了Map：<br>　　　注意到modCount声明为volatile，保证线程之间修改的可见性。（volatile之所以线程安全是因为被volatile修饰的变量不保存缓存，直接在内存中修改，因此能够保证线程之间修改的可见性）</p>
 <p>　在HashMap的API中指出：<br>　　由所有HashMap类的“collection 视图方法”所返回的迭代器都是快速失败的：在迭代器创建之后，如果从结构上对映射进行修改，除非通过迭代器本身的 remove 方法，其他任何时间任何方式的修改，迭代器都将抛出ConcurrentModificationException。因此，面对并发的修改，迭代器很快就会完全失败，而不保证在将来不确定的时间发生任意不确定行为的风险。<br>　　注意，迭代器的快速失败行为不能得到保证，一般来说，存在非同步的并发修改时，不可能作出任何坚决的保证。快速失败迭代器尽最大努力抛出 ConcurrentModificationException。因此，编写依赖于此异常的程序的做法是错误的，正确做法是：迭代器的快速失败行为应该仅用于检测程序错误.</p>
 <h3 id="JDK8-中HashMap的新特性"><a href="#JDK8-中HashMap的新特性" class="headerlink" title="JDK8 中HashMap的新特性"></a>JDK8 中HashMap的新特性</h3><p>如果某个桶的链表记录过大的话（当前是TREEIFY_THRESHOLD=8）， 就会把这个链动态变成红黑二叉树， 使查询最差复杂度由O（n）变成了O（logN）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for (int binCount = 0; ; ++binCount) &#123;</span><br><span class="line">    if ((e = p.next) == null) &#123;</span><br><span class="line">        p.next = newNode(hash, key, value, null);</span><br><span class="line">        if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st</span><br><span class="line">            treeifyBin(tab, hash);</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    if (e.hash == hash &amp;&amp;</span><br><span class="line">        ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</span><br><span class="line">        break;</span><br><span class="line">    p = e;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="附录：-常见哈希算法"><a href="#附录：-常见哈希算法" class="headerlink" title="附录： 常见哈希算法"></a>附录： 常见哈希算法</h3><p>下面给出几个常用的哈希码的算法。</p>
+<pre><code>for (int binCount = 0; ; ++binCount) {
+    if ((e = p.next) == null) {
+        p.next = newNode(hash, key, value, null);
+        if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st
+            treeifyBin(tab, hash);
+        break;
+    }
+    if (e.hash == hash &amp;&amp;
+        ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+        break;
+    p = e;
+}
+</code></pre><h3 id="附录：-常见哈希算法"><a href="#附录：-常见哈希算法" class="headerlink" title="附录： 常见哈希算法"></a>附录： 常见哈希算法</h3><p>下面给出几个常用的哈希码的算法。</p>
 <ol>
 <li>Object类的hashcode返回对象的内存地址经过处理后的结构， 由于每个对象的内存地址都不一样， 所以哈希码也不一样。 这个时native方法， 这个取决于JVM的设计， 一般是某种地址的偏移。</li>
 <li>String类的hashCode。 根据String类包含的字符串的内容， 根据一种特殊算法返回哈希码， 只要字符串的内容相同， 返回的哈希码也相同。</li>
@@ -610,28 +716,263 @@
 </li>
 </ol>
 <p>Simple Implementation of HashMap in Java.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">public class myHashMap &#123;</span><br><span class="line">    private class Node&#123;</span><br><span class="line">        private String key;</span><br><span class="line">        private String value;</span><br><span class="line">        private Node next;</span><br><span class="line">        public Node()&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        public Node(String key, String value)&#123;</span><br><span class="line">            this.key= key;</span><br><span class="line">            this.value= value;</span><br><span class="line">        &#125;</span><br><span class="line">        public String getKey()&#123;</span><br><span class="line">            return key;</span><br><span class="line">        &#125;</span><br><span class="line">        public void setKey(String key)&#123;</span><br><span class="line">            this.key= key;</span><br><span class="line">        &#125;</span><br><span class="line">        public String getValue()&#123;</span><br><span class="line">            return value;</span><br><span class="line">        &#125;</span><br><span class="line">        public void setValue(String value)&#123;</span><br><span class="line">            this.value= value;</span><br><span class="line">        &#125;</span><br><span class="line">        public Node getNext()&#123;</span><br><span class="line">            return next;</span><br><span class="line">        &#125;</span><br><span class="line">        public void setNext(Node next)&#123;</span><br><span class="line">            this.next= next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private int BUCKET_ARRAY_SIZE= 256;</span><br><span class="line">    private Node bucketArray[]= new Node[BUCKET_ARRAY_SIZE];</span><br><span class="line">    public myHashMap(int initialSize)&#123;</span><br><span class="line">        this.BUCKET_ARRAY_SIZE= initialSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void put(String key, String value)&#123;</span><br><span class="line">        int hash= Math.abs(key.hashCode()%BUCKET_ARRAY_SIZE);</span><br><span class="line">        Node entry= new Node(key, value);</span><br><span class="line">        if(bucketArray[hash]== null)&#123;</span><br><span class="line">            bucketArray[hash]= entry;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            Node current= bucketArray[hash];</span><br><span class="line">            while(current.next!= null)&#123;</span><br><span class="line">                if(current.getKey().equals(entry.getKey()))&#123;</span><br><span class="line">                    current.setValue(entry.getValue());</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                current= current.next;</span><br><span class="line">            &#125;</span><br><span class="line">            current.next= entry;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public String get(String Key)&#123;</span><br><span class="line">        int hash= Math.abs(Key.hashCode()%BUCKET_ARRAY_SIZE);</span><br><span class="line">        Node n= bucketArray[hash];</span><br><span class="line">        while(n!= null)&#123;</span><br><span class="line">            if(n.getKey().equals(Key))&#123;</span><br><span class="line">                return n.getValue();</span><br><span class="line">            &#125;</span><br><span class="line">            n= n.getNext();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="equals-and-hashCode"><a href="#equals-and-hashCode" class="headerlink" title="equals() and hashCode()"></a>equals() and hashCode()</h3><p>As you know this method priovides the hashcode of an object, Basically the default implementation of hashCode() provided by Object is derived by mapping the memory address to an integer value. If look into the source of Object class, you will find the following code for the hashCode. public native int hashCode(); It indicates that hashCode is the native implementation which provides the memory address to a certain content. However it is possible to override the hashCode method in your implementation class.</p>
+<pre><code>public class myHashMap {
+    private class Node{
+        private String key;
+        private String value;
+        private Node next;
+        public Node(){
+
+        }
+        public Node(String key, String value){
+            this.key= key;
+            this.value= value;
+        }
+        public String getKey(){
+            return key;
+        }
+        public void setKey(String key){
+            this.key= key;
+        }
+        public String getValue(){
+            return value;
+        }
+        public void setValue(String value){
+            this.value= value;
+        }
+        public Node getNext(){
+            return next;
+        }
+        public void setNext(Node next){
+            this.next= next;
+        }
+    }
+    private int BUCKET_ARRAY_SIZE= 256;
+    private Node bucketArray[]= new Node[BUCKET_ARRAY_SIZE];
+    public myHashMap(int initialSize){
+        this.BUCKET_ARRAY_SIZE= initialSize;
+    }
+
+    public void put(String key, String value){
+        int hash= Math.abs(key.hashCode()%BUCKET_ARRAY_SIZE);
+        Node entry= new Node(key, value);
+        if(bucketArray[hash]== null){
+            bucketArray[hash]= entry;
+        }else{
+            Node current= bucketArray[hash];
+            while(current.next!= null){
+                if(current.getKey().equals(entry.getKey())){
+                    current.setValue(entry.getValue());
+                    return;
+                }
+                current= current.next;
+            }
+            current.next= entry;
+        }
+    }
+    public String get(String Key){
+        int hash= Math.abs(Key.hashCode()%BUCKET_ARRAY_SIZE);
+        Node n= bucketArray[hash];
+        while(n!= null){
+            if(n.getKey().equals(Key)){
+                return n.getValue();
+            }
+            n= n.getNext();
+        }
+        return null;
+    }
+}
+</code></pre><h3 id="equals-and-hashCode"><a href="#equals-and-hashCode" class="headerlink" title="equals() and hashCode()"></a>equals() and hashCode()</h3><p>As you know this method priovides the hashcode of an object, Basically the default implementation of hashCode() provided by Object is derived by mapping the memory address to an integer value. If look into the source of Object class, you will find the following code for the hashCode. public native int hashCode(); It indicates that hashCode is the native implementation which provides the memory address to a certain content. However it is possible to override the hashCode method in your implementation class.</p>
 <h3 id="equals"><a href="#equals" class="headerlink" title="equals()"></a>equals()</h3><p>This particular method is used to make equal comparison between two objects.</p>
 <p>This particular method is used to make equal comparison between two objects. There are two types of comparisons in Java. One is using “= =” operator and another is “equals()”. I hope that you know the difference between this two. More specifically the “.equals()” refers to equivalence relations. So in broad sense you say that two objects are equivalent they satisfy the “equals()” condition. If you look into the source code of Object class you will find the following code for the equals() method.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) </span><br><span class="line">&#123;</span><br><span class="line">	return (this == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Now I will explain you when to override the equals() and hashCode() methods and why it is necessary to override these methods. In this regard there is a rule of thumb that if you are going to override the one of the methods( ie equals() and hashCode() ) , you have to override the both otherwise it is a violation of contract made for equals() and hashCode(). Please refer to the Sun’s java docs for the method’s contract. I provide some test case scenario where you will find the significance of these methods. Case-1: You can override the hashCode method in your own way. Please refer to the following example.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Emp </span><br><span class="line">&#123;</span><br><span class="line">	private int age ;</span><br><span class="line">	</span><br><span class="line">	public Emp( int age )</span><br><span class="line">	&#123;</span><br><span class="line">		super();</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public int hashCode()</span><br><span class="line">	&#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>In the above example class “Emp” the variable age is the significant factor. Here the hashCode value will return the age of the person. Now let us consider the following test harness class.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class TestEmp</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args) </span><br><span class="line">	&#123;</span><br><span class="line">		Emp emp1 = new Emp(23);</span><br><span class="line">		System.out.println(&quot;emp1.hashCode()---&gt;&gt;&gt;&quot;+emp1.hashCode());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>If you run the above program, the output will be the age what you have given i.e. 23. Now question arises whether there is any way we can get the original hashCode(). We can say that if we do not override the hashCode() method what could have been the hashCode of this object. However please do not feel depressed, Java provide another approach even if you have overridden the hashCode() method , still you can get the original hashCode of a particular class. Now run the following test harness program.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class TestEmp</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args) </span><br><span class="line">	&#123;</span><br><span class="line">		Emp emp1 = new Emp(23);</span><br><span class="line">		System.out.println(&quot;Overridden hashCode()---&gt;&gt;&gt;&quot;+emp1.hashCode());</span><br><span class="line">		int originalHashCode = System.identityHashCode(emp1);</span><br><span class="line">		System.out.println(&quot;Original hashCode of Emp----&gt;&gt;&gt;&quot;+originalHashCode);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Here the output will be like this Overridden hashCode()—&gt;&gt;&gt;23 Original hashCode of Emp—-&gt;&gt;&gt;8567361 As you know the above number is arbitrary, it depends upon your system. So then why it is necessary to override this method. There is one reason that if want to compare two objects based upon the equals() method. Although in a very simple class like “Emp”, you can achieve without overriding hashCode() method. But if you do this , you are going to violate the contract for the methods hashCode() and hashCode() of the object class. The similar case is for the method equals(). So funcational point is that if want to compare two objects based upon the equals() method you have to override both hashCode() and equals() methods. Please have look into the Emp class with the overridden methods and the related test harness class.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Emp </span><br><span class="line">&#123;</span><br><span class="line">	private int age ;</span><br><span class="line">	</span><br><span class="line">	public Emp( int age )</span><br><span class="line">	&#123;</span><br><span class="line">		super();</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public int hashCode()</span><br><span class="line">	&#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public boolean equals( Object obj )</span><br><span class="line">	&#123;</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		Emp emp = ( Emp )obj;</span><br><span class="line">		if( emp.age == age )</span><br><span class="line">			flag = true;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>The related test harness class is given below.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class TestEmp</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args) </span><br><span class="line">	&#123;</span><br><span class="line">		Emp emp1 = new Emp(23);</span><br><span class="line">		Emp emp2 = new Emp(23);</span><br><span class="line">		System.out.println(&quot;emp1.equals(emp2)---&gt;&gt;&gt;&quot;+emp1.equals(emp2));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Case- 2 Think of a test scenario where you want to store your objects in a HasSet and you want to find a particular object. First let us see if we do not override the methods and we want to store the objects in the HashSet. Let us analyse the impact of it from the following code.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Emp </span><br><span class="line">&#123;</span><br><span class="line">	private int age ;</span><br><span class="line">	</span><br><span class="line">	public Emp( int age )</span><br><span class="line">	&#123;</span><br><span class="line">		super();</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>In the above code it is a normal class. Now let us see the test harness class.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">import java.util.HashSet;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class TestEmp</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args) </span><br><span class="line">	&#123;</span><br><span class="line">		Emp emp1 = new Emp(23);</span><br><span class="line">		Emp emp2 = new Emp(24);</span><br><span class="line">		Emp emp3 = new Emp(25);</span><br><span class="line">		Emp emp4 = new Emp(26);</span><br><span class="line">		Emp emp5 = new Emp(27);</span><br><span class="line">		HashSet&lt;Emp&gt; hs = new HashSet&lt;Emp&gt;();</span><br><span class="line">		hs.add(emp1);</span><br><span class="line">		hs.add(emp2);</span><br><span class="line">		hs.add(emp3);</span><br><span class="line">		hs.add(emp4);</span><br><span class="line">		hs.add(emp5);</span><br><span class="line">		</span><br><span class="line">		System.out.println(&quot;HashSet Size---&gt;&gt;&gt;&quot;+hs.size());</span><br><span class="line">		System.out.println(&quot;hs.contains( new Emp(25))---&gt;&gt;&gt;&quot;+hs.contains(new Emp(25)));</span><br><span class="line">		System.out.println(&quot;hs.remove( new Emp(24)---&gt;&gt;&gt;&quot;+hs.remove( new Emp(24));</span><br><span class="line">		System.out.println(&quot;Now HashSet Size---&gt;&gt;&gt;&quot;+hs.size());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>If you run the above program, the will output will be like the following. HashSet Size—&gt;&gt;&gt;5 hs.contains( new Emp(25))—&gt;&gt;&gt;false hs.remove( new Emp(24)—&gt;&gt;&gt;false Now HashSet Size—&gt;&gt;&gt;5 It means that you can not find the object. However it is not the case for Integer object. You can put object of type Integer in a HashSet and you can try and you can see the effect. Now let us modify the “Emp” class so that we will get over the problems what we faced in the above test harness class.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package com.ddlab.core;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author Debadatta Mishra(PIKU)</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class Emp </span><br><span class="line">&#123;</span><br><span class="line">	private int age ;</span><br><span class="line">	</span><br><span class="line">	public Emp( int age )</span><br><span class="line">	&#123;</span><br><span class="line">		super();</span><br><span class="line">		this.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public int hashCode()</span><br><span class="line">	&#123;</span><br><span class="line">		return age;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public boolean equals( Object obj )</span><br><span class="line">	&#123;</span><br><span class="line">		boolean flag = false;</span><br><span class="line">		Emp emp = ( Emp )obj;</span><br><span class="line">		if( emp.age == age )</span><br><span class="line">			flag = true;</span><br><span class="line">		return flag;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Here in the above class, we have overridden the hashCode() and equals() methods. Now if you run the same test harness class, you will get the desired output like the following. HashSet Size—&gt;&gt;&gt;5 hs.contains( new Emp(25))—&gt;&gt;&gt;true hs.remove( new Emp(24))—&gt;&gt;&gt;true Now HashSet Size—&gt;&gt;&gt;4 Case – 3 In this case you want to use your object as key not the value in the HashMap. So you have to override both the methods hashCode() and equals(). However it is left to the reader to create the object and test the feature in a Map. Case-4 If want to make your own immutable object , it will be wiser to override the equals() and hashCode() methods. To test the above programs, please create the appropriate package as mentioned in the program. You can also create your own package and modify the package name in the above programs. You can all the code in your favorable java editor.</p>
+<pre><code>public boolean equals(Object obj) 
+{
+    return (this == obj);
+}
+</code></pre><p>Now I will explain you when to override the equals() and hashCode() methods and why it is necessary to override these methods. In this regard there is a rule of thumb that if you are going to override the one of the methods( ie equals() and hashCode() ) , you have to override the both otherwise it is a violation of contract made for equals() and hashCode(). Please refer to the Sun’s java docs for the method’s contract. I provide some test case scenario where you will find the significance of these methods. Case-1: You can override the hashCode method in your own way. Please refer to the following example.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class Emp 
+{
+    private int age ;
+
+    public Emp( int age )
+    {
+        super();
+        this.age = age;
+    }
+
+    public int hashCode()
+    {
+        return age;
+    }
+}
+</code></pre><p>In the above example class “Emp” the variable age is the significant factor. Here the hashCode value will return the age of the person. Now let us consider the following test harness class.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class TestEmp
+{
+    public static void main(String[] args) 
+    {
+        Emp emp1 = new Emp(23);
+        System.out.println(&quot;emp1.hashCode()---&gt;&gt;&gt;&quot;+emp1.hashCode());
+    }
+}
+</code></pre><p>If you run the above program, the output will be the age what you have given i.e. 23. Now question arises whether there is any way we can get the original hashCode(). We can say that if we do not override the hashCode() method what could have been the hashCode of this object. However please do not feel depressed, Java provide another approach even if you have overridden the hashCode() method , still you can get the original hashCode of a particular class. Now run the following test harness program.</p>
+<pre><code>package com.ddlab.core;
+
+package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class TestEmp
+{
+    public static void main(String[] args) 
+    {
+        Emp emp1 = new Emp(23);
+        System.out.println(&quot;Overridden hashCode()---&gt;&gt;&gt;&quot;+emp1.hashCode());
+        int originalHashCode = System.identityHashCode(emp1);
+        System.out.println(&quot;Original hashCode of Emp----&gt;&gt;&gt;&quot;+originalHashCode);
+    }
+}
+</code></pre><p>Here the output will be like this Overridden hashCode()—&gt;&gt;&gt;23 Original hashCode of Emp—-&gt;&gt;&gt;8567361 As you know the above number is arbitrary, it depends upon your system. So then why it is necessary to override this method. There is one reason that if want to compare two objects based upon the equals() method. Although in a very simple class like “Emp”, you can achieve without overriding hashCode() method. But if you do this , you are going to violate the contract for the methods hashCode() and hashCode() of the object class. The similar case is for the method equals(). So funcational point is that if want to compare two objects based upon the equals() method you have to override both hashCode() and equals() methods. Please have look into the Emp class with the overridden methods and the related test harness class.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class Emp 
+{
+    private int age ;
+
+    public Emp( int age )
+    {
+        super();
+        this.age = age;
+    }
+
+    public int hashCode()
+    {
+        return age;
+    }
+
+    public boolean equals( Object obj )
+    {
+        boolean flag = false;
+        Emp emp = ( Emp )obj;
+        if( emp.age == age )
+            flag = true;
+        return flag;
+    }
+}
+</code></pre><p>The related test harness class is given below.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class TestEmp
+{
+    public static void main(String[] args) 
+    {
+        Emp emp1 = new Emp(23);
+        Emp emp2 = new Emp(23);
+        System.out.println(&quot;emp1.equals(emp2)---&gt;&gt;&gt;&quot;+emp1.equals(emp2));
+    }
+}
+</code></pre><p>Case- 2 Think of a test scenario where you want to store your objects in a HasSet and you want to find a particular object. First let us see if we do not override the methods and we want to store the objects in the HashSet. Let us analyse the impact of it from the following code.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class Emp 
+{
+    private int age ;
+
+    public Emp( int age )
+    {
+        super();
+        this.age = age;
+    }
+
+}
+</code></pre><p>In the above code it is a normal class. Now let us see the test harness class.</p>
+<pre><code>package com.ddlab.core;
+
+import java.util.HashSet;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class TestEmp
+{
+    public static void main(String[] args) 
+    {
+        Emp emp1 = new Emp(23);
+        Emp emp2 = new Emp(24);
+        Emp emp3 = new Emp(25);
+        Emp emp4 = new Emp(26);
+        Emp emp5 = new Emp(27);
+        HashSet&lt;Emp&gt; hs = new HashSet&lt;Emp&gt;();
+        hs.add(emp1);
+        hs.add(emp2);
+        hs.add(emp3);
+        hs.add(emp4);
+        hs.add(emp5);
+
+        System.out.println(&quot;HashSet Size---&gt;&gt;&gt;&quot;+hs.size());
+        System.out.println(&quot;hs.contains( new Emp(25))---&gt;&gt;&gt;&quot;+hs.contains(new Emp(25)));
+        System.out.println(&quot;hs.remove( new Emp(24)---&gt;&gt;&gt;&quot;+hs.remove( new Emp(24));
+        System.out.println(&quot;Now HashSet Size---&gt;&gt;&gt;&quot;+hs.size());
+    }
+}
+</code></pre><p>If you run the above program, the will output will be like the following. HashSet Size—&gt;&gt;&gt;5 hs.contains( new Emp(25))—&gt;&gt;&gt;false hs.remove( new Emp(24)—&gt;&gt;&gt;false Now HashSet Size—&gt;&gt;&gt;5 It means that you can not find the object. However it is not the case for Integer object. You can put object of type Integer in a HashSet and you can try and you can see the effect. Now let us modify the “Emp” class so that we will get over the problems what we faced in the above test harness class.</p>
+<pre><code>package com.ddlab.core;
+
+/**
+ * @author Debadatta Mishra(PIKU)
+ *
+ */
+public class Emp 
+{
+    private int age ;
+
+    public Emp( int age )
+    {
+        super();
+        this.age = age;
+    }
+
+    public int hashCode()
+    {
+        return age;
+    }
+
+    public boolean equals( Object obj )
+    {
+        boolean flag = false;
+        Emp emp = ( Emp )obj;
+        if( emp.age == age )
+            flag = true;
+        return flag;
+    }
+}
+</code></pre><p>Here in the above class, we have overridden the hashCode() and equals() methods. Now if you run the same test harness class, you will get the desired output like the following. HashSet Size—&gt;&gt;&gt;5 hs.contains( new Emp(25))—&gt;&gt;&gt;true hs.remove( new Emp(24))—&gt;&gt;&gt;true Now HashSet Size—&gt;&gt;&gt;4 Case – 3 In this case you want to use your object as key not the value in the HashMap. So you have to override both the methods hashCode() and equals(). However it is left to the reader to create the object and test the feature in a Map. Case-4 If want to make your own immutable object , it will be wiser to override the equals() and hashCode() methods. To test the above programs, please create the appropriate package as mentioned in the program. You can also create your own package and modify the package name in the above programs. You can all the code in your favorable java editor.</p>
 
         
     
@@ -652,7 +993,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/02/03/Node.js 学习笔记/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/02/03/Resume Review/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -709,7 +1050,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        liyanchen128@outlook.com
         <b class="caret"></b>
     </a>
 </div>
@@ -722,7 +1063,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="liyanchen128@outlook.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -878,8 +1219,20 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Lic128" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/liyan-chen-015063127/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
     
 
     <!-- Zhihu -->
@@ -979,6 +1332,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -989,6 +1348,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
-    <meta name="keywords" content=",Java">
+    <meta name="keywords" content="Programming,Java">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -270,7 +275,7 @@
             "@type": "ImageObject",
             "url": "/img/avatar.png"
         },
-        "description": "Hi, nice to meet you"
+        "description": "醉里不知天在水，满船清梦压星河"
     },
     "publisher": {
         "@type": "Organization",
@@ -280,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Java",
+    "keywords": ",JavaProgramming",
     "description": "这是一个找不到工作/妹子的老实人",
 }
 </script>
@@ -438,41 +443,23 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java面试问题&url=http://lic128.me/2018/02/03/Java面试问题/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Weibo
-            </li>
-        </a>
-    
 
     <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java面试问题&url=http://lic128.me/2018/02/03/Java面试问题/index.html&via=Liyan Chen" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Twitter
-            </li>
-        </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Java面试问题/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Facebook
-            </li>
-        </a>
-    
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Java面试问题/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Google+
-            </li>
-        </a>
-    
 
     <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://lic128.me/2018/02/03/Java面试问题/index.html&title=Java面试问题" target="_blank">
+            <li class="mdl-menu__item">
+                Share to LinkedIn
+            </li>
+        </a>
     
 
     <!-- Share QQ -->
@@ -508,29 +495,130 @@
 <h4 id="Nested-top-level-classes"><a href="#Nested-top-level-classes" class="headerlink" title="Nested top-level classes"></a>Nested top-level classes</h4><p>If you declare a class within a class and specify the static modifier, the compiler treats the class just like any other top-level class.</p>
 <p>Any class outside the declaring class accesses the nested class with the declaring class name acting similarly to a package. eg, outer.inner. Top-level inner classes implicitly have access only to static variables. There can also be inner interfaces. All of these are of the nested top-level variety.</p>
 <p>静态内部类也是定义在另一个类里面的类， 只不过在类的前面多了一个关键字static。 静态内部类是不需要依赖于外部类的， 这点和类的静态成员属性有点类似。并且它不能使用内部类的非static成员变量或者方法， 这点很好理解， 因为在没有外部类的对象的情况下， 可以创建静态内部类的对象， 如果允许访问外部类的非static成员就会产生矛盾， 因为外部类的非static成员必须依附于具体的对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Outer &#123;</span><br><span class="line">	static class Inner &#123;</span><br><span class="line">		void go() &#123;</span><br><span class="line">			System.out.println(&quot;Inner class reference is: &quot; + this);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">public class Test &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Outer.Inner n = new Outer.Inner();</span><br><span class="line">		n.go();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Member-classes"><a href="#Member-classes" class="headerlink" title="Member classes"></a>Member classes</h4><p>Member inner classes are just like other member methods and member variables and access to the member class is restricted, just like methods and variables. This means a public member classes acts similarly to a nested top-level class. The primary difference between member classes and nested top-level classes is that member classes is that member classes have access to the specific instance of the enclosing class.</p>
+<pre><code>class Outer {
+    static class Inner {
+        void go() {
+            System.out.println(&quot;Inner class reference is: &quot; + this);
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Outer.Inner n = new Outer.Inner();
+        n.go();
+    }
+}
+</code></pre><h4 id="Member-classes"><a href="#Member-classes" class="headerlink" title="Member classes"></a>Member classes</h4><p>Member inner classes are just like other member methods and member variables and access to the member class is restricted, just like methods and variables. This means a public member classes acts similarly to a nested top-level class. The primary difference between member classes and nested top-level classes is that member classes is that member classes have access to the specific instance of the enclosing class.</p>
 <p>成员内部类， 就是作为外部类的成员， 可以直接使用外部类的所有成员和方法， 即使是private的。 同时外部类要访问内部类的所有成员变量/方法， 则需要通过内部类的对象来获取。</p>
 <p>要注意的是， 成员内部类不能含有static的变量和方法。 因为成员内部类需要先创建了外部类， 才能创建它自己的。</p>
 <p>在成员内部类要引用外部类对象时， 使用outer.this 来表示外部类对象； 创建内部类对象， 可以使用 outer.inner obj= outerobj. new innier();</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">    private int x = 100;</span><br><span class="line"> </span><br><span class="line">    public void makeInner()&#123;</span><br><span class="line">        Inner in = new Inner();</span><br><span class="line">        in.seeOuter();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    class Inner&#123;</span><br><span class="line">        public void seeOuter()&#123;</span><br><span class="line">            System.out.println(&quot;Outer x is &quot; + x);</span><br><span class="line">            System.out.println(&quot;Inner class reference is &quot; + this);</span><br><span class="line">            System.out.println(&quot;Outer class reference is &quot; + Outer.this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String [] args)&#123;</span><br><span class="line">    	Outer o = new Outer();</span><br><span class="line">        Inner i = o.new Inner();</span><br><span class="line">        i.seeOuter();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Local-classes"><a href="#Local-classes" class="headerlink" title="Local classes"></a>Local classes</h4><p>Local classes are like local variables, specific to a block of code. Their visibility is only within the block of their declaration. In order for the class to be useful beyond the declaration block, it would need to implement a more publicly available interface.Because local classes are not members, the modifiers public, protected, private, and static are not usable.</p>
+<pre><code>public class Outer {
+    private int x = 100;
+
+    public void makeInner(){
+        Inner in = new Inner();
+        in.seeOuter();
+    }
+
+    class Inner{
+        public void seeOuter(){
+            System.out.println(&quot;Outer x is &quot; + x);
+            System.out.println(&quot;Inner class reference is &quot; + this);
+            System.out.println(&quot;Outer class reference is &quot; + Outer.this);
+        }
+    }
+
+    public static void main(String [] args){
+        Outer o = new Outer();
+        Inner i = o.new Inner();
+        i.seeOuter();
+    }
+}
+</code></pre><h4 id="Local-classes"><a href="#Local-classes" class="headerlink" title="Local classes"></a>Local classes</h4><p>Local classes are like local variables, specific to a block of code. Their visibility is only within the block of their declaration. In order for the class to be useful beyond the declaration block, it would need to implement a more publicly available interface.Because local classes are not members, the modifiers public, protected, private, and static are not usable.</p>
 <p>局部内部类是定义在一个方法或者一个作用域里面的类， 它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Outer &#123;</span><br><span class="line">	private String x = &quot;outer&quot;;</span><br><span class="line"> </span><br><span class="line">	public void doStuff() &#123;</span><br><span class="line">		class MyInner &#123;</span><br><span class="line">			public void seeOuter() &#123;</span><br><span class="line">				System.out.println(&quot;x is &quot; + x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"> </span><br><span class="line">		MyInner i = new MyInner();</span><br><span class="line">		i.seeOuter();</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		Outer o = new Outer();</span><br><span class="line">		o.doStuff();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Anonymous-classes"><a href="#Anonymous-classes" class="headerlink" title="Anonymous classes"></a>Anonymous classes</h4><p>Anonymous inner classes extend local inner classes one level further. As anonymous classes have no name, you cannot provide a constructor.</p>
+<pre><code>public class Outer {
+    private String x = &quot;outer&quot;;
+
+    public void doStuff() {
+        class MyInner {
+            public void seeOuter() {
+                System.out.println(&quot;x is &quot; + x);
+            }
+        }
+
+        MyInner i = new MyInner();
+        i.seeOuter();
+    }
+
+    public static void main(String[] args) {
+        Outer o = new Outer();
+        o.doStuff();
+    }
+}
+</code></pre><h4 id="Anonymous-classes"><a href="#Anonymous-classes" class="headerlink" title="Anonymous classes"></a>Anonymous classes</h4><p>Anonymous inner classes extend local inner classes one level further. As anonymous classes have no name, you cannot provide a constructor.</p>
 <p>匿名内部类最常使用的情况就是在多线程的实现上， 因为要实现多线程必须继承Thread类或者实现Runnable接口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">button.addActionListener(new ActionListener()&#123;</span><br><span class="line">     public void actionPerformed(ActionEvent e)&#123;</span><br><span class="line">         comp.setText(&quot;Button has been clicked&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="What-is-the-difference-between-an-Interface-and-an-abstract-class"><a href="#What-is-the-difference-between-an-Interface-and-an-abstract-class" class="headerlink" title="What is the difference between an Interface and an abstract class?"></a>What is the difference between an Interface and an abstract class?</h2><p>An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implements default behavior and all methods are implicitly abstract . An interface has all public members and no implementation. Am abstract class is a class which may have the usual flavors of class members(private , protected, etc.), but has some abstract methods.</p>
+<pre><code>button.addActionListener(new ActionListener(){
+     public void actionPerformed(ActionEvent e){
+         comp.setText(&quot;Button has been clicked&quot;);
+     }
+});
+</code></pre><h2 id="What-is-the-difference-between-an-Interface-and-an-abstract-class"><a href="#What-is-the-difference-between-an-Interface-and-an-abstract-class" class="headerlink" title="What is the difference between an Interface and an abstract class?"></a>What is the difference between an Interface and an abstract class?</h2><p>An abstract class can have instance methods that implement a default behavior. An Interface can only declare constants and instance methods, but cannot implements default behavior and all methods are implicitly abstract . An interface has all public members and no implementation. Am abstract class is a class which may have the usual flavors of class members(private , protected, etc.), but has some abstract methods.</p>
 <p>抽象类是用来捕捉子类中的通用特性的。 它不能被实例化， 只能被用作子类的超类。 抽象类是被用来创建继承层级里子类的模板。</p>
 <p>以JDK中的GenericServlet为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public abstract class GenericServlet implements Servlet, ServletConfig, Serializable &#123;</span><br><span class="line">    // abstract method</span><br><span class="line">    abstract void service(ServletRequest req, ServletResponse res);</span><br><span class="line"> </span><br><span class="line">    void init() &#123;</span><br><span class="line">        // Its implementation</span><br><span class="line">    &#125;</span><br><span class="line">    // other method related to Servlet</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当HttpServlet类继承GenericServlet 时， 它提供了service方法的实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class HttpServlet extends GenericServlet &#123;</span><br><span class="line">    void service(ServletRequest req, ServletResponse res) &#123;</span><br><span class="line">        // implementation</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    protected void doGet(HttpServletRequest req, HttpServletResponse resp) &#123;</span><br><span class="line">        // Implementation</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    protected void doPost(HttpServletRequest req, HttpServletResponse resp) &#123;</span><br><span class="line">        // Implementation</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    // some other methods related to HttpServlet</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接口是抽象方法的集合。 如果一个类实现了某个接口， 那么它就继承了这个接口的抽象方法。 这就像契约模式， 如果实现了这个接口， 那么就必须确保使用这些方法。 接口只是一种形式， 接口自身不能做任何事情。 以Externalizable接口为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public interface Externalizable extends Serializable &#123;</span><br><span class="line"> </span><br><span class="line">    void writeExternal(ObjectOutput out) throws IOException;</span><br><span class="line"> </span><br><span class="line">    void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当你实现这个接口时， 你就需要实现上面的两个方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Employee implements Externalizable &#123;</span><br><span class="line"> </span><br><span class="line">    int employeeId;</span><br><span class="line">    String employeeName;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException &#123;</span><br><span class="line">        employeeId = in.readInt();</span><br><span class="line">        employeeName = (String) in.readObject();</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @Override</span><br><span class="line">    public void writeExternal(ObjectOutput out) throws IOException &#123;</span><br><span class="line"> </span><br><span class="line">        out.writeInt(employeeId);</span><br><span class="line">        out.writeObject(employeeName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<table>
+<pre><code>public abstract class GenericServlet implements Servlet, ServletConfig, Serializable {
+    // abstract method
+    abstract void service(ServletRequest req, ServletResponse res);
+
+    void init() {
+        // Its implementation
+    }
+    // other method related to Servlet
+}
+</code></pre><p>当HttpServlet类继承GenericServlet 时， 它提供了service方法的实现：</p>
+<pre><code>public class HttpServlet extends GenericServlet {
+    void service(ServletRequest req, ServletResponse res) {
+        // implementation
+    }
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        // Implementation
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        // Implementation
+    }
+
+    // some other methods related to HttpServlet
+}
+</code></pre><p>接口是抽象方法的集合。 如果一个类实现了某个接口， 那么它就继承了这个接口的抽象方法。 这就像契约模式， 如果实现了这个接口， 那么就必须确保使用这些方法。 接口只是一种形式， 接口自身不能做任何事情。 以Externalizable接口为例：</p>
+<pre><code>public interface Externalizable extends Serializable {
+
+    void writeExternal(ObjectOutput out) throws IOException;
+
+    void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;
+}
+</code></pre><p>当你实现这个接口时， 你就需要实现上面的两个方法：</p>
+<pre><code>public class Employee implements Externalizable {
+
+    int employeeId;
+    String employeeName;
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        employeeId = in.readInt();
+        employeeName = (String) in.readObject();
+
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+
+        out.writeInt(employeeId);
+        out.writeObject(employeeName);
+    }
+}
+</code></pre><table>
 <thead>
 <tr>
 <th><strong>参数</strong></th>
@@ -597,10 +685,26 @@
 <p>Static methods can be overriden, but they cannot be overriden to be non-static,Whereas final methods cannot be overridden.</p>
 <p>A static method is a method that’s invoked through a class, rather than a specific object of that class. Static methods can only access static variables – they can’t use anything that’s specific to a particular object. Nonstatic methods (or instance methods) must be called on a specific object and can use the object’s instance data.<br>A final method is just a method that cannot be overridden – while static methods are implicitly final, you might also want to create an final instance method.</p>
 <p>In this code:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Foo &#123;</span><br><span class="line">    public static void method() &#123;</span><br><span class="line">        System.out.println(&quot;in Foo&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class Bar extends Foo &#123;</span><br><span class="line">    public static void method() &#123;</span><br><span class="line">        System.out.println(&quot;in Bar&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>the static method in Bar ‘hides’ the static method declared in Foo, as opposed to overriding it in the polymorphism sense.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Test &#123;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line"> </span><br><span class="line">        Foo.method();</span><br><span class="line">        Bar.method();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>will output:</p>
+<pre><code>class Foo {
+    public static void method() {
+        System.out.println(&quot;in Foo&quot;);
+    }
+}
+
+class Bar extends Foo {
+    public static void method() {
+        System.out.println(&quot;in Bar&quot;);
+    }
+}
+</code></pre><p>the static method in Bar ‘hides’ the static method declared in Foo, as opposed to overriding it in the polymorphism sense.</p>
+<pre><code>class Test {
+public static void main(String[] args) {
+
+        Foo.method();
+        Bar.method();
+    }
+}
+</code></pre><p>will output:</p>
 <p>in Foo<br>in Bar</p>
 <p>Re-defining method() as final in Foo will disable the ability for Bar to hide it, and re-running main() will output:</p>
 <p>in Foo<br>in Foo</p>
@@ -659,10 +763,19 @@
 <h3 id="What-is-the-difference-between-calling-wait-and-sleep-method-in-Java-multi-threading"><a href="#What-is-the-difference-between-calling-wait-and-sleep-method-in-Java-multi-threading" class="headerlink" title="What is the difference between calling wait() and sleep() method in Java multi-threading?"></a>What is the difference between calling wait() and sleep() method in Java multi-threading?</h3><p>Though both wait and sleep introduce some form of pause in Java application, they are the tool for different needs. Wait method is used for inter-thread communication, it relinquishes lock if waiting for a condition is true and wait for notification when due to an action of another thread waiting condition becomes false. On the other hand sleep() method is just to relinquish CPU or stop execution of current thread for specified time duration. Calling sleep method doesn’t release the lock held by the current thread.</p>
 <p>中文版： <a href="http://www.importnew.com/12773.html" target="_blank" rel="noopener">http://www.importnew.com/12773.html</a></p>
 <p>When you synchronize a method, you are effectively synchronizing to the object itself. In the case of a static method, you’re synchronizing to the class of the object.</p>
-<h3 id="how-does-Java-object-casting-work-behind-the-scene"><a href="#how-does-Java-object-casting-work-behind-the-scene" class="headerlink" title="how does Java object casting work behind the scene?"></a>how does Java object casting work behind the scene?</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class parent&#123;</span><br><span class="line">  void A()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Child extends parent&#123;</span><br><span class="line">  @override</span><br><span class="line">  void A()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">Parent p= new Parent();</span><br><span class="line">Child c= (Child) p;</span><br></pre></td></tr></table></figure>
-<p>Essentially the parent class is treated like an interface might be. when you cast the child to the Parent, only the Parent API is available. However, the overridden method will still be called. So , if you do:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parent p= (Parent) new Child()</span><br><span class="line">p.a()</span><br></pre></td></tr></table></figure>
-<p>the Child’s public void a() will be called, even though it is being seem through the lens of the Parent class. However if you were to have a second method in the Child that the parent does not have, you would not be able to call that without casting the object back to a Child.</p>
+<h3 id="how-does-Java-object-casting-work-behind-the-scene"><a href="#how-does-Java-object-casting-work-behind-the-scene" class="headerlink" title="how does Java object casting work behind the scene?"></a>how does Java object casting work behind the scene?</h3><pre><code>class parent{
+  void A(){}
+}
+class Child extends parent{
+  @override
+  void A(){}
+}
+Parent p= new Parent();
+Child c= (Child) p;
+</code></pre><p>Essentially the parent class is treated like an interface might be. when you cast the child to the Parent, only the Parent API is available. However, the overridden method will still be called. So , if you do:</p>
+<pre><code>Parent p= (Parent) new Child()
+p.a()
+</code></pre><p>the Child’s public void a() will be called, even though it is being seem through the lens of the Parent class. However if you were to have a second method in the Child that the parent does not have, you would not be able to call that without casting the object back to a Child.</p>
 <h3 id="hashcode-and-equals"><a href="#hashcode-and-equals" class="headerlink" title="hashcode() and equals()"></a>hashcode() and equals()</h3><p>我们以“类的用途”来讲hashCode()和equals()的关系分两种情况来说明。</p>
 <ul>
 <li><p>第一种， 不会创建类所对应的散列表</p>
@@ -682,8 +795,88 @@
 </ul>
 <p>因为在散列表中， hashcode()相等， 即两个键值对的哈希值相等， 然而哈希值相等， 并不一定能得出键值对相等。</p>
 <p>此外， 在这种情况下， 若要判断两个对象是否相等， 除了要覆盖equals之外， 也要覆盖hashCode()函数。 否则， equals()无效。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">import java.lang.Comparable;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。</span><br><span class="line"> *</span><br><span class="line"> * @author skywang</span><br><span class="line"> * @emai kuiwu-wang@163.com</span><br><span class="line"> */</span><br><span class="line">public class ConflictHashCodeTest2&#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 新建Person对象，</span><br><span class="line">        Person p1 = new Person(&quot;eee&quot;, 100);</span><br><span class="line">        Person p2 = new Person(&quot;eee&quot;, 100);</span><br><span class="line">        Person p3 = new Person(&quot;aaa&quot;, 200);</span><br><span class="line">        Person p4 = new Person(&quot;EEE&quot;, 100);</span><br><span class="line"></span><br><span class="line">        // 新建HashSet对象 </span><br><span class="line">        HashSet set = new HashSet();</span><br><span class="line">        set.add(p1);</span><br><span class="line">        set.add(p2);</span><br><span class="line">        set.add(p3);</span><br><span class="line"></span><br><span class="line">        // 比较p1 和 p2， 并打印它们的hashCode()</span><br><span class="line">        System.out.printf(&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;, p1.equals(p2), p1.hashCode(), p2.hashCode());</span><br><span class="line">        // 比较p1 和 p4， 并打印它们的hashCode()</span><br><span class="line">        System.out.printf(&quot;p1.equals(p4) : %s; p1(%d) p4(%d)\n&quot;, p1.equals(p4), p1.hashCode(), p4.hashCode());</span><br><span class="line">        // 打印set</span><br><span class="line">        System.out.printf(&quot;set:%s\n&quot;, set);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @desc Person类。</span><br><span class="line">     */</span><br><span class="line">    private static class Person &#123;</span><br><span class="line">        int age;</span><br><span class="line">        String name;</span><br><span class="line"></span><br><span class="line">        public Person(String name, int age) &#123;</span><br><span class="line">            this.name = name;</span><br><span class="line">            this.age = age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return name + &quot; - &quot; +age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /** </span><br><span class="line">         * @desc重写hashCode </span><br><span class="line">         */  </span><br><span class="line">        @Override</span><br><span class="line">        public int hashCode()&#123;  </span><br><span class="line">            int nameHash =  name.toUpperCase().hashCode();</span><br><span class="line">            return nameHash ^ age;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /** </span><br><span class="line">         * @desc 覆盖equals方法 </span><br><span class="line">         */  </span><br><span class="line">        @Override</span><br><span class="line">        public boolean equals(Object obj)&#123;  </span><br><span class="line">            if(obj == null)&#123;  </span><br><span class="line">                return false;  </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            //如果是同一个对象返回true，反之返回false  </span><br><span class="line">            if(this == obj)&#123;  </span><br><span class="line">                return true;  </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            //判断是否类型相同  </span><br><span class="line">            if(this.getClass() != obj.getClass())&#123;  </span><br><span class="line">                return false;  </span><br><span class="line">            &#125;  </span><br><span class="line">              </span><br><span class="line">            Person person = (Person)obj;  </span><br><span class="line">            return name.equals(person.name) &amp;&amp; age==person.age;  </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​</p>
+<pre><code>import java.util.*;
+import java.lang.Comparable;
+
+/**
+ * @desc 比较equals() 返回true 以及 返回false时， hashCode()的值。
+ *
+ * @author skywang
+ * @emai kuiwu-wang@163.com
+ */
+public class ConflictHashCodeTest2{
+
+    public static void main(String[] args) {
+        // 新建Person对象，
+        Person p1 = new Person(&quot;eee&quot;, 100);
+        Person p2 = new Person(&quot;eee&quot;, 100);
+        Person p3 = new Person(&quot;aaa&quot;, 200);
+        Person p4 = new Person(&quot;EEE&quot;, 100);
+
+        // 新建HashSet对象 
+        HashSet set = new HashSet();
+        set.add(p1);
+        set.add(p2);
+        set.add(p3);
+
+        // 比较p1 和 p2， 并打印它们的hashCode()
+        System.out.printf(&quot;p1.equals(p2) : %s; p1(%d) p2(%d)\n&quot;, p1.equals(p2), p1.hashCode(), p2.hashCode());
+        // 比较p1 和 p4， 并打印它们的hashCode()
+        System.out.printf(&quot;p1.equals(p4) : %s; p1(%d) p4(%d)\n&quot;, p1.equals(p4), p1.hashCode(), p4.hashCode());
+        // 打印set
+        System.out.printf(&quot;set:%s\n&quot;, set);
+    }
+
+    /**
+     * @desc Person类。
+     */
+    private static class Person {
+        int age;
+        String name;
+
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        public String toString() {
+            return name + &quot; - &quot; +age;
+        }
+
+        /** 
+         * @desc重写hashCode 
+         */  
+        @Override
+        public int hashCode(){  
+            int nameHash =  name.toUpperCase().hashCode();
+            return nameHash ^ age;
+        }
+
+        /** 
+         * @desc 覆盖equals方法 
+         */  
+        @Override
+        public boolean equals(Object obj){  
+            if(obj == null){  
+                return false;  
+            }  
+
+            //如果是同一个对象返回true，反之返回false  
+            if(this == obj){  
+                return true;  
+            }  
+
+            //判断是否类型相同  
+            if(this.getClass() != obj.getClass()){  
+                return false;  
+            }  
+
+            Person person = (Person)obj;  
+            return name.equals(person.name) &amp;&amp; age==person.age;  
+        } 
+    }
+}
+</code></pre><p>​</p>
 </li>
 </ul>
 <p>这里有个比较好的例子， 由这个例子， 我们可以看出来， 因为通过这个来讲的话， hashset在进行add的时候， 我们先比较hashcode， 然后再进行equal。 所以， hashcode这个只和分桶有关， 我们还要通过equals的比较才能进行更新。</p>
@@ -756,7 +949,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        liyanchen128@outlook.com
         <b class="caret"></b>
     </a>
 </div>
@@ -769,7 +962,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="liyanchen128@outlook.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -925,8 +1118,20 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Lic128" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/liyan-chen-015063127/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
     
 
     <!-- Zhihu -->
@@ -1026,6 +1231,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1036,6 +1247,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

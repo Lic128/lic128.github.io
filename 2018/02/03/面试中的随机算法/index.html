@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
-    <meta name="keywords" content=",Algorithm">
+    <meta name="keywords" content="Programming,Algorithm">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -270,7 +275,7 @@
             "@type": "ImageObject",
             "url": "/img/avatar.png"
         },
-        "description": "Hi, nice to meet you"
+        "description": "醉里不知天在水，满船清梦压星河"
     },
     "publisher": {
         "@type": "Organization",
@@ -280,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Algorithm",
+    "keywords": ",AlgorithmProgramming",
     "description": "这是一个找不到工作/妹子的老实人",
 }
 </script>
@@ -438,41 +443,23 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=面试中的随机算法&url=http://lic128.me/2018/02/03/面试中的随机算法/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Weibo
-            </li>
-        </a>
-    
 
     <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=面试中的随机算法&url=http://lic128.me/2018/02/03/面试中的随机算法/index.html&via=Liyan Chen" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Twitter
-            </li>
-        </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/面试中的随机算法/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Facebook
-            </li>
-        </a>
-    
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/面试中的随机算法/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Google+
-            </li>
-        </a>
-    
 
     <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://lic128.me/2018/02/03/面试中的随机算法/index.html&title=面试中的随机算法" target="_blank">
+            <li class="mdl-menu__item">
+                Share to LinkedIn
+            </li>
+        </a>
     
 
     <!-- Share QQ -->
@@ -495,11 +482,22 @@
 </blockquote>
 <h3 id="随机排列数组"><a href="#随机排列数组" class="headerlink" title="随机排列数组"></a>随机排列数组</h3><p>假设给定一个数组A， 它包含元素1到N， 我们的目标是构造这个数组的一个随机排列。</p>
 <p>一个常用的方法是 原地排列给定数组， 可以在O(N)的时间内完成， 伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RANDOMIZE-IN-PLACE ( A , n ) for i ←1 to n do swap A[i] ↔ A[RANDOM(i , n )]</span><br></pre></td></tr></table></figure>
-<p>对于该算法的正确性的证明， 戳这里： <a href="http://www.jianshu.com/p/f8e7070c1c6b" target="_blank" rel="noopener">here</a></p>
+<pre><code>RANDOMIZE-IN-PLACE ( A , n ) for i ←1 to n do swap A[i] ↔ A[RANDOM(i , n )]
+</code></pre><p>对于该算法的正确性的证明， 戳这里： <a href="http://www.jianshu.com/p/f8e7070c1c6b" target="_blank" rel="noopener">here</a></p>
 <p>代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public static shuffle(int[] nums)&#123;</span><br><span class="line">    Random random= new Random();</span><br><span class="line">  	for(int i= nums.length-1; i&gt;=0; i--)&#123;</span><br><span class="line">        int next=random.nextInt(i+1);</span><br><span class="line">      	swap(nums, next, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void swap(int[] nums, int i, int j)&#123;</span><br><span class="line">    int temp= nums[i];</span><br><span class="line">  	nums[i]= nums[j];</span><br><span class="line">  	nums[j]=temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="随机选取一个数字"><a href="#随机选取一个数字" class="headerlink" title="随机选取一个数字"></a>随机选取一个数字</h3><p>给定一个未知长度的整数流， 如何随机选取一个数？（所谓随机就是保证每个数被选取的概率相等）</p>
+<pre><code>public static shuffle(int[] nums){
+    Random random= new Random();
+      for(int i= nums.length-1; i&gt;=0; i--){
+        int next=random.nextInt(i+1);
+          swap(nums, next, i);
+    }
+}
+public static void swap(int[] nums, int i, int j){
+    int temp= nums[i];
+      nums[i]= nums[j];
+      nums[j]=temp;
+}
+</code></pre><h3 id="随机选取一个数字"><a href="#随机选取一个数字" class="headerlink" title="随机选取一个数字"></a>随机选取一个数字</h3><p>给定一个未知长度的整数流， 如何随机选取一个数？（所谓随机就是保证每个数被选取的概率相等）</p>
 <h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution 1"></a>Solution 1</h4><p>如果数据流不是很长， 可以存在数组中， 然后再从数组中随机选取。 当然题目说的是未知长度， 所以如果长度很大不足以保存在内存中的话会很麻烦。 这种解法有其局限性。</p>
 <h4 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2"></a>Solution 2</h4><p>如果数据流在第一个数字后结束， 那么必选第一个数字。</p>
 <p>如果数据流在第二个数字后结束， 那么我们选第二个数字的概率为1/2， 我们以1/2 的概率用第二个数字替换前面选的随机数， 得到新的随机数。</p>
@@ -507,14 +505,31 @@
 <p>如果数据流在第n个数字后结束， 那么我们选择第n个数字的概率为1/n， 即我们以1/n的概率用第n个数字替换前面选的随机数， 得到新的随机数。</p>
 <p>一个简单的方法就是使用随机函数 bigrand()%n, 其中 bigrand() 返回很大的随机整数， 当数据流到第n个数时， 如果f(n)==0, 则替换前面的已经选的随机数， 这样可以保证每个数字被选中的概率都是1/n。</p>
 <p>代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int getRand(int[] nums)// here we don&apos;t know the size of the array</span><br><span class="line">&#123;	</span><br><span class="line">	int count=0;</span><br><span class="line">	int candidate=-1;</span><br><span class="line">	Random random= new Random();</span><br><span class="line">   	for(int num: nums)&#123;</span><br><span class="line">      	int next= random.next(count+1);</span><br><span class="line">      	if(next==0)&#123;</span><br><span class="line">          	candidate= num;</span><br><span class="line">      	&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   	return candidate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="随机选取M个数字"><a href="#随机选取M个数字" class="headerlink" title="随机选取M个数字"></a>随机选取M个数字</h3><p>随机抽样问题表示如下：</p>
+<pre><code>public int getRand(int[] nums)// here we don&#39;t know the size of the array
+{    
+    int count=0;
+    int candidate=-1;
+    Random random= new Random();
+       for(int num: nums){
+          int next= random.next(count+1);
+          if(next==0){
+              candidate= num;
+          }
+       }
+       return candidate;
+}
+</code></pre><h3 id="随机选取M个数字"><a href="#随机选取M个数字" class="headerlink" title="随机选取M个数字"></a>随机选取M个数字</h3><p>随机抽样问题表示如下：</p>
 <p>要求从N个元素中随机的抽取k个元素， 其中N无法确定。</p>
 <p>这种应用的场景一般是在数据流的情况下， 由于数据只能被读取一次， 而且数据量很大， 并不能全部保存， 因此数据量N是无法在抽样开始时确定的； 但又要保持随机性， 于是有了这个问题。</p>
 <h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>解决方案就是蓄水库抽样(Reservoid sampling). 主要思想就是保持一个集合， 作为一个蓄水池， 依次遍历所有数据的时候以一定概率替换这个蓄水池中的数字。</p>
 <p>伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Init: a reservior with the size: k</span><br><span class="line">	for i= k+1 to N</span><br><span class="line">		M= rand(1, i);</span><br><span class="line">		if(M&lt;K)</span><br><span class="line">			SWAP the Mth value and ith value</span><br><span class="line">	end for</span><br></pre></td></tr></table></figure>
-<p>证明方法：</p>
+<pre><code>Init: a reservior with the size: k
+    for i= k+1 to N
+        M= rand(1, i);
+        if(M&lt;K)
+            SWAP the Mth value and ith value
+    end for
+</code></pre><p>证明方法：</p>
 <p><a href="http://blog.csdn.net/hackbuteer1/article/details/7971328" target="_blank" rel="noopener">归纳法</a></p>
 <h3 id="已知-rand-n-，-求出rand-m"><a href="#已知-rand-n-，-求出rand-m" class="headerlink" title="已知 rand(n) ， 求出rand(m)"></a>已知 rand(n) ， 求出rand(m)</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>已知一个函数rand7() 能够生成1~7 的随机数，请给出一个函数， 该函数能够生成1-10的随机数。</p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>假如已知一个函数能够生成1-49 的随机数， 那么如何以此生成1-10 的随机数呢》</p>
@@ -522,8 +537,16 @@
 <p>显然rand7至少需要执行两次， 否则产生不了1~10的数字。 通过运行rand7两次， 可以生成1~49的整数。</p>
 <p>由于49 不是10 的倍数， 所以我们需要丢弃一些值， 我们想要的数字范围为1~40， 不在此范围则丢弃并重新取样。</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int rand10()&#123;</span><br><span class="line">  	int row, col, idx;</span><br><span class="line">  	do&#123;</span><br><span class="line">      	row= rand7();</span><br><span class="line">      	col= rand7();</span><br><span class="line">      	idx= col+(row-1)*7;</span><br><span class="line">  	&#125;while(idx&gt;40);</span><br><span class="line">  	return 1+ (idx-1)%10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h4><p>上面的方法大概需要2.45次调用才能得到1个1~10 范围内的数， 下面可以进行再度优化。</p>
+<pre><code>int rand10(){
+      int row, col, idx;
+      do{
+          row= rand7();
+          col= rand7();
+          idx= col+(row-1)*7;
+      }while(idx&gt;40);
+      return 1+ (idx-1)%10;
+}
+</code></pre><h4 id="优化："><a href="#优化：" class="headerlink" title="优化："></a>优化：</h4><p>上面的方法大概需要2.45次调用才能得到1个1~10 范围内的数， 下面可以进行再度优化。</p>
 <p>对于大于40的数， 我们不必马上丢弃， 可以对41~49的数减去40可得到1-9 的随机数， 而rand7可生成1-7的随机数， 这样可以生成1-63的随机数。 对于1-60我们可以直接返回， 而61-63则丢弃， 这样需要丢弃的数只有3个， 相比前面的9个， 效率有所提高。 而对于61-63的数， 减去60之后为1-3， rand7产生1-7， 这样可以再度利用产生1-21的数， 对于1-20 我们则直接返回， 对于21 则丢弃。 这时， 丢弃的数就只有1个了， 优化再进一步。 当然这里对于rand7的调用次数也是增加了。</p>
 <p>优化了之后我们大概需要调用2.21次。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.csdn.net/sgbfblog/article/details/7753012" target="_blank" rel="noopener">已知一个函数rand7()</a></p>
@@ -624,7 +647,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        liyanchen128@outlook.com
         <b class="caret"></b>
     </a>
 </div>
@@ -637,7 +660,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="liyanchen128@outlook.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -793,8 +816,20 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Lic128" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/liyan-chen-015063127/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
     
 
     <!-- Zhihu -->
@@ -894,6 +929,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -904,6 +945,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

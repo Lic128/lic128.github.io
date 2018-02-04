@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这是一个找不到工作/妹子的老实人">
-    <meta name="keywords" content=",Java">
+    <meta name="keywords" content="Programming,Java">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -80,6 +80,11 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
         
 
     
@@ -270,7 +275,7 @@
             "@type": "ImageObject",
             "url": "/img/avatar.png"
         },
-        "description": "Hi, nice to meet you"
+        "description": "醉里不知天在水，满船清梦压星河"
     },
     "publisher": {
         "@type": "Organization",
@@ -280,7 +285,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Java",
+    "keywords": ",JavaProgramming",
     "description": "这是一个找不到工作/妹子的老实人",
 }
 </script>
@@ -438,41 +443,23 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java线程简介&url=http://lic128.me/2018/02/03/Java线程简介/index.html&pic=http://lic128.me/img/favicon.png&searchPic=false&style=simple" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Weibo
-            </li>
-        </a>
-    
 
     <!-- Share Twitter -->
-    
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java线程简介&url=http://lic128.me/2018/02/03/Java线程简介/index.html&via=Liyan Chen" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Twitter
-            </li>
-        </a>
     
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://lic128.me/2018/02/03/Java线程简介/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Facebook
-            </li>
-        </a>
-    
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://lic128.me/2018/02/03/Java线程简介/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                Share to Google+
-            </li>
-        </a>
-    
 
     <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://lic128.me/2018/02/03/Java线程简介/index.html&title=Java线程简介" target="_blank">
+            <li class="mdl-menu__item">
+                Share to LinkedIn
+            </li>
+        </a>
     
 
     <!-- Share QQ -->
@@ -499,8 +486,24 @@
 <li>调用Thread对象的start()方法， 启动线程。</li>
 </ul>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadDemo1 implements Runnable&#123;</span><br><span class="line">    private int countDown=10;</span><br><span class="line">  @Override</span><br><span class="line">  public void run()&#123;</span><br><span class="line">      while(countDown--&gt;10)&#123;</span><br><span class="line">          System.out.println(&quot;#&quot;+ Thread.currentThread().getName()+ &quot;(&quot;+ countDown+&quot;)&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">      //Runnable中run方法是一个空方法， 并不会产生任何线程行为， 必须显式地将一个任务附着到现呈上。</span><br><span class="line">    ThreadDemo1 tt= new ThreadDemo1();</span><br><span class="line">    new Thread(tt).start();</span><br><span class="line">    new Thread(tt).start();</span><br><span class="line">    System.out.println(&quot;Counting Down:&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上述方法共享countDown， 所以结果的输出只有十行。</p>
+<pre><code>public class ThreadDemo1 implements Runnable{
+    private int countDown=10;
+  @Override
+  public void run(){
+      while(countDown--&gt;10){
+          System.out.println(&quot;#&quot;+ Thread.currentThread().getName()+ &quot;(&quot;+ countDown+&quot;)&quot;);
+      }
+  }
+
+  public static void main(String[] args){
+      //Runnable中run方法是一个空方法， 并不会产生任何线程行为， 必须显式地将一个任务附着到现呈上。
+    ThreadDemo1 tt= new ThreadDemo1();
+    new Thread(tt).start();
+    new Thread(tt).start();
+    System.out.println(&quot;Counting Down:&quot;);
+  }
+}
+</code></pre><p>上述方法共享countDown， 所以结果的输出只有十行。</p>
 </li>
 <li><p>通过继承Thread类创建线程。</p>
 <ul>
@@ -509,8 +512,21 @@
 <li>调用start方法， 线程t启动， 隐含的调用run()方法。</li>
 </ul>
 <p>示例代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadDemo extends Thread&#123;</span><br><span class="line">    private int countDown=10;</span><br><span class="line">  	@Override</span><br><span class="line">  	public void run()&#123;</span><br><span class="line">		while(countDown--&gt;0)&#123;</span><br><span class="line">            System.out.println(&quot;#&quot;+ this.getName()+&quot;(&quot;+ countDown+&quot;)&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	public static void main(String[] args)&#123;</span><br><span class="line">        new ThreadDemo2().start();</span><br><span class="line">      new ThreadDemo2().start();</span><br><span class="line">      System.out.println(&quot;Counting down:&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上代码会输出20行。 因为变量并不共享。</p>
+<pre><code>public class ThreadDemo extends Thread{
+    private int countDown=10;
+      @Override
+      public void run(){
+        while(countDown--&gt;0){
+            System.out.println(&quot;#&quot;+ this.getName()+&quot;(&quot;+ countDown+&quot;)&quot;);
+        }
+    }
+      public static void main(String[] args){
+        new ThreadDemo2().start();
+      new ThreadDemo2().start();
+      System.out.println(&quot;Counting down:&quot;);
+    }
+}
+</code></pre><p>以上代码会输出20行。 因为变量并不共享。</p>
 </li>
 <li><p>两种方式的比较。</p>
 <p>同样是创建了两个线程， 为什么结果不一样呢？</p>
@@ -531,29 +547,188 @@
 <ol>
 <li><p>wait()/notify()</p>
 <p>第一种实现， 利用根类Object的两个方法wait()/notify(), 来停止或者唤醒线程的执行； 这也是最原始的实现方式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class WaitNotifyBroker&lt;T&gt; implements Brocker&lt;T&gt;&#123;</span><br><span class="line">    private final Object[] items;</span><br><span class="line">  	private int takeIndex;</span><br><span class="line">  	private int putIndex;</span><br><span class="line">  	private int count;</span><br><span class="line">  	public WaitNotifyBroker(int capacity)&#123;</span><br><span class="line">        this.items= new Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line">  	@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">  	@Override </span><br><span class="line">  	public T take()&#123;</span><br><span class="line">        T tmpObj= null;</span><br><span class="line">      	try&#123;</span><br><span class="line">            synchronized(items)&#123;</span><br><span class="line">                while(0==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	tmpObj= (T) items[takeIndex];</span><br><span class="line">              if(++Index==items.length)&#123;</span><br><span class="line">                  takeIndex=0;</span><br><span class="line">              &#125;</span><br><span class="line">              count--;</span><br><span class="line">              items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">      	return tmpObj&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void put(T obj)&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            synchronized(items)&#123;</span><br><span class="line">                while(items.length==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	items[putIndex]= obj;</span><br><span class="line">              	if(++putIndex==items.length)&#123;</span><br><span class="line">                    putIndex=0;</span><br><span class="line">                &#125;</span><br><span class="line">              	count++;</span><br><span class="line">              	items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里利用Array构造一个Buffer去存取数据， 并利用count， putIndex和 takeIndex来保证FIrst-In-First-Out。</p>
-<p>如果利用LinkedList 来代替Array， 相对来说会稍微简单些。</p>
-<p>LinkedList的实现， 可以参考《Java 7 Concurrency Cookbook》第二章 wait/notify;</p>
-</li>
-<li><p>lock &amp; condition</p>
-<p>lock &amp; condition， 实际上也实现了类似synchronized和wait()/notify()的功能， 但是在加锁和解锁， 暂停和唤醒方面， 更加细腻和可控。</p>
-<p>在JDK的BlockingQueue的默认实现里， 也是利用了lock &amp; condition。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">public class LockConditionBroker&lt;T&gt; implements Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final ReentrantLock lock;</span><br><span class="line">    private final Condition notFull;</span><br><span class="line">    private final Condition notEmpty;</span><br><span class="line">    private final int capacity;</span><br><span class="line">    private LinkedList&lt;T&gt; items;</span><br><span class="line"></span><br><span class="line">    public LockConditionBroker(int capacity) &#123;</span><br><span class="line">        this.lock = new ReentrantLock();</span><br><span class="line">        this.notFull = lock.newCondition();</span><br><span class="line">        this.notEmpty = lock.newCondition();</span><br><span class="line">        this.capacity = capacity;</span><br><span class="line"></span><br><span class="line">        items = new LinkedList&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T take() &#123;</span><br><span class="line">        T tmpObj = null;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            while (items.size() == 0) &#123;</span><br><span class="line">                notEmpty.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            tmpObj = items.poll();</span><br><span class="line">            notFull.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        return tmpObj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void put(T obj) &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            while (items.size() == capacity) &#123;</span><br><span class="line">                notFull.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            items.offer(obj);</span><br><span class="line">            notEmpty.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BlockingQueue</p>
-<p>最后这种方法， 也是最简单最值得推荐的， 利用冰法并发包提供的工具： 阻塞队列， 将阻塞的逻辑交给BlockingQueue， 实际上， 上述1 和2 的方法实现的Broker类， 也可以视为一种简单的阻塞队列， 不过没有标准包那么完善。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class BlockingQueueBroker&lt;T&gt; implements Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final BlockingQueue&lt;T&gt; queue;</span><br><span class="line"></span><br><span class="line">    public BlockingQueueBroker() &#123;</span><br><span class="line">        this.queue = new LinkedBlockingQueue&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T take() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return queue.take();</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void put(T obj) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queue.put(obj);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来， 就是一个1P2C的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    T take();</span><br><span class="line"></span><br><span class="line">    void put(T obj);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>public class Producer implements Runnable {</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">private final Broker&lt;Integer&gt; broker;</span><br><span class="line">private final String name;</span><br><span class="line"></span><br><span class="line">public Producer(Broker&lt;Integer&gt; broker, String name) &#123;</span><br><span class="line">    this.broker = broker;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void run() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        for (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            broker.put(i);</span><br><span class="line">            System.out.format(&quot;%s produced: %s%n&quot;, name, i);</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125;</span><br><span class="line">        broker.put(-1);</span><br><span class="line">        System.out.println(&quot;produced termination signal&quot;);</span><br><span class="line">    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>}</p>
-</li>
+<p>```<br>public class WaitNotifyBroker<t> implements Brocker<t>{</t></t></p>
+<pre><code>private final Object[] items;
+  private int takeIndex;
+  private int putIndex;
+  private int count;
+  public WaitNotifyBroker(int capacity){
+    this.items= new Object[capacity];
+}
+  @SuppressWarnings(&quot;unchecked&quot;)
+  @Override 
+  public T take(){
+    T tmpObj= null;
+      try{
+        synchronized(items){
+            while(0==count){
+                items.wait();
+            }
+              tmpObj= (T) items[takeIndex];
+          if(++Index==items.length){
+              takeIndex=0;
+          }
+          count--;
+          items.notify();
+        }
+    }catch(InterruptedException e){
+        e.printStackTrace();
+    }
+      return tmpObj}
+}
+@Override
+public void put(T obj){
+    try{
+        synchronized(items){
+            while(items.length==count){
+                items.wait();
+            }
+              items[putIndex]= obj;
+              if(++putIndex==items.length){
+                putIndex=0;
+            }
+              count++;
+              items.notify();
+        }
+    }catch(InterruptedException e){
+        e.printStackTrace();
+    }
+}
+</code></pre></li>
 </ol>
-<p>public class Consumer implements Runnable {</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">private final Broker&lt;Integer&gt; broker;</span><br><span class="line">private final String name;</span><br><span class="line"></span><br><span class="line">public Consumer(Broker&lt;Integer&gt; broker, String name) &#123;</span><br><span class="line">    this.broker = broker;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void run() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        for (Integer message = broker.take(); message != -1; message = broker.take()) &#123;</span><br><span class="line">            System.out.format(&quot;%s consumed: %s%n&quot;, name, message);</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;received termination signal&quot;);</span><br><span class="line">    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">       public static void main(String[] args) &#123;</span><br><span class="line">           Broker&lt;Integer&gt; broker = new WaitNotifyBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new LockConditionBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new BlockingQueueBroker&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">           new Thread(new Producer(broker, &quot;prod 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 2&quot;)).start();</span><br><span class="line">    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>   }</p>
+<pre><code>
+   这里利用Array构造一个Buffer去存取数据， 并利用count， putIndex和 takeIndex来保证FIrst-In-First-Out。
+
+   如果利用LinkedList 来代替Array， 相对来说会稍微简单些。
+
+   LinkedList的实现， 可以参考《Java 7 Concurrency Cookbook》第二章 wait/notify;
+
+2. lock &amp; condition
+
+   lock &amp; condition， 实际上也实现了类似synchronized和wait()/notify()的功能， 但是在加锁和解锁， 暂停和唤醒方面， 更加细腻和可控。
+
+   在JDK的BlockingQueue的默认实现里， 也是利用了lock &amp; condition。
+</code></pre><p>   public class LockConditionBroker<t> implements Broker<t> {</t></t></p>
+<pre><code>   private final ReentrantLock lock;
+   private final Condition notFull;
+   private final Condition notEmpty;
+   private final int capacity;
+   private LinkedList&lt;T&gt; items;
+
+   public LockConditionBroker(int capacity) {
+       this.lock = new ReentrantLock();
+       this.notFull = lock.newCondition();
+       this.notEmpty = lock.newCondition();
+       this.capacity = capacity;
+
+       items = new LinkedList&lt;T&gt;();
+   }
+
+   @Override
+   public T take() {
+       T tmpObj = null;
+       lock.lock();
+       try {
+           while (items.size() == 0) {
+               notEmpty.await();
+           }
+
+           tmpObj = items.poll();
+           notFull.signalAll();
+
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       } finally {
+           lock.unlock();
+       }
+       return tmpObj;
+   }
+
+   @Override
+   public void put(T obj) {
+       lock.lock();
+       try {
+           while (items.size() == capacity) {
+               notFull.await();
+           }
+
+           items.offer(obj);
+           notEmpty.signalAll();
+
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       } finally {
+           lock.unlock();
+       }
+
+   }
+</code></pre><p>   }</p>
+<pre><code>
+3. BlockingQueue
+
+   最后这种方法， 也是最简单最值得推荐的， 利用冰法并发包提供的工具： 阻塞队列， 将阻塞的逻辑交给BlockingQueue， 实际上， 上述1 和2 的方法实现的Broker类， 也可以视为一种简单的阻塞队列， 不过没有标准包那么完善。
+</code></pre><p>   public class BlockingQueueBroker<t> implements Broker<t> {</t></t></p>
+<pre><code>   private final BlockingQueue&lt;T&gt; queue;
+
+   public BlockingQueueBroker() {
+       this.queue = new LinkedBlockingQueue&lt;T&gt;();
+   }
+
+   @Override
+   public T take() {
+       try {
+           return queue.take();
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+
+       return null;
+   }
+
+   @Override
+   public void put(T obj) {
+       try {
+           queue.put(obj);
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+   }
+</code></pre><p>   }</p>
+<pre><code>
+   接下来， 就是一个1P2C的例子：
+</code></pre><p>   public interface Broker<t> {</t></p>
+<pre><code>   T take();
+
+   void put(T obj);
+</code></pre><p>   }</p>
+<pre><code>
+   public class Producer implements Runnable {
+</code></pre><p>   private final Broker<integer> broker;<br>   private final String name;</integer></p>
+<p>   public Producer(Broker<integer> broker, String name) {<br>       this.broker = broker;<br>       this.name = name;<br>   }</integer></p>
+<p>   @Override<br>   public void run() {<br>       try {<br>           for (int i = 0; i &lt; 5; i++) {<br>               broker.put(i);<br>               System.out.format(“%s produced: %s%n”, name, i);<br>               Thread.sleep(1000);<br>           }<br>           broker.put(-1);<br>           System.out.println(“produced termination signal”);<br>       } catch (InterruptedException e) {<br>           e.printStackTrace();<br>           return;<br>       }</p>
+<p>   }</p>
+<pre><code>
+   }
+
+public class Consumer implements Runnable {
+</code></pre><p>private final Broker<integer> broker;<br>private final String name;</integer></p>
+<p>public Consumer(Broker<integer> broker, String name) {<br>    this.broker = broker;<br>    this.name = name;<br>}</integer></p>
+<p>@Override<br>public void run() {<br>    try {<br>        for (Integer message = broker.take(); message != -1; message = broker.take()) {<br>            System.out.format(“%s consumed: %s%n”, name, message);<br>            Thread.sleep(1000);<br>        }<br>        System.out.println(“received termination signal”);<br>    } catch (InterruptedException e) {<br>        e.printStackTrace();<br>        return;<br>    }</p>
+<p>}<br>}</p>
+<pre><code>
+</code></pre><p>public class Main {</p>
+<pre><code>   public static void main(String[] args) {
+       Broker&lt;Integer&gt; broker = new WaitNotifyBroker&lt;Integer&gt;(5);
+</code></pre><p>   //         Broker<integer> broker = new LockConditionBroker<integer>(5);</integer></integer></p>
+<p>   //         Broker<integer> broker = new BlockingQueueBroker<integer>();</integer></integer></p>
+<pre><code>       new Thread(new Producer(broker, &quot;prod 1&quot;)).start();
+       new Thread(new Consumer(broker, &quot;cons 1&quot;)).start();
+       new Thread(new Consumer(broker, &quot;cons 2&quot;)).start();
+
+   }
+</code></pre><p>   }</p>
+<p>```</p>
 <p>Consider the standard producer-consumer problem. Assume, we have a buffer of 4096 byte length. A producer thread collects the data and writes it tp the buffer. A consumer thread processes the collected data from the buffer. Objective is, both the threads should not run at the same time.</p>
 <ul>
 <li><p>Using Mutex:</p>
@@ -622,7 +797,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/02/03/算法(二)/" id="post_nav-older" class="next-content">
+        <a href="/2018/02/03/Node.js 学习笔记/" id="post_nav-older" class="next-content">
             Older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -665,7 +840,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        youremail@email.com
+        liyanchen128@outlook.com
         <b class="caret"></b>
     </a>
 </div>
@@ -678,7 +853,7 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="#" target="_blank" title="Email Me">
+                    <a href="liyanchen128@outlook.com" target="_blank" title="Email Me">
                         
                             <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
                         
@@ -834,8 +1009,20 @@ It will not impact the appearance and can give developers a lot of support :)
 
     <!-- Github -->
     
+        <a href="https://github.com/Lic128" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
 
     <!-- LinkedIn -->
+    
+        <a href="https://www.linkedin.com/in/liyan-chen-015063127/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-linkedin">
+                <span class="visuallyhidden">LinkedIn</span>
+            </button><!--
+     --></a>
     
 
     <!-- Zhihu -->
@@ -935,6 +1122,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -945,6 +1138,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
