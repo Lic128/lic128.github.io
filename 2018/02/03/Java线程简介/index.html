@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Concurrent Java** 2018-01-08 线程的两种创建方式以及优劣比较 通过实现Runnable 接口线程创建  定义一个类实现Runnable接口， 重写接口中的run()方法。 在run()方法中加入具体的任务代码或者处理逻辑。 创建Runnable接口实现类的对象。 创建一个Thread类的对象， 需要封装前面Runnable接口实现类的对象。(接口可以实现多继承) 调用T">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/Java线程简介/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Concurrent Java** 2018-01-08 线程的两种创建方式以及优劣比较 通过实现Runnable 接口线程创建  定义一个类实现Runnable接口， 重写接口中的run()方法。 在run()方法中加入具体的任务代码或者处理逻辑。 创建Runnable接口实现类的对象。 创建一个Thread类的对象， 需要封装前面Runnable接口实现类的对象。(接口可以实现多继承) 调用T">
+<meta property="og:updated_time" content="2018-02-04T04:34:55.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Concurrent Java** 2018-01-08 线程的两种创建方式以及优劣比较 通过实现Runnable 接口线程创建  定义一个类实现Runnable接口， 重写接口中的run()方法。 在run()方法中加入具体的任务代码或者处理逻辑。 创建Runnable接口实现类的对象。 创建一个Thread类的对象， 需要封装前面Runnable接口实现类的对象。(接口可以实现多继承) 调用T">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java线程简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/Java线程简介/" class="article-date">
+  <time datetime="2018-02-04T05:43:32.184Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Concurrent-Java"><a href="#Concurrent-Java" class="headerlink" title="Concurrent Java"></a>Concurrent Java</h1><p>** 2018-01-08</p>
+<h2 id="线程的两种创建方式以及优劣比较"><a href="#线程的两种创建方式以及优劣比较" class="headerlink" title="线程的两种创建方式以及优劣比较"></a>线程的两种创建方式以及优劣比较</h2><ol>
+<li><p>通过实现Runnable 接口线程创建</p>
+<ul>
+<li>定义一个类实现Runnable接口， 重写接口中的run()方法。 在run()方法中加入具体的任务代码或者处理逻辑。</li>
+<li>创建Runnable接口实现类的对象。</li>
+<li>创建一个Thread类的对象， 需要封装前面Runnable接口实现类的对象。(接口可以实现多继承)</li>
+<li>调用Thread对象的start()方法， 启动线程。</li>
+</ul>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadDemo1 implements Runnable&#123;</span><br><span class="line">    private int countDown=10;</span><br><span class="line">  @Override</span><br><span class="line">  public void run()&#123;</span><br><span class="line">      while(countDown--&gt;10)&#123;</span><br><span class="line">          System.out.println(&quot;#&quot;+ Thread.currentThread().getName()+ &quot;(&quot;+ countDown+&quot;)&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">      //Runnable中run方法是一个空方法， 并不会产生任何线程行为， 必须显式地将一个任务附着到现呈上。</span><br><span class="line">    ThreadDemo1 tt= new ThreadDemo1();</span><br><span class="line">    new Thread(tt).start();</span><br><span class="line">    new Thread(tt).start();</span><br><span class="line">    System.out.println(&quot;Counting Down:&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述方法共享countDown， 所以结果的输出只有十行。</p>
+</li>
+<li><p>通过继承Thread类创建线程。</p>
+<ul>
+<li>首先定义一个类去继承Thread父类， 重写父类中的run()方法。 在run()方法中加入具体的任务代码或处理逻辑。</li>
+<li>直接创建一个ThreadDemo类的对象， 也可以利用多态性，变量声明为父类的类型。</li>
+<li>调用start方法， 线程t启动， 隐含的调用run()方法。</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadDemo extends Thread&#123;</span><br><span class="line">    private int countDown=10;</span><br><span class="line">  	@Override</span><br><span class="line">  	public void run()&#123;</span><br><span class="line">		while(countDown--&gt;0)&#123;</span><br><span class="line">            System.out.println(&quot;#&quot;+ this.getName()+&quot;(&quot;+ countDown+&quot;)&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  	public static void main(String[] args)&#123;</span><br><span class="line">        new ThreadDemo2().start();</span><br><span class="line">      new ThreadDemo2().start();</span><br><span class="line">      System.out.println(&quot;Counting down:&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码会输出20行。 因为变量并不共享。</p>
+</li>
+<li><p>两种方式的比较。</p>
+<p>同样是创建了两个线程， 为什么结果不一样呢？</p>
+<p>使用实现Runnable接口方式创建线程可以共享同一个目标对象(ThreadDemo 1 tt= new ThreadDemo1();), 实现了多个线程可以处理同一份资源。</p>
+<p>然后再看一段来自JDK的解释：</p>
+<p>Runnable接口应该由哪些通过某一线程执行其实例的类来实现。 类必须定义一个称为run的无参数方法。</p>
+<p>设计该接口的目的是为希望再活动时执行代码的对象提供一个公共协议。 例如， Thread类实现了Runnable。 激活的意思是说某个线程已启动并且尚未停止。</p>
+<p>此外， Runnable为非Thread子类的类提供了一种激活方式。 通过实例化某个Thread实例并将自身作为运行目标， 就可以运行实现Runnable的类而无须创建Thread的子类。 大多数情况下， 如果指向重写run()方法， 而不重写其他Thread方法， 那么应该使用Runnable接口。 这很重要， 因为除非程序员打算修改或增强类的基本行为， 否则不应为该类创建子类。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/03/Java线程简介/" data-id="cjd8d3ny30002cuzhuh0zradw" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/Java中HashMap的实现机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/03/Java里面的生产者-消费者模型/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/03/Behavior Question/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Intro to Python/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java Generics简介/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java中HashMap的实现机制/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java线程简介/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

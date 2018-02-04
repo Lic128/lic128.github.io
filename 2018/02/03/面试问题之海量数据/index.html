@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Big Data Interview Questions** 2018-01-01 Top K Frequent寻找数据流中出现最频繁的k个元素(find k frequent items in a data stream)。 这个问题也称为Heavy Hitters。 这题也是从实践中提炼而来的， 例如搜索引擎的热搜榜， 找出访问网站次数最多的前10个IP地址， 等等。 方案1： HashMap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/面试问题之海量数据/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Big Data Interview Questions** 2018-01-01 Top K Frequent寻找数据流中出现最频繁的k个元素(find k frequent items in a data stream)。 这个问题也称为Heavy Hitters。 这题也是从实践中提炼而来的， 例如搜索引擎的热搜榜， 找出访问网站次数最多的前10个IP地址， 等等。 方案1： HashMap">
+<meta property="og:updated_time" content="2018-02-04T04:38:24.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Big Data Interview Questions** 2018-01-01 Top K Frequent寻找数据流中出现最频繁的k个元素(find k frequent items in a data stream)。 这个问题也称为Heavy Hitters。 这题也是从实践中提炼而来的， 例如搜索引擎的热搜榜， 找出访问网站次数最多的前10个IP地址， 等等。 方案1： HashMap">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-面试问题之海量数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/面试问题之海量数据/" class="article-date">
+  <time datetime="2018-02-04T05:43:31.908Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Big-Data-Interview-Questions"><a href="#Big-Data-Interview-Questions" class="headerlink" title="Big Data Interview Questions"></a>Big Data Interview Questions</h1><p>** 2018-01-01</p>
+<h1 id="Top-K-Frequent"><a href="#Top-K-Frequent" class="headerlink" title="Top K Frequent"></a>Top K Frequent</h1><p>寻找数据流中出现最频繁的k个元素(find k frequent items in a data stream)。 这个问题也称为Heavy Hitters。</p>
+<p>这题也是从实践中提炼而来的， 例如搜索引擎的热搜榜， 找出访问网站次数最多的前10个IP地址， 等等。</p>
+<h2 id="方案1：-HashMap-Heap"><a href="#方案1：-HashMap-Heap" class="headerlink" title="方案1： HashMap+ Heap"></a>方案1： HashMap+ Heap</h2><p>用一个HashMap， 存放所有元素出现的次数， 用一个小根堆， 容量为K， 存放目前出现过的最频繁的k个元素。</p>
+<ol>
+<li>每次从数据流来一个元素， 如果在HashMap里已经存在， 则把对应的计数器增1， 如果不存在， 则插入， 计数器初始化为1.</li>
+<li>在堆里寻找该元素， 如果找到， 把堆里的计数器也增1， 并调整堆； 如果没找到， 把这个元素的次数跟堆顶元素比较， 如果大于堆订元素的出现次数， 则把堆顶元素替换为该元素， 并调整堆。</li>
+<li>空间复杂度O(n). HashMap需要存放下所有元素，需要O(n);</li>
+<li>时间复杂度<code>O(n)</code>。每次来一个新元素，需要在HashMap里查找一下，需要<code>O(1)</code>的时间；然后要在堆里查找一下，<code>O(k)</code>的时间，有可能需要调堆，又需要<code>O(logk)</code>的时间，总的时间复杂度是<code>O(n(k+logk))</code>，k是常量，所以可以看做是O(n)。</li>
+</ol>
+<p>如果元素数量巨大， 单机内存存不下， 怎么办？ 有两个办法， 见方案2和3.</p>
+<h2 id="方案2：-多机HashMap-Heap"><a href="#方案2：-多机HashMap-Heap" class="headerlink" title="方案2： 多机HashMap+ Heap"></a>方案2： 多机HashMap+ Heap</h2><ul>
+<li>可以把数据进行分片。 假设有8台机器， 第一台机器只处理hash(elem)%8==0 的元素， 第二台机器只处理hash(elem)%8==1的元素， 以此类推。</li>
+<li>每台机器都有一个HashMap和一个Heap， 各自独立计算出top k的元素</li>
+<li>把每台机器的Heap， 通过网络汇总到一台机器上， 将多个Heap合并成一个Heap，就可以计算出总的top k个元素了。</li>
+</ul>
+<h2 id="方案3：-Count-Min-Sketch-heap（近似算法）"><a href="#方案3：-Count-Min-Sketch-heap（近似算法）" class="headerlink" title="方案3： Count-Min Sketch + heap（近似算法）"></a>方案3： Count-Min Sketch + heap（近似算法）</h2><p>相当于用一个近似的频率来代替真实的出现吃树。</p>
+<p>既然方案中的Hash Map太大， 内存装不下， 那么可以用Count-Min Sketch算法代替HashMap。</p>
+<ul>
+<li>在数据流不断流入的过程中， 维护一个标准的Count-Min Sketch二维数组</li>
+<li>维护一个小根堆， 容量为k</li>
+<li>每次来一个新元素<ul>
+<li>将相应的sketch增1</li>
+<li>在堆中查找该元素， 如果找到， 把堆里的计数器也增1， 并调整堆； 如果没有找到， 把这个元素的sketch作为该元素的频率的近似值， 如果大于堆顶元素的概率， 则把堆顶元素替换为该元素， 并调整堆。</li>
+</ul>
+</li>
+</ul>
+<p>Count-Min Sketch 算法流程：</p>
+<ol>
+<li>选定d个hash函数， 开一个dxm的二维整数数组作为哈希表。</li>
+<li>对于每个元素， 分别使用d个哈希函数计算相应的hash值， 并对m取余， 然后再对应的位置上增1，二维数组中的每个整数称为sketch</li>
+<li>要查询某个元素的频率时， 只需要取出d个sketch， 返回最小的那一个(其实d个sketch都是该元素的近似频率， 返回任意一个都可以， 该算法选择最小的那个)。</li>
+</ol>
+<p>这个方法的思路和Bloom Filter比较类似， 都是用多个hash函数来降低冲突。</p>
+<ul>
+<li><p>空间复杂度O(dm)。 Count-Min Sketch需要开一个dxm大小的二维数组， 所以空间复杂度是O(dm)</p>
+</li>
+<li><p>时间复杂度O(n). Count-Min Sketch只需要一遍扫描， 所以时间复杂度是O(n)</p>
+<p>​</p>
+</li>
+</ul>
+<p>Count Min Sketch 算法的优点是省内存， 缺点是对于出现次数比较少的元素， 准确性很差， 因为二维数组相比于原始数据来说还是太小， hash冲突比较严重， 导致结果偏差比较大。</p>
+<p>算法评价：</p>
+<p>只会估算偏大， 永远不会偏小；</p>
+<p>只需要固定大小的内存和计算时间， 和需要统计的元素多少无关；</p>
+<p>对于低频的元素， 估算值相对的错误可能会变大。</p>
+<h2 id="Lossy-Counting"><a href="#Lossy-Counting" class="headerlink" title="Lossy Counting"></a>Lossy Counting</h2><p>Lossy Counting 算法流程：</p>
+<ol>
+<li>建立一个HashMap， 用于存放每个元素的出现次数。</li>
+<li>建立一个窗口（窗口的大小由错误率决定， 后面具体讨论）</li>
+<li>等待数据流不断流入这个窗口， 直到窗口满了， 开始统计每个元素出现的频率， 统计结束后， 每个元素的频率减1， 然后将出现次数为0 的元素从HashMap中栓除</li>
+<li>返回第二步， 不断循环。</li>
+</ol>
+<p>Lossy Counting 背后朴素的思想是，出现频率高的元素，不太可能减一后变成0，如果某个元素在某个窗口内降到了0，说明它不太可能是高频元素，可以不再跟踪它的计数器了。随着处理的窗口越来越多，HashMap也会不断增长，同时HashMap里的低频元素会被清理出去，这样内存占用会保持在一个很低的水平。</p>
+<p>很显然，Lossy Counting 算法是个近似算法，但它的错误率是可以在数学上证明它的边界的。假设要求错误率不大于ε，那么窗口大小为1/ε，对于长度为N的流，有N／（1/ε）＝εN 个窗口，由于每个窗口结束时减一了，那么频率最多被少计数了窗口个数εN。</p>
+<h1 id="Bloom-Filter"><a href="#Bloom-Filter" class="headerlink" title="Bloom Filter"></a>Bloom Filter</h1><p>问题一：Query 去除 在处理文字链相关广告的时候，遇到这样一个问题。用户很多的搜索，都是检索不到广告的。对于这一类的用户搜索，基本上来说，是没什么价值的。这样的数据也就可以丢弃了。但是，想确定一个搜索有没有价值，我们要匹配所有的广告，接近千万条。而用户的搜索更是上亿，每一个用户搜索都进行一次匹配。这样的匹配，估计现在多少的机器也搞不定。</p>
+<p>问题二：URL是否被爬过 这与另外一个问题类似。假设我们在做一个爬虫，有1000亿的url地址，我们想确定一下当前的url有没有被爬过。最简单的想法是，我们直接用一个hash set。但是100亿条数据，也就是10G，每条数据hash一次8个byte，但是hashset的利用效率也就是50%，那也就是需要160GB的内存。现在有机器能存下这么多的内存，估计用起来也是很吃力吧。</p>
+<p>Bloom filter 的想法很简单， 每个Bloom Filter 有两个参数：</p>
+<ol>
+<li>一个是k， 表示由多少个hash function。</li>
+<li>另外一个是m， 表示bloom filter由多少个bit。</li>
+</ol>
+<p>Bloom filter的过程很简单， 就只有hash和位运算， 大致为下面几步：</p>
+<ol>
+<li>使用k个hash function 进行hash</li>
+<li>hash之后再对m取余， 得到在filter的位置</li>
+<li>最后对相应的位置置1。</li>
+</ol>
+<p>这个是处理输入的过程。 判断一个输入是不是在bloom filter中， 则进行类似的操作：</p>
+<ol>
+<li>使用k个hash函数进行hash</li>
+<li>hash以后再对m取余， 得到在filter的位置</li>
+<li>看所有的位置是不是<em>都是1</em>， 如果是返回true， 否则返回false</li>
+</ol>
+<h3 id="K和m的取值"><a href="#K和m的取值" class="headerlink" title="K和m的取值"></a>K和m的取值</h3><p>在使用bloom filter的时候， 最关键的是设置这两个参数。 一般来说， false positive的概率小于0.01就可以了。 K一般选择3或者4，而m/n一般选择10 左右。 所以上面， 对于URL的处理， 我们需要大概100Gb，也就是12GB的内存。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/03/面试问题之海量数据/" data-id="cjd8d3nyd0008cuzh9rw3wok2" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/面试中的随机算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/03/Behavior Question/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Intro to Python/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java Generics简介/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java中HashMap的实现机制/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java线程简介/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

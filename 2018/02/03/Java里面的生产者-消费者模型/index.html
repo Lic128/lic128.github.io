@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Producer-Consumer in Java** 2018-01-09 Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait()/no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/Java里面的生产者-消费者模型/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Producer-Consumer in Java** 2018-01-09 Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait()/no">
+<meta property="og:updated_time" content="2018-02-04T04:34:00.609Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Producer-Consumer in Java** 2018-01-09 Java 里的生产者-消费者模型(Producer and Consumer)生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：  wait()/notify() lock &amp;amp; condition Blocking Queue  下面来逐一分析：  wait()/no">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java里面的生产者-消费者模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/Java里面的生产者-消费者模型/" class="article-date">
+  <time datetime="2018-02-04T05:43:32.172Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Producer-Consumer-in-Java"><a href="#Producer-Consumer-in-Java" class="headerlink" title="Producer-Consumer in Java"></a>Producer-Consumer in Java</h1><p>** 2018-01-09</p>
+<h1 id="Java-里的生产者-消费者模型-Producer-and-Consumer"><a href="#Java-里的生产者-消费者模型-Producer-and-Consumer" class="headerlink" title="Java 里的生产者-消费者模型(Producer and Consumer)"></a>Java 里的生产者-消费者模型(Producer and Consumer)</h1><p>生产者-消费者模型是多线程问题里面的经典问题， 也是面试的常见问题。 有如下几个常见的实现方法：</p>
+<ol>
+<li>wait()/notify()</li>
+<li>lock &amp; condition</li>
+<li>Blocking Queue</li>
+</ol>
+<p>下面来逐一分析：</p>
+<ol>
+<li><p>wait()/notify()</p>
+<p>第一种实现， 利用根类Object的两个方法wait()/notify(), 来停止或者唤醒线程的执行； 这也是最原始的实现方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class WaitNotifyBroker&lt;T&gt; implements Brocker&lt;T&gt;&#123;</span><br><span class="line">    private final Object[] items;</span><br><span class="line">  	private int takeIndex;</span><br><span class="line">  	private int putIndex;</span><br><span class="line">  	private int count;</span><br><span class="line">  	public WaitNotifyBroker(int capacity)&#123;</span><br><span class="line">        this.items= new Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line">  	@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">  	@Override </span><br><span class="line">  	public T take()&#123;</span><br><span class="line">        T tmpObj= null;</span><br><span class="line">      	try&#123;</span><br><span class="line">            synchronized(items)&#123;</span><br><span class="line">                while(0==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	tmpObj= (T) items[takeIndex];</span><br><span class="line">              if(++Index==items.length)&#123;</span><br><span class="line">                  takeIndex=0;</span><br><span class="line">              &#125;</span><br><span class="line">              count--;</span><br><span class="line">              items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">      	return tmpObj&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void put(T obj)&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            synchronized(items)&#123;</span><br><span class="line">                while(items.length==count)&#123;</span><br><span class="line">                    items.wait();</span><br><span class="line">                &#125;</span><br><span class="line">              	items[putIndex]= obj;</span><br><span class="line">              	if(++putIndex==items.length)&#123;</span><br><span class="line">                    putIndex=0;</span><br><span class="line">                &#125;</span><br><span class="line">              	count++;</span><br><span class="line">              	items.notify();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch(InterruptedException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里利用Array构造一个Buffer去存取数据， 并利用count， putIndex和 takeIndex来保证FIrst-In-First-Out。</p>
+<p>如果利用LinkedList 来代替Array， 相对来说会稍微简单些。</p>
+<p>LinkedList的实现， 可以参考《Java 7 Concurrency Cookbook》第二章 wait/notify;</p>
+</li>
+<li><p>lock &amp; condition</p>
+<p>lock &amp; condition， 实际上也实现了类似synchronized和wait()/notify()的功能， 但是在加锁和解锁， 暂停和唤醒方面， 更加细腻和可控。</p>
+<p>在JDK的BlockingQueue的默认实现里， 也是利用了lock &amp; condition。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">public class LockConditionBroker&lt;T&gt; implements Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final ReentrantLock lock;</span><br><span class="line">    private final Condition notFull;</span><br><span class="line">    private final Condition notEmpty;</span><br><span class="line">    private final int capacity;</span><br><span class="line">    private LinkedList&lt;T&gt; items;</span><br><span class="line"></span><br><span class="line">    public LockConditionBroker(int capacity) &#123;</span><br><span class="line">        this.lock = new ReentrantLock();</span><br><span class="line">        this.notFull = lock.newCondition();</span><br><span class="line">        this.notEmpty = lock.newCondition();</span><br><span class="line">        this.capacity = capacity;</span><br><span class="line"></span><br><span class="line">        items = new LinkedList&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T take() &#123;</span><br><span class="line">        T tmpObj = null;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            while (items.size() == 0) &#123;</span><br><span class="line">                notEmpty.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            tmpObj = items.poll();</span><br><span class="line">            notFull.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        return tmpObj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void put(T obj) &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            while (items.size() == capacity) &#123;</span><br><span class="line">                notFull.await();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            items.offer(obj);</span><br><span class="line">            notEmpty.signalAll();</span><br><span class="line"></span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BlockingQueue</p>
+<p>最后这种方法， 也是最简单最值得推荐的， 利用冰法并发包提供的工具： 阻塞队列， 将阻塞的逻辑交给BlockingQueue， 实际上， 上述1 和2 的方法实现的Broker类， 也可以视为一种简单的阻塞队列， 不过没有标准包那么完善。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class BlockingQueueBroker&lt;T&gt; implements Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final BlockingQueue&lt;T&gt; queue;</span><br><span class="line"></span><br><span class="line">    public BlockingQueueBroker() &#123;</span><br><span class="line">        this.queue = new LinkedBlockingQueue&lt;T&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T take() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            return queue.take();</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void put(T obj) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            queue.put(obj);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来， 就是一个1P2C的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface Broker&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    T take();</span><br><span class="line"></span><br><span class="line">    void put(T obj);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>public class Producer implements Runnable {</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">private final Broker&lt;Integer&gt; broker;</span><br><span class="line">private final String name;</span><br><span class="line"></span><br><span class="line">public Producer(Broker&lt;Integer&gt; broker, String name) &#123;</span><br><span class="line">    this.broker = broker;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void run() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        for (int i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            broker.put(i);</span><br><span class="line">            System.out.format(&quot;%s produced: %s%n&quot;, name, i);</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125;</span><br><span class="line">        broker.put(-1);</span><br><span class="line">        System.out.println(&quot;produced termination signal&quot;);</span><br><span class="line">    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>}</p>
+</li>
+</ol>
+<p>public class Consumer implements Runnable {</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">private final Broker&lt;Integer&gt; broker;</span><br><span class="line">private final String name;</span><br><span class="line"></span><br><span class="line">public Consumer(Broker&lt;Integer&gt; broker, String name) &#123;</span><br><span class="line">    this.broker = broker;</span><br><span class="line">    this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void run() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        for (Integer message = broker.take(); message != -1; message = broker.take()) &#123;</span><br><span class="line">            System.out.format(&quot;%s consumed: %s%n&quot;, name, message);</span><br><span class="line">            Thread.sleep(1000);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;received termination signal&quot;);</span><br><span class="line">    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">       public static void main(String[] args) &#123;</span><br><span class="line">           Broker&lt;Integer&gt; broker = new WaitNotifyBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new LockConditionBroker&lt;Integer&gt;(5);</span><br><span class="line"></span><br><span class="line">   //         Broker&lt;Integer&gt; broker = new BlockingQueueBroker&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">           new Thread(new Producer(broker, &quot;prod 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 1&quot;)).start();</span><br><span class="line">           new Thread(new Consumer(broker, &quot;cons 2&quot;)).start();</span><br><span class="line">    </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>Consider the standard producer-consumer problem. Assume, we have a buffer of 4096 byte length. A producer thread collects the data and writes it tp the buffer. A consumer thread processes the collected data from the buffer. Objective is, both the threads should not run at the same time.</p>
+<ul>
+<li><p>Using Mutex:</p>
+<p>A mutex provides mutual exclusion, either producer or consumer can have the key(mutex) and proceed with their work. As long as the buffer is filled by producer, the consumer needs to wait, and vice versa.</p>
+<p>At any point of time, only one thread can work with with the entire buffer. The concept can be generalized using semaphore.</p>
+</li>
+<li><p>Using Semaphore:</p>
+<p>A semaphore is a generalized mutex. In lieu of single buffer, we can split the 4 KB buffer into four 1 KB buffers(identical resources). A semaphore can be associated with these four buffers. The consumer and producer can work on different buffers at the same time.</p>
+</li>
+<li><p>Misconception:</p>
+<p>There is an ambiguity between binary semaphore and mutex. we might have come across that a mutex is binary semaphore. But they are not! The purpose of mutex and semaphore are different . May be, due to similarity in their</p>
+<p>implementation a mutex would be referred as binary semaphore.</p>
+<p>Strictly speaking, a mutex is locking mechanism used to synchronize access to resource. Only one task(can be a thread or process based on OS abstraction) can acquire the mutex. It means there is ownership associated with mutex, and only the owner can release the lock(mutex).</p>
+<p>Semaphore is signaling mechanism(“I am done, you can carry on “ kind of signal). For example, if you are listening songs(assume it as one task) on your mobile and at the same time your friend calls you, an interrupt is triggered upon which an interrupt service routine signals the call processing task to wake up.</p>
+</li>
+</ul>
+<h3 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General Questions:"></a>General Questions:</h3><ol>
+<li><p>Can a thread acquire more than one lock(Mutex)?</p>
+<p>Yes, it is possible that a thread is in need of more than one resource, hence the locks. If any lock is not available the thread will wait(block) on the lock.</p>
+</li>
+<li><p>Can a mutex be locked more than once?</p>
+<p>A mutex is a lock. Only one state(locked/unlocked) is associated with it. However, a recursive mutex can be locked more than once(POSIX complaint systems), in which a count is associated with it, yet retains only one state(locked/unlocked). The programmer must unlock the mutex as many number times as it was locked.</p>
+</li>
+<li><p>What happens if a non-recursive mutex is locked more than once.</p>
+<p>Deadlock. If a thread which had already locked a mutex, tries to lock the mutex again, it will enter into the waiting list of that mutex, which results in deadlock. It is because no other thread can unlock the mutex. An operating system implementer can exercise care in identifying the owner of mutex and return if it is already locked by same thread to prevent deadlocks.</p>
+</li>
+<li><p>Are binary semaphore and mutex same?</p>
+<p>No, we suggest to treat them separately, as it is explained signaling vs locking mechanisms. But a binary semaphore may experience the same critical issues associated with mutex.</p>
+</li>
+<li><p>What is mutex and critical section?</p>
+<p>Some operating systems use the same word critical section in the API. Usually a mutex is costly operation due to protection protocols associated with it. At last, the objective of mutex is atomic access. There are other ways to achieve atomic access like disabling interrupts which can be much faster but ruins responsiveness. The alternate API makes use of disabling interrupts.</p>
+</li>
+</ol>
+<h2 id="StackOverflow-click-here"><a href="#StackOverflow-click-here" class="headerlink" title="StackOverflow: click here"></a>StackOverflow: <a href="https://stackoverflow.com/questions/62814/difference-between-binary-semaphore-and-mutex" target="_blank" rel="noopener">click here</a></h2><p>Mutex can be released only by thread that had acquired it, while you can signal semaphore from any other thread(or process), so semaphores are more suitable for some synchronization problems like producer-consumer.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/02/03/Java里面的生产者-消费者模型/" data-id="cjd8d3nxw0001cuzhg4t8zvqu" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/03/Java线程简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/03/Java面试问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/02/03/Behavior Question/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Intro to Python/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java Generics简介/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java中HashMap的实现机制/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Java线程简介/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
